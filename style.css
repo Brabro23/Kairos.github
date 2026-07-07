@@ -324,10 +324,9 @@ nav a:hover {
         padding: 30px 20px 15px 20px;
     }
 
-       .text-box {
-        /* I valori di padding devono rimanere multipli di 30 per non rompere la griglia */
-        padding: 60px 20px 30px 20px; 
-        margin-top: 40px;
+           .cinematic-text-box {
+        padding: 40px 20px;
+        min-height: 380px;
     }
     }
 
