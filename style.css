@@ -264,71 +264,24 @@ nav a:hover {
    RESPONSIVE: SMARTPHONE E TABLET 
    ========================================= */
 
-@media (max-width: 850px) {
-    /* Riduci i margini della pagina */
-    .background-wrapper {
+/* Adattamenti Locandina per Cellulari */
+    .cinematic-item {
+        height: 65vh;
         padding: 20px;
-    }
-
-    /* Riorganizza Header e Menu in verticale */
-    header {
-        flex-direction: column;
-        gap: 20px;
-        margin-bottom: 60px;
+        background-attachment: scroll; /* Sui telefoni è meglio disattivare il parallasse */
     }
     
-    .logo a {
-        font-size: 3.5rem;
-        letter-spacing: -1px;
+    .cinematic-content h2 {
+        font-size: 3.2rem;
+        margin-bottom: 25px;
     }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+    
+    .cinematic-author {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        margin-bottom: 25px;
     }
-
-    nav a {
-        padding: 10px;
-        font-size: 0.85rem;
+    
+    .cinematic-quote {
+        font-size: 1.05rem;
     }
-
-    /* Titolo Home */
-    .highlight {
-        font-size: 1.6rem;
-    }
-
-    /* Griglia in colonna */
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .slider-area {
-        min-height: 300px;
-    }
-
-    .slider-title {
-        font-size: 1.1rem;
-        padding: 30px 20px 15px 20px;
-    }
-
-    .text-box {
-        padding: 40px 20px;
-    }
-
-    /* Raddrizza e adatta le Polaroid */
-    .archive-item {
-        width: 100%;
-        max-width: 340px;
-    }
-
-    .archive-item:nth-child(even), 
-    .archive-item:nth-child(odd) {
-        transform: rotate(0deg); /* Le allinea dritte sul telefono */
-    }
-
-    .archive-item:hover {
-        transform: scale(1.02); /* Effetto di ingrandimento ridotto su mobile */
-    }
-}
