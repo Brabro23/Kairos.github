@@ -265,17 +265,79 @@ nav a:hover {
 /* =========================================
    RESPONSIVE: SMARTPHONE E TABLET 
    ========================================= */
+/* =========================================
+   RESPONSIVE: SMARTPHONE E TABLET 
+   ========================================= */
 
-/* Adattamenti Locandina 4:5 per Cellulari */
+@media (max-width: 850px) {
+    /* Riduci i margini della pagina */
+    .background-wrapper {
+        padding: 20px 10px;
+    }
+
+    /* Riorganizza Header e Menu in verticale */
+    header {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .logo a {
+        font-size: 3.5rem;
+        letter-spacing: -1px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Titolo Home */
+    .highlight {
+        font-size: 1.6rem;
+    }
+
+    /* Griglia in colonna per la Home */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .slider-area {
+        min-height: 300px;
+    }
+
+    .slider-title {
+        font-size: 1.1rem;
+        padding: 30px 20px 15px 20px;
+    }
+
+    .text-box {
+        padding: 40px 20px;
+    }
+
+    /* Adattamenti Locandina 4:5 per Cellulari (Pagine Archivio) */
+    .cinematic-list {
+        gap: 40px; /* Un po' più di respiro tra una e l'altra sul telefono */
+    }
+
     .cinematic-item {
         width: 100%;
-        max-width: 360px; /* Evita che diventi sproporzionato su schermi molto larghi */
+        max-width: 320px; /* Limite di larghezza per non sbordare */
         aspect-ratio: 4 / 5;
+        height: auto;
         padding: 20px;
+        margin: 0 auto; /* Centra perfettamente la locandina nello schermo */
     }
     
     .cinematic-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 15px;
     }
     
@@ -288,3 +350,4 @@ nav a:hover {
     .cinematic-quote {
         font-size: 0.9rem;
     }
+}
