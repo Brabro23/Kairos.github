@@ -3,135 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kairos | Tempo di Decostruire</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'paper': '#F7F5F0', /* Colore di fondo ispirato al PDF */
-                        'charcoal': '#2D2D2D', /* Testo scuro elegante, non nero puro */
-                        'accent': '#8C857B' /* Tono neutro per i dettagli */
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Animazioni di base per un look fluido e dinamico */
-        body { background-color: #F7F5F0; color: #2D2D2D; }
-        
-        .fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Effetto 3D al passaggio del mouse sulle card degli articoli */
-        .article-card {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-        .article-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        }
-    </style>
+    <title>Kairos - Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="font-sans antialiased selection:bg-accent selection:text-white">
+<body>
+    <div class="background-wrapper">
+        
+        <header>
+            <div class="logo">KAIROS</div>
+            <nav>
+                <ul>
+                    <li><a href="#">ARTICOLI</a></li>
+                    <li><a href="#">RACCONTI</a></li>
+                    <li><a href="#">SCRITTI IN VERSI</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <nav class="w-full py-8 px-6 md:px-12 flex justify-between items-center fade-in-up">
-        <div class="font-serif text-2xl font-semibold tracking-wide">Kairos.</div>
-        <div class="space-x-6 text-sm tracking-widest uppercase text-accent">
-            <a href="#about" class="hover:text-charcoal transition-colors">L'Autore</a>
-            <a href="#writings" class="hover:text-charcoal transition-colors">Scritti</a>
-        </div>
-    </nav>
-
-    <header class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 fade-in-up delay-100">
-        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 max-w-4xl mx-auto">
-            Tempo di <span class="italic">Decostruire</span>
-        </h1>
-        <p class="font-sans font-light text-lg md:text-xl max-w-2xl text-accent mb-12">
-            Esplorazioni storiche, narrative e letterarie. Un archivio digitale dedicato a chi cerca connessioni autentiche tra il passato e il nostro presente.
-        </p>
-        <div class="w-[1px] h-24 bg-accent/30 mx-auto animate-pulse"></div>
-    </header>
-
-    <section id="writings" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="text-center mb-16 fade-in-up delay-200">
-            <h2 class="font-serif text-3xl md:text-4xl mb-4">Selezioni dall'Archivio</h2>
-            <p class="text-accent uppercase tracking-widest text-xs">Ricerca & Narrazione</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="container">
             
-            <article class="article-card bg-white p-6 rounded-sm cursor-pointer fade-in-up delay-300">
-                <div class="h-48 bg-gray-200 mb-6 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=800" alt="Macchina da scrivere" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                </div>
-                <span class="text-accent text-xs font-semibold tracking-wider uppercase">Storia Contemporanea</span>
-                <h3 class="font-serif text-2xl mt-3 mb-3">La Rivoluzione Incompiuta</h3>
-                <p class="text-sm font-light leading-relaxed mb-4 text-gray-600">
-                    Un'analisi dialettica degli eventi che hanno scosso l'Europa, osservati non come date su un manuale, ma come destini incrociati di uomini e donne.
-                </p>
-                <span class="text-xs uppercase tracking-widest border-b border-charcoal pb-1">Leggi di più</span>
-            </article>
+            <div class="main-heading">
+                <span class="highlight">
+                    <i><del>L'ALTRA FACCIA DEL</del></i> LA PRIMA PAGINA
+                </span>
+            </div>
 
-            <article class="article-card bg-white p-6 rounded-sm cursor-pointer fade-in-up delay-300">
-                <div class="h-48 bg-gray-200 mb-6 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&q=80&w=800" alt="Architettura classica" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="content-grid">
+                
+                <div class="slider-area">
+                    <span class="arrow left">&#10094;</span>
+                    <span class="arrow right">&#10095;</span>
+                    
+                    <div class="slider-title">
+                        CONTROLLO SCOLASTICO: I RISCHI DELL'EMENDAMENTO LATINI
+                    </div>
                 </div>
-                <span class="text-accent text-xs font-semibold tracking-wider uppercase">Letteratura</span>
-                <h3 class="font-serif text-2xl mt-3 mb-3">Il Mito nella Modernità</h3>
-                <p class="text-sm font-light leading-relaxed mb-4 text-gray-600">
-                    Come le figure gigantesche del nostro passato continuano a plasmare l'etica e la morale delle generazioni presenti, da Dante alle strade delle nostre città.
-                </p>
-                <span class="text-xs uppercase tracking-widest border-b border-charcoal pb-1">Leggi di più</span>
-            </article>
 
-            <article class="article-card bg-white p-6 rounded-sm cursor-pointer fade-in-up delay-300">
-                <div class="h-48 bg-gray-200 mb-6 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1505664159893-61b402802d28?auto=format&fit=crop&q=80&w=800" alt="Oceano" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="text-box">
+                    <h2>L'altra faccia della prima pagina, tra la prima pagina.</h2>
+                    <p>
+                        Tra le pieghe delle prime pagine di giornale si nascondono prospettive 
+                        inesplorate. Questo spazio di scrittura, nel tentativo di mostrarle, 
+                        invita il lettore a porsi nuovi interrogativi oltre il rumore 
+                        della folla mediatica.
+                    </p>
                 </div>
-                <span class="text-accent text-xs font-semibold tracking-wider uppercase">Riflessioni</span>
-                <h3 class="font-serif text-2xl mt-3 mb-3">Oltre l'Orizzonte Visibile</h3>
-                <p class="text-sm font-light leading-relaxed mb-4 text-gray-600">
-                    L'insegnamento come atto di navigazione: imparare a leggere le correnti della storia per guidare chi si affaccia oggi sul mondo.
-                </p>
-                <span class="text-xs uppercase tracking-widest border-b border-charcoal pb-1">Leggi di più</span>
-            </article>
 
+            </div>
         </div>
-    </section>
-
-    <footer class="bg-charcoal text-paper py-12 text-center mt-20">
-        <h2 class="font-serif text-2xl mb-4">Kairos.</h2>
-        <p class="font-light text-sm text-gray-400 max-w-md mx-auto mb-6">
-            Progettato con intenzione. Uno spazio per la storia, la narrazione e la riflessione.
-        </p>
-        <p class="text-xs text-gray-500 uppercase tracking-widest">&copy; 2026 Tutti i diritti riservati.</p>
-    </footer>
-
+    </div>
 </body>
 </html>
