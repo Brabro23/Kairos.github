@@ -266,24 +266,25 @@ nav a:hover {
    RESPONSIVE: SMARTPHONE E TABLET 
    ========================================= */
 
-/* Adattamenti Locandina per Cellulari */
+/* Adattamenti Locandina 4:5 per Cellulari */
     .cinematic-item {
-        height: 65vh;
+        width: 100%;
+        max-width: 360px; /* Evita che diventi sproporzionato su schermi molto larghi */
+        aspect-ratio: 4 / 5;
         padding: 20px;
-        background-attachment: scroll; /* Sui telefoni è meglio disattivare il parallasse */
     }
     
     .cinematic-content h2 {
-        font-size: 3.2rem;
-        margin-bottom: 25px;
+        font-size: 2rem;
+        margin-bottom: 15px;
     }
     
     .cinematic-author {
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        margin-bottom: 25px;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
     }
     
     .cinematic-quote {
-        font-size: 1.05rem;
+        font-size: 0.9rem;
     }
