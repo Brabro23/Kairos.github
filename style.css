@@ -52,9 +52,10 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-family: 'Playfair Display', 'Times New Roman', serif; /* Applica il font elegante */
+    font-size: 1.05rem; /* Leggermente ingrandito per favorire la lettura */
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2px; /* Dà respiro alle lettere */
     display: inline-block; 
     padding: 15px 20px; 
     transition: color 0.2s ease;
