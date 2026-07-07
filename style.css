@@ -351,8 +351,11 @@ nav a:hover {
         padding: 30px 20px 15px 20px;
     }
 
-    .text-box {
-        padding: 40px 20px;
+       .text-box {
+        /* I valori di padding devono rimanere multipli di 30 per non rompere la griglia */
+        padding: 60px 20px 30px 20px; 
+        margin-top: 40px;
+    }
     }
 
     /* Adattamenti Locandina 4:5 per Cellulari (Pagine Archivio) */
