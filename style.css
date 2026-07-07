@@ -171,83 +171,94 @@ nav a:hover {
 
 
 /* =========================================
-   STILI DELLE PAGINE ARCHIVIO (Polaroid)
+   STILI DELLE PAGINE ARCHIVIO (Locandina Cinematografica)
    ========================================= */
 
-.archive-list {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 40px;
-    justify-content: center; 
-    margin-top: 50px;
-    max-width: 1200px;
-    padding-bottom: 50px;
-}
-
-.archive-item {
-    background-color: #fff;
-    padding: 15px 15px 40px 15px; 
-    width: 340px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 10px 25px rgba(0,0,0,0.2);
+.cinematic-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    gap: 80px; /* Spazio ampio tra un articolo e l'altro */
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
-.archive-item:nth-child(even) {
-    transform: rotate(3deg);
-}
-
-.archive-item:nth-child(odd) {
-    transform: rotate(-2deg);
-}
-
-.archive-item:hover {
-    transform: scale(1.05) rotate(0deg);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.4), 0 20px 40px rgba(0,0,0,0.3);
-    z-index: 10;
-}
-
-.polaroid-image {
+.cinematic-item {
+    position: relative;
     width: 100%;
-    height: 240px;
-    background-color: #eaeaea;
+    height: 80vh; /* Ogni locandina occupa l'80% dell'altezza dello schermo */
+    min-height: 500px;
     background-size: cover;
     background-position: center;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-}
-
-.item-date {
-    font-size: 0.75rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-}
-
-.archive-item h3 {
-    line-height: 1.3;
-}
-
-.archive-item h3 a {
-    color: #111;
+    background-attachment: fixed; /* Crea un bellissimo effetto parallasse scorrendo */
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+/* L'ombra scura sull'immagine per far risaltare il testo bianco */
+.cinematic-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    z-index: 1;
+    transition: background 0.5s ease;
+}
+
+.cinematic-item:hover .cinematic-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+}
+
+.cinematic-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 900px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Aiuta la leggibilità */
+}
+
+/* Data in stile rami d'ulivo/festival */
+.cinematic-date {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Titolo principale enorme ed elegante */
+.cinematic-content h2 {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 5.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+/* Sottotitolo (A FILM BY...) */
+.cinematic-author {
+    font-size: 1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Citazione */
+.cinematic-quote {
     font-size: 1.3rem;
-    font-weight: 800;
+    font-style: italic;
+    opacity: 0.85;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
 }
-
-.archive-item h3 a:hover {
-    color: #2b78e4;
-}
-
-.archive-item p {
-    color: #555;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
 
 /* =========================================
    RESPONSIVE: SMARTPHONE E TABLET 
