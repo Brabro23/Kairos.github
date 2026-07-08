@@ -104,54 +104,132 @@ nav a:hover {
 
 
 /* =========================================
-   Box Sinistro (Letture)
+   Nuovo Box Letture: Effetto Apertura a Libro 3D
    ========================================= */
-.letture-box {
-    position: relative;
+.book-container {
     width: 100%;
-    height: 100%;
-    min-height: 450px;
-    background-size: cover;     /* Scala l'immagine in modo che riempia il box */
-    background-position: center; /* Centra l'immagine in modo da non mostrare solo l'angolo */
-    display: flex;
-    justify-content: center; /* Centra orizzontalmente il testo */
-    align-items: center;     /* Centra verticalmente il testo */
-    text-decoration: none;   /* Toglie la sottolineatura blu/viola del link */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    transition: transform 0.2s ease;
+    max-width: 550px; /* Proporzione ideale per far apparire il riquadro come un vero libro */
+    margin: 0 auto;
+    perspective: 1500px; /* Crea la profondità per l'effetto 3D */
+    padding: 10px 0;
 }
 
-.letture-box:hover {
-    transform: scale(1.02);
+.book {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Rapporto ideale per dare spazio ai titoli dell'indice */
+    min-height: 400px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+/* Pagina Interna (L'Indice del Libro) */
+.book-inside {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #faf6eb; /* Splendido colore carta pergamena/avorio */
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 7px 0 20px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.2); /* Ombra realistica nella piega della rilegatura */
+    border-radius: 0 4px 4px 0;
+}
+
+.book-inside h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #111;
+    margin-bottom: 25px;
+    letter-spacing: 4px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    width: 50%;
+    text-align: center;
+}
+
+.book-inside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.book-inside li {
+    margin-bottom: 18px;
+}
+
+/* Titoli dei libri nell'indice col font Playfair Display elegante */
+.book-inside li a {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 1.35rem;
+    color: #222;
+    text-decoration: none;
+    font-style: italic;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.book-inside li a:hover {
+    color: #8b0000; /* Rosso tipografico d'autore al passaggio del mouse */
+    transform: scale(1.03);
+}
+
+.book-inside .view-all {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* Copertina frontale del libro (Libreria) */
+.book-cover {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    transform-origin: left center; /* Imposta il cardine dell'apertura a sinistra */
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.7s ease;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+    backface-visibility: hidden; /* Nasconde il retro della foto quando si ribalta */
+    border-radius: 0 4px 4px 0;
 }
 
 .letture-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
-    transition: background 0.3s ease;
 }
 
-.letture-box:hover .letture-overlay {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-/* Stile della scritta centrale */
 .letture-title {
     position: relative;
     z-index: 2;
     color: white;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Font pulito e senza grazie */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 3.5rem;
-    font-weight: 800; /* Grassetto deciso come nell'editoriale */
+    font-weight: 800;
     letter-spacing: 6px;
     text-transform: uppercase;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
     margin: 0;
 }
 
+/* === L'EFFETTO APERTURA === */
+/* Quando l'utente passa il mouse sopra il blocco, la copertina ruota verso sinistra svelando l'indice sottostante */
+.book-container:hover .book-cover {
+    transform: rotateY(-140deg);
+    box-shadow: -10px 10px 25px rgba(0,0,0,0.4);
+}
 
 /* =========================================
    Box di Testo Destro (Locandina Home)
