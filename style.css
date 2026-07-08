@@ -450,4 +450,32 @@ nav a:hover {
     .cinematic-quote {
         font-size: 0.9rem;
     }
-}
+    /* Adattamenti Libro 3D per Cellulari */
+    .book-container {
+        max-width: 100%;
+        perspective: 1200px;
+    }
+
+    .book {
+        aspect-ratio: auto;
+        min-height: 350px;
+    }
+
+    .book-inside {
+        padding: 30px 15px;
+    }
+
+    .book-inside h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .book-inside li a {
+        font-size: 1.15rem;
+        margin-bottom: 5px;
+    }
+
+    .letture-title {
+        font-size: 2.5rem;
+    }
+
