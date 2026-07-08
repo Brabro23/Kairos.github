@@ -322,9 +322,10 @@ nav a:hover {
     }
 
       /* Griglia in colonna per la Home - Ordine invertito per far salire l'editoriale */
+       /* Griglia in colonna per la Home */
     .content-grid {
         display: flex;
-        flex-direction: column-reverse; /* Questo comando magico inverte l'ordine dei riquadri! */
+        flex-direction: column; /* Assicurati che NON ci sia scritto column-reverse */
         gap: 20px;
     }
 
