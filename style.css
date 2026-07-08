@@ -162,51 +162,52 @@ nav a:hover {
 }
 
 /* Titoli dei libri nell'indice col font Playfair Display elegante */
-.book-inside li a {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
-    font-size: 1.35rem;
-    color: #222;
-    text-decoration: none;
-    font-style: italic;
-    transition: color 0.2s ease, transform 0.2s ease;
-    display: inline-block;
+/* Pagina Interna (L'Indice del Libro) */
+.book-inside {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #faf6eb;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* === EFFETTO FOGLI DI CARTA === */
+    box-shadow: 
+        inset 15px 0 30px rgba(0,0,0,0.12), /* Ombra curva profonda della rilegatura */
+        3px 0 0 #fdfbf7,   /* Pagina 1 */
+        4px 0 0 #dcd8c8,   /* Ombra tra le pagine */
+        5px 0 0 #fdfbf7,   /* Pagina 2 */
+        6px 0 0 #dcd8c8,   /* Ombra tra le pagine */
+        7px 0 0 #fdfbf7,   /* Pagina 3 */
+        12px 5px 20px rgba(0,0,0,0.25); /* Ombra del libro sul tavolo */
+        
+    border-radius: 2px 6px 6px 2px; /* Angoli destri leggermente arrotondati come i veri libri */
 }
 
-.book-inside li a:hover {
-    color: #8b0000; /* Rosso tipografico d'autore al passaggio del mouse */
-    transform: scale(1.03);
-}
 
-.book-inside .view-all {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 0.85rem;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    color: #666;
-    margin-top: 15px;
-}
-
+/* Copertina frontale del libro (Libreria) */
 /* Copertina frontale del libro (Libreria) */
 .book-cover {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    
-    /* === LE DUE RIGHE AGGIUNTE === */
-    background-color: #333; /* Colore scuro di sicurezza in caso di caricamento lento */
-    background-image: url('1160713.jpeg'); /* INSERISCI QUI IL NOME ESATTO */
-    
+    background-color: #333; 
+    background-image: url('NOME_DELLA_TUA_FOTO.jpg'); /* Ricorda di lasciare il nome esatto! */
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
-    transform-origin: left center; /* Imposta il cardine dell'apertura a sinistra */
-    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.7s ease;
+    transform-origin: left center;
+    
+    /* === APERTURA RALLENTATA === */
+    /* Portata a 1.6 secondi per un movimento dolce, pesante e solenne */
+    transition: transform 1.6s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 1.6s ease;
+    
     box-shadow: 5px 0 15px rgba(0,0,0,0.3);
-    backface-visibility: hidden; /* Nasconde il retro della foto quando si ribalta */
+    backface-visibility: hidden;
     border-radius: 0 4px 4px 0;
 }
 
