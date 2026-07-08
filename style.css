@@ -313,9 +313,10 @@ nav a:hover {
         font-size: 1.6rem;
     }
 
-    /* Griglia in colonna per la Home */
+      /* Griglia in colonna per la Home - Ordine invertito per far salire l'editoriale */
     .content-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse; /* Questo comando magico inverte l'ordine dei riquadri! */
         gap: 20px;
     }
 
