@@ -192,6 +192,11 @@ nav a:hover {
 .book-cover {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* === LE DUE RIGHE AGGIUNTE === */
+    background-color: #333; /* Colore scuro di sicurezza in caso di caricamento lento */
+    background-image: url('1160713.jpeg'); /* INSERISCI QUI IL NOME ESATTO */
+    
     background-size: cover;
     background-position: center;
     display: flex;
@@ -203,6 +208,8 @@ nav a:hover {
     box-shadow: 5px 0 15px rgba(0,0,0,0.3);
     backface-visibility: hidden; /* Nasconde il retro della foto quando si ribalta */
     border-radius: 0 4px 4px 0;
+}
+
 }
 
 .letture-overlay {
