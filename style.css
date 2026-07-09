@@ -247,44 +247,72 @@ nav a:hover {
 }
 
 /* =========================================
-   Box di Testo Destro (Locandina Home)
-   ========================================= */
-/* =========================================
-   Box di Testo Destro (Locandina Home)
-   ========================================= */
-/* =========================================
-   1. Scaffale e Libro Editoriale
+   STRUTTURA A DOPPIO SCAFFALE (HOME)
    ========================================= */
 
-/* La nicchia della libreria */
-.shelf-niche {
+/* Il contenitore principale che affianca i due mobili */
+.main-shelving-unit {
+    display: flex;
+    gap: 30px; /* Spazio tra lo scaffale sinistro e quello destro */
     width: 100%;
-    max-width: 750px; /* Larghezza totale del mobile */
-    margin: 0 auto;
-    padding: 40px 60px; /* Lo spazio vuoto attorno al libro */
-    background-color: #18110b; /* Il buio profondo dentro lo scaffale */
-    
-    /* I bordi che simulano il legno */
+    max-width: 1400px;
+    margin: 0 auto 50px auto;
+    align-items: stretch; /* Obbliga destra e sinistra ad avere esattamente la stessa altezza! */
+    padding: 0 20px;
+}
+
+/* Stile base condiviso: il legno scuro esterno */
+.shelf-vertical, .shelf-horizontal {
+    background-color: #18110b; /* Il buio interno allo scaffale */
     border-top: 15px solid #3b2818; 
     border-left: 15px solid #3b2818;
     border-right: 15px solid #3b2818;
-    border-bottom: 30px solid #2a1c10; /* La mensola vera e propria, più spessa */
-    
-    box-shadow: 
-        inset 0 30px 40px rgba(0,0,0,0.9), /* Ombra della mensola superiore all'interno */
-        0 15px 25px rgba(0,0,0,0.4); /* L'ombra dell'intero scaffale sulla parete del sito */
+    border-bottom: 30px solid #2a1c10; /* La mensola di base più spessa */
     border-radius: 4px;
-    display: flex;
-    justify-content: center;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
 }
 
-/* Il libro (ex riquadro panoramico) */
+/* --- 1. SCAFFALE SINISTRO (Box Editoriale) --- */
+.shelf-vertical {
+    flex: 0 0 35%; /* Occupa il 35% della larghezza dello schermo */
+    max-width: 450px;
+    padding: 40px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 30px 40px rgba(0,0,0,0.9), 0 15px 25px rgba(0,0,0,0.4);
+}
+
+/* --- 2. SCAFFALE DESTRO (Orizzontale a 2 piani) --- */
+.shelf-horizontal {
+    flex: 1; /* Prende tutto lo spazio rimanente a destra */
+    display: flex;
+    flex-direction: column; /* Impila i due ripiani uno sull'altro */
+    padding: 0; /* Il padding qui è gestito dai ripiani interni */
+}
+
+/* I singoli ripiani della libreria */
+.shelf-row {
+    flex: 1; /* Si dividono l'altezza a metà perfetta */
+    display: flex;
+    align-items: flex-end; /* I libri poggiano "fisicamente" in basso sulla mensola */
+    padding: 20px 30px;
+    gap: 20px; /* Spazio tra i vari libricini */
+    box-shadow: inset 0 30px 40px rgba(0,0,0,0.9);
+}
+
+/* L'asse di legno centrale che divide i ripiani */
+.top-shelf {
+    border-bottom: 25px solid #2a1c10;
+}
+
+/* --- LE COPERTINE DEI LIBRI --- */
+
+/* L'Editoriale Grande */
 .cinematic-text-box {
     position: relative;
     width: 100%;
-    max-width: 420px; /* Molto più stretto, proporzione da libro */
-    aspect-ratio: 2 / 3; /* Costringe il riquadro a mantenere una forma verticale */
-    min-height: auto; 
+    aspect-ratio: 2 / 3; /* Proporzione classica da libro */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -293,30 +321,42 @@ nav a:hover {
     align-items: center;
     text-align: center;
     padding: 30px 20px;
-    
-    /* Ombra del libro stesso sulla mensola + riflesso sul dorso */
     box-shadow: 15px 15px 25px rgba(0,0,0,0.8), -3px 0 10px rgba(255,255,255,0.05);
-    border-radius: 2px 6px 6px 2px; /* Il lato destro è leggermente curvo come i fogli */
+    border-radius: 2px 6px 6px 2px;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
 
 .cinematic-text-box:hover {
-    transform: scale(1.02); /* Un leggero zoom quando ci passi sopra */
+    transform: scale(1.02);
 }
 
-/* L'overlay agisce SOLO dentro il riquadro. È quasi trasparente in alto e sfuma allo scuro in basso dove c'è il testo */
-.box-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
-    z-index: 1;
+/* I libricini segnaposto per gli articoli futuri */
+.mini-book {
+    width: 120px; /* Molto più piccoli, sono i libri in libreria */
+    aspect-ratio: 2 / 3.2;
+    background-color: #2a2a2a;
+    border-radius: 2px 5px 5px 2px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.7), -2px 0 5px rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    /* Diamo l'effetto che poggino sul legno */
+    margin-bottom: -10px; 
 }
 
-/* Evitiamo ingrandimenti strani su schermi piccoli */
-.cinematic-text-box:hover {
-    transform: scale(1.01);
+.mini-book:hover {
+    transform: translateY(-10px); /* Il libro si alza leggermente quando lo punti */
+    background-color: #333;
 }
+
 /* =========================================
    STILI DELLE PAGINE ARCHIVIO (Locandina 4:5)
    ========================================= */
