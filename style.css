@@ -570,3 +570,16 @@ nav a:hover {
         font-size: 2.5rem;
     }
 
+    /* Adattamento Scaffali per Cellulari */
+    .main-shelving-unit {
+        flex-direction: column; /* Li impila in verticale */
+    }
+    
+    .shelf-vertical {
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    .shelf-horizontal {
+        min-height: 500px; /* Garantisce spazio per due ripiani anche da telefono */
+    }
