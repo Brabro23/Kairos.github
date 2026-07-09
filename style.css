@@ -252,11 +252,39 @@ nav a:hover {
 /* =========================================
    Box di Testo Destro (Locandina Home)
    ========================================= */
+/* =========================================
+   1. Scaffale e Libro Editoriale
+   ========================================= */
+
+/* La nicchia della libreria */
+.shelf-niche {
+    width: 100%;
+    max-width: 750px; /* Larghezza totale del mobile */
+    margin: 0 auto;
+    padding: 40px 60px; /* Lo spazio vuoto attorno al libro */
+    background-color: #18110b; /* Il buio profondo dentro lo scaffale */
+    
+    /* I bordi che simulano il legno */
+    border-top: 15px solid #3b2818; 
+    border-left: 15px solid #3b2818;
+    border-right: 15px solid #3b2818;
+    border-bottom: 30px solid #2a1c10; /* La mensola vera e propria, più spessa */
+    
+    box-shadow: 
+        inset 0 30px 40px rgba(0,0,0,0.9), /* Ombra della mensola superiore all'interno */
+        0 15px 25px rgba(0,0,0,0.4); /* L'ombra dell'intero scaffale sulla parete del sito */
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Il libro (ex riquadro panoramico) */
 .cinematic-text-box {
     position: relative;
     width: 100%;
-    height: 100%;
-    min-height: 450px;
+    max-width: 420px; /* Molto più stretto, proporzione da libro */
+    aspect-ratio: 2 / 3; /* Costringe il riquadro a mantenere una forma verticale */
+    min-height: auto; 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -264,9 +292,17 @@ nav a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 35px 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 30px 20px;
+    
+    /* Ombra del libro stesso sulla mensola + riflesso sul dorso */
+    box-shadow: 15px 15px 25px rgba(0,0,0,0.8), -3px 0 10px rgba(255,255,255,0.05);
+    border-radius: 2px 6px 6px 2px; /* Il lato destro è leggermente curvo come i fogli */
     overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.cinematic-text-box:hover {
+    transform: scale(1.02); /* Un leggero zoom quando ci passi sopra */
 }
 
 /* L'overlay agisce SOLO dentro il riquadro. È quasi trasparente in alto e sfuma allo scuro in basso dove c'è il testo */
