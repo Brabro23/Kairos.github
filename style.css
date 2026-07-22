@@ -12,20 +12,21 @@ body {
     background-color: #0a0a0a; /* Sfondo scuro attorno agli scaffali */
     color: #ffffff;
 }
-/* --- Sfondo a tutto schermo con overlay Inchiostro e Legno Antico --- */
+/* --- Sfondo a tutto schermo con overlay Inchiostro e Legno Antico (SCHIARITO) --- */
 .background-wrapper {
     position: relative;
     width: 100%;
     min-height: 100vh;
     
-    /* INSERISCI QUI IL NOME ESATTO DELLA TUA FOTO AL POSTO DI nome_della_tua_foto.jpg */
-    background-image: linear-gradient(rgba(24, 17, 11, 0.75), rgba(10, 8, 5, 0.92)), url('EAD7E693-E516-4AEA-88E5-128EF74294D5.png');
+    /* Ridotta l'opacità del filtro (ora a 0.35 e 0.55) per far risaltare la foto del tuo scrittoio */
+    background-image: linear-gradient(rgba(24, 17, 11, 0.35), rgba(10, 8, 5, 0.55)), url('scrittoio.jpg');
     
     background-size: cover;
     background-position: center;
     background-attachment: fixed; 
     padding: 30px 50px;
 }
+
 
 
 header {
