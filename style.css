@@ -570,7 +570,7 @@ nav a:hover {
         font-size: 2.5rem;
     }
 
-    /* Adattamento Scaffali per Cellulari */
+        /* Adattamento Scaffali per Cellulari e Tablet */
     .main-shelving-unit {
         flex-direction: column; /* Li impila in verticale */
     }
@@ -580,6 +580,13 @@ nav a:hover {
         padding: 20px;
     }
     
-    .shelf-horizontal {
-        min-height: 500px; /* Garantisce spazio per due ripiani anche da telefono */
+    /* Riduce la dimensione massima del libro dell'anziano su iPad/Smartphone */
+    .cinematic-text-box {
+        max-width: 300px; /* Ridotto da 420px per renderlo proporzionato */
+        margin: 0 auto;   /* Lo mantiene perfettamente al centro dello scaffale */
     }
+    
+    .shelf-horizontal {
+        min-height: 500px; 
+    }
+
