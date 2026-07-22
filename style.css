@@ -38,12 +38,13 @@ header {
 
 .logo a {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 3rem;
+    font-size: 5.5rem; /* Dimensione del titolo ingrandita */
     font-weight: 800;
     color: #ffffff;
     text-decoration: none;
-    letter-spacing: 4px;
+    letter-spacing: -1px; /* Lettere leggermente più vicine per un effetto "testata di giornale" */
 }
+
 
 nav ul {
     list-style: none;
