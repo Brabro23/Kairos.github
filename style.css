@@ -153,13 +153,14 @@ nav a:hover {
 }
 
 .cinematic-content h2 {
-    font-family: 'Playfair Display', 'Times New Roman', serif !important; /* Ripristina il font elegante e tondeggiante che ami */
-    font-size: 2.3rem; /* Regolato per valorizzare le forme del font */
-    font-weight: 700;  /* Mantiene il contrasto ideale tra le lettere */
-    line-height: 1.2;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Sostituito il font classico con quello moderno */
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.1;
     margin-bottom: 20px;
     letter-spacing: 0px;
 }
+
 
 
 .cinematic-author { margin-top: 15px; color: #aaa; }
