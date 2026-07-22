@@ -19,7 +19,7 @@ body {
     min-height: 100vh;
     
     /* Ridotta l'opacità del filtro (ora a 0.35 e 0.55) per far risaltare la foto del tuo scrittoio */
-    background-image: linear-gradient(rgba(24, 17, 11, 0.35), rgba(10, 8, 5, 0.55)), url('scrittoio.jpg');
+    background-image: linear-gradient(rgba(24, 17, 11, 0.35), rgba(10, 8, 5, 0.55)), url('EAD7E693-E516-4AEA-88E5-128EF74294D5.png');
     
     background-size: cover;
     background-position: center;
