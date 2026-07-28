@@ -357,32 +357,76 @@ nav a:hover {
    ADATTAMENTO PER DISPOSITIVI MOBILI
    ========================================= */
 
-/* Limite a 700px per mantenere gli scaffali in linea su iPad */
 @media (max-width: 700px) {
+    /* 1. Riduciamo gli spazi morti ai lati */
+    .background-wrapper {
+        padding: 15px 10px;
+    }
+
+    /* 2. Header e Menu che vanno a capo senza scardinare lo schermo */
     header {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+        padding: 20px 0;
+        margin-bottom: 40px;
     }
     
-    /* Impila i mobili in verticale solo sui telefoni */
+    .logo a {
+        font-size: 3.2rem; /* Ridotto leggermente per entrare anche sugli schermi stretti */
+        letter-spacing: -1px;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* FONDAMENTALE: fa andare a capo i tasti del menu se non c'è spazio! */
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+    
+    /* 3. Scaffali incolonnati e proporzionati */
     .main-shelving-unit {
         flex-direction: column;
+        gap: 40px;
+        padding: 0 10px;
     }
     
     .shelf-vertical {
         max-width: 100%;
-        padding: 20px;
+        padding: 20px 15px;
+    }
+
+    /* 4. Il libro editoriale: impediamo che esca dai bordi laterali */
+    .cinematic-text-box {
+        max-width: 100%; 
+        aspect-ratio: auto;
+        min-height: 400px;
+        padding: 30px 15px;
+    }
+
+    .cinematic-content h2 {
+        font-size: 1.8rem; /* Titolo del manifesto rimpicciolito per il telefono */
     }
     
     .shelf-horizontal {
-        min-height: 500px; 
+        min-height: auto; 
+    }
+
+    /* I libricini futuri si impilano ordinatamente senza uscire dallo schermo */
+    .shelf-row {
+        flex-wrap: wrap; /* Li fa andare a capo se non c'entrano sulla mensola */
+        justify-content: center;
+        padding: 20px 15px;
     }
     
-    /* Adattamenti Libro 3D Letture per Cellulari */
+    /* 5. Adattamenti Libro 3D Letture per Cellulari */
     .book-container {
         max-width: 100%;
         perspective: 1200px;
-        padding: 0 20px;
+        padding: 0 10px;
     }
 
     .book {
@@ -395,6 +439,6 @@ nav a:hover {
     }
 
     .book-inside h3 { font-size: 1.3rem; margin-bottom: 15px; }
-    .book-inside li a { font-size: 1.15rem; margin-bottom: 5px; }
-    .letture-title { font-size: 2.5rem; }
+    .book-inside li a { font-size: 1.1rem; margin-bottom: 5px; }
+    .letture-title { font-size: 2.2rem; }
 }
