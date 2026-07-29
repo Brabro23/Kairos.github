@@ -170,12 +170,14 @@
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
-            <div class="back cover-back">
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-        
-    </div>
+                    .cover-back { 
+            /* Richiama la stessa immagine usata per la copertina frontale */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('copertina.jpg');
+            background-size: cover;
+            background-position: center;
+            border-right: 10px solid #2a1c10; 
+        }
+
 
     <script>
         let currentLocation = 1;
