@@ -14,7 +14,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Sfondo aggiornato con il tuo file del leggio */
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('E95FCF65-0D4D-427A-8413-039A1430922A.png');
             background-size: cover;
             background-position: center;
@@ -77,7 +76,6 @@
         }
         
         .cover-front { 
-            /* Copertina frontale aggiornata */
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('8C77115A-5A6C-4213-9BA8-5F8C6F8B90FF.png');
             background-size: cover;
             background-position: center;
@@ -91,7 +89,6 @@
         }
 
         .cover-back { 
-            /* Copertina posteriore aggiornata */
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('8C77115A-5A6C-4213-9BA8-5F8C6F8B90FF.png');
             background-size: cover;
             background-position: center;
@@ -116,26 +113,32 @@
         #p3 { z-index: 1; }
 
         /* =========================================
-           ADATTAMENTO SCHERMI PICCOLI E SMARTPHONE
+           ADATTAMENTO PER CELLULARI (Risolto)
            ========================================= */
            
         @media (max-width: 950px) {
-            .book { transform: translateX(-25%) scale(0.80); }
-            .book.open { transform: translateX(0) scale(0.80); }
+            /* Per tablet: riduciamo le misure effettive senza usare scale */
+            .book { 
+                width: 700px; 
+                height: 480px; 
+            }
+            .front, .back { padding: 40px 30px; }
+            h1 { font-size: 1.8rem; }
+            p { font-size: 1rem; }
         }
         
         @media (max-width: 750px) {
+            /* Per smartphone: usiamo la larghezza dello schermo (vw) per adattarsi a tutti i telefoni */
             .book { 
-                transform: translateX(-25%) scale(0.42); 
+                width: 92vw;  /* Usa quasi tutta la larghezza dello schermo */
+                height: 130vw; /* Mantiene una proporzione perfetta da libro verticale */
             }
-            .book.open { 
-                transform: translateX(0) scale(0.42); 
-            }
+            .front, .back { padding: 25px 15px; } /* Meno spazio vuoto ai lati */
             
-            .front, .back { padding: 40px 30px; }
-            h1 { font-size: 4.5rem; line-height: 1.1; }
-            h2 { font-size: 3.2rem; margin-bottom: 35px; }
-            p { font-size: 2rem; line-height: 1.6; margin-bottom: 25px; }
+            /* Testi proporzionati alla nuova dimensione fisica della pagina */
+            h1 { font-size: 1.5rem; margin-bottom: 15px; }
+            h2 { font-size: 1.3rem; margin-bottom: 15px; }
+            p { font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px; }
         }
     </style>
 </head>
@@ -184,6 +187,7 @@
             </div>
             
             <div class="back cover-back">
+                <!-- Questa è la copertina posteriore. Apparirà automaticamente una volta chiuso il libro -->
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
