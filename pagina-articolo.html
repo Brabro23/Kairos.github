@@ -21,6 +21,9 @@
             overflow: hidden; 
         }
         
+        /* =========================================
+           STILI DESKTOP E IPAD (Libro 3D)
+           ========================================= */
         .book {
             position: relative;
             width: 900px; 
@@ -30,9 +33,7 @@
             transform: translateX(-25%);
         }
         
-        .book.open {
-            transform: translateX(0); 
-        }
+        .book.open { transform: translateX(0); }
         
         .paper {
             position: absolute;
@@ -112,41 +113,85 @@
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
 
+        /* Aree di clic specifiche per il telefono (invisibili su PC) */
+        .mobile-nav { display: none; }
+
         /* =========================================
-           ADATTAMENTO PER CELLULARI (Risolto)
+           ADATTAMENTO PER CELLULARI (A tutto schermo)
            ========================================= */
-           
         @media (max-width: 950px) {
-            /* Per tablet: riduciamo le misure effettive senza usare scale */
-            .book { 
-                width: 700px; 
-                height: 480px; 
-            }
-            .front, .back { padding: 40px 30px; }
-            h1 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
+            .book { transform: translateX(-25%) scale(0.80); }
+            .book.open { transform: translateX(0) scale(0.80); }
         }
         
         @media (max-width: 750px) {
-            /* Per smartphone: usiamo la larghezza dello schermo (vw) per adattarsi a tutti i telefoni */
+            /* 1. Il libro perde il 3D e diventa grande quanto lo schermo */
             .book { 
-                width: 92vw;  /* Usa quasi tutta la larghezza dello schermo */
-                height: 130vw; /* Mantiene una proporzione perfetta da libro verticale */
+                width: 100vw; 
+                height: 100vh; 
+                transform: none !important; 
+                perspective: none;
             }
-            .front, .back { padding: 25px 15px; } /* Meno spazio vuoto ai lati */
+            .paper { 
+                width: 100vw; 
+                height: 100vh; 
+                transform: none !important; 
+                transition: none; 
+            }
             
-            /* Testi proporzionati alla nuova dimensione fisica della pagina */
-            h1 { font-size: 1.5rem; margin-bottom: 15px; }
-            h2 { font-size: 1.3rem; margin-bottom: 15px; }
-            p { font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px; }
+            /* 2. Le singole pagine diventano rettangoli a tutto schermo */
+            .front, .back { 
+                width: 100vw; 
+                height: 100vh;
+                padding: 40px 25px; 
+                border-radius: 0 !important; 
+                border: none !important; 
+                box-shadow: none !important; 
+                transform: none !important; 
+                position: absolute; 
+                top: 0; left: 0; 
+                opacity: 0; /* Nasconde tutte le pagine di base */
+                pointer-events: none;
+                transition: opacity 0.5s ease; 
+            }
+            
+            /* 3. Classe che rende visibile solo 1 pagina alla volta */
+            .mobile-active {
+                opacity: 1 !important;
+                z-index: 100;
+                pointer-events: auto;
+            }
+
+            /* 4. Aree di tocco ai lati dello schermo (40% sinistra, 40% destra) */
+            .mobile-nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                height: 100vh;
+                width: 40vw;
+                z-index: 9999;
+                -webkit-tap-highlight-color: transparent; /* Toglie il lampo blu su iPhone */
+            }
+            .mobile-nav.left { left: 0; }
+            .mobile-nav.right { right: 0; }
+            .click-right, .click-left { display: none !important; } /* Spegne i clic del PC */
+
+            /* 5. Testi ricalibrati per il nuovo formato a tutto schermo */
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            p { font-size: 1.15rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Pulsanti invisibili per mandare avanti e indietro le pagine sul telefono -->
+    <div class="mobile-nav left" onclick="goPrev()"></div>
+    <div class="mobile-nav right" onclick="goNext()"></div>
+
     <div class="book" id="book-container">
         
-        <!-- FOGLIO 1: Copertina e Pagina 1 -->
+        <!-- FOGLIO 1 -->
         <div class="paper" id="p1">
             <div class="front cover-front">
                 <h1>L'IDEA DI UN<br>SOLO UOMO</h1>
@@ -157,17 +202,17 @@
             <div class="back">
                 <h2>L'inizio</h2>
                 <p>Tra le pieghe delle prime pagine di giornale si nascondono prospettive inesplorate. Questa è la prima pagina del tuo articolo.</p>
-                <p>Clicca in un punto qualsiasi a sinistra per richiudere il libro.</p>
+                <p>Clicca nella parte sinistra dello schermo per tornare indietro.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
 
-        <!-- FOGLIO 2: Pagina 2 e Pagina 3 -->
+        <!-- FOGLIO 2 -->
         <div class="paper" id="p2">
             <div class="front">
                 <h2>Lo Sviluppo</h2>
                 <p>La narrazione continua su questa pagina. Puoi formattare il testo esattamente come faresti in un libro reale.</p>
-                <p>Clicca in un punto qualsiasi a destra per proseguire la lettura.</p>
+                <p>Clicca nella parte destra dello schermo per andare avanti.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
@@ -178,7 +223,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 3: Pagina 4 e Retro Copertina -->
+        <!-- FOGLIO 3 -->
         <div class="paper" id="p3">
             <div class="front">
                 <h2>La Conclusione</h2>
@@ -187,7 +232,7 @@
             </div>
             
             <div class="back cover-back">
-                <!-- Questa è la copertina posteriore. Apparirà automaticamente una volta chiuso il libro -->
+                <!-- Retro copertina -->
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -195,60 +240,67 @@
     </div>
 
     <script>
-        let currentLocation = 1;
-        let numOfPapers = 3; 
-        let maxLocation = numOfPapers + 1;
-
+        // Variabili per il PC
+        let desktopLocation = 1;
+        let maxDesktopLocation = 4;
         const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
         const p3 = document.getElementById("p3");
 
+        // Preparazione Motore Telefono (Estrae tutte le singole pagine)
+        const mobilePages = [
+            p1.querySelector('.front'), p1.querySelector('.back'),
+            p2.querySelector('.front'), p2.querySelector('.back'),
+            p3.querySelector('.front'), p3.querySelector('.back')
+        ];
+        let currentMobilePage = 0;
+
+        // Accende subito la prima pagina se siamo da telefono
+        if (window.innerWidth <= 750) {
+            mobilePages[0].classList.add('mobile-active');
+        }
+
         function goNext() {
-            if(currentLocation < maxLocation) {
-                if (currentLocation === 1) {
-                    book.classList.add("open");
+            if (window.innerWidth <= 750) {
+                // LOGICA TELEFONO (1 Pagina alla volta)
+                if (currentMobilePage < mobilePages.length - 1) {
+                    mobilePages[currentMobilePage].classList.remove('mobile-active');
+                    currentMobilePage++;
+                    mobilePages[currentMobilePage].classList.add('mobile-active');
                 }
-                
-                switch(currentLocation) {
-                    case 1: 
-                        p1.classList.add("flipped"); 
-                        setTimeout(() => { p1.style.zIndex = 1; }, 400);
-                        break;
-                    case 2: 
-                        p2.classList.add("flipped"); 
-                        setTimeout(() => { p2.style.zIndex = 2; }, 400);
-                        break;
-                    case 3: 
-                        p3.classList.add("flipped"); 
-                        setTimeout(() => { p3.style.zIndex = 3; }, 400);
-                        break;
+            } else {
+                // LOGICA PC E IPAD (Libro 3D)
+                if(desktopLocation < maxDesktopLocation) {
+                    if (desktopLocation === 1) book.classList.add("open");
+                    switch(desktopLocation) {
+                        case 1: p1.classList.add("flipped"); setTimeout(() => { p1.style.zIndex = 1; }, 400); break;
+                        case 2: p2.classList.add("flipped"); setTimeout(() => { p2.style.zIndex = 2; }, 400); break;
+                        case 3: p3.classList.add("flipped"); setTimeout(() => { p3.style.zIndex = 3; }, 400); break;
+                    }
+                    desktopLocation++;
                 }
-                currentLocation++;
             }
         }
 
         function goPrev() {
-            if(currentLocation > 1) {
-                switch(currentLocation) {
-                    case 2: 
-                        p1.style.zIndex = 4;
-                        p1.classList.remove("flipped"); 
-                        setTimeout(() => { p1.style.zIndex = 3; }, 400);
-                        book.classList.remove("open");
-                        break;
-                    case 3: 
-                        p2.style.zIndex = 4; 
-                        p2.classList.remove("flipped"); 
-                        setTimeout(() => { p2.style.zIndex = 2; }, 400);
-                        break;
-                    case 4: 
-                        p3.style.zIndex = 4; 
-                        p3.classList.remove("flipped"); 
-                        setTimeout(() => { p3.style.zIndex = 1; }, 400);
-                        break;
+            if (window.innerWidth <= 750) {
+                // LOGICA TELEFONO (1 Pagina alla volta)
+                if (currentMobilePage > 0) {
+                    mobilePages[currentMobilePage].classList.remove('mobile-active');
+                    currentMobilePage--;
+                    mobilePages[currentMobilePage].classList.add('mobile-active');
                 }
-                currentLocation--;
+            } else {
+                // LOGICA PC E IPAD (Libro 3D)
+                if(desktopLocation > 1) {
+                    switch(desktopLocation) {
+                        case 2: p1.style.zIndex = 4; p1.classList.remove("flipped"); setTimeout(() => { p1.style.zIndex = 3; }, 400); book.classList.remove("open"); break;
+                        case 3: p2.style.zIndex = 4; p2.classList.remove("flipped"); setTimeout(() => { p2.style.zIndex = 2; }, 400); break;
+                        case 4: p3.style.zIndex = 4; p3.classList.remove("flipped"); setTimeout(() => { p3.style.zIndex = 1; }, 400); break;
+                    }
+                    desktopLocation--;
+                }
             }
         }
     </script>
