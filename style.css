@@ -183,7 +183,7 @@ nav a:hover {
 .cinematic-author { margin-top: 15px; color: #aaa; }
 
 
-/* I libricini segnaposto per gli articoli futuri */
+/* I libricini segnaposto (Ora diventati Link) */
 .mini-book {
     width: 120px;
     aspect-ratio: 2 / 3.2;
@@ -198,17 +198,25 @@ nav a:hover {
     color: rgba(255,255,255,0.5);
     font-family: 'Playfair Display', serif;
     font-size: 0.8rem;
-    transition: transform 0.2s ease;
     cursor: pointer;
-    margin-bottom: -10px; /* Diamo l'effetto che poggino sul legno */
+    margin-bottom: -10px; /* Li fa poggiare sulla mensola */
+    
+    /* NUOVE REGOLE PER IL LINK E L'ANIMAZIONE */
+    text-decoration: none; /* Toglie la fastidiosa riga sotto il testo del link */
+    position: relative; 
+    z-index: 1; /* Livello di base */
+    transform-origin: bottom center; /* Fondamentale: si ingrandisce verso l'alto, restando poggiato al legno */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Movimento elastico e realistico */
 }
 
+/* L'effetto quando ci passi sopra col mouse */
 .mini-book:hover {
-    transform: translateY(-10px);
-    background-color: #333;
+    transform: scale(1.6); /* Si ingrandisce del 60% per farsi leggere bene */
+    background-color: #3b2818; /* Prende un colore caldo da copertina in pelle */
     color: #fff;
+    z-index: 10; /* Balza in primissimo piano coprendo i bordi dello scaffale */
+    box-shadow: 15px 30px 40px rgba(0,0,0,0.9), -2px 0 10px rgba(255,255,255,0.1);
 }
-
 
 /* =========================================
    LIBRO 3D "LETTURE" (In fondo alla pagina)
