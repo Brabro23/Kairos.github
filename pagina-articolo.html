@@ -14,34 +14,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* Sfondo aggiornato: usa la tua foto al naturale, senza filtri scuri */
             background-image: url('IMG_6707.jpeg');
             background-size: cover;
             background-position: center;
-            
             font-family: 'Playfair Display', serif;
             overflow: hidden; 
         }
         
-        /* IL LIBRO */
+        /* IL NUOVO CONTENITORE: È largo quanto il libro APERTO (900px) */
         .book {
             position: relative;
-            width: 450px; 
+            width: 900px; 
             height: 600px; 
-            perspective: 1800px; 
-            /* Aumentata l'ombra per far risaltare il libro staccandolo dal legno chiaro */
-            box-shadow: 25px 25px 45px rgba(0,0,0,0.7);
-            border-radius: 2px 8px 8px 2px;
+            perspective: 2000px; 
+            transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+            /* Quando è chiuso, lo sposto a sinistra per centrare la copertina nello schermo */
+            transform: translateX(-25%);
         }
         
+        /* Classe aggiunta quando il libro si apre: lo sposta al centro esatto */
+        .book.open {
+            transform: translateX(0); 
+        }
+        
+        /* I FOGLI (Larghi la metà, posizionati sulla destra del contenitore) */
         .paper {
             position: absolute;
-            width: 100%;
+            width: 50%; /* 450px */
             height: 100%;
-            top: 0; left: 0;
+            top: 0; right: 0; 
             transform-style: preserve-3d;
-            transform-origin: left center; 
+            -webkit-transform-style: preserve-3d; /* Fix essenziale per Safari/iPad */
+            transform-origin: left center; /* Il perno ora è esattamente al centro del libro! */
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
         }
         
@@ -51,15 +55,27 @@
             height: 100%;
             top: 0; left: 0;
             backface-visibility: hidden; 
+            -webkit-backface-visibility: hidden; /* Impedisce alle pagine di "sparire" su iPad */
             background-color: #fdfbf7; 
             padding: 50px 40px;
-            box-shadow: inset 5px 0 20px rgba(0,0,0,0.08); 
+            /* L'ombra ora è sui singoli fogli, non sul contenitore */
+            box-shadow: inset 5px 0 20px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.4); 
             border-radius: 2px 8px 8px 2px;
         }
         
-        .back { transform: rotateY(180deg); border-radius: 8px 2px 2px 8px; }
-        .flipped { transform: rotateY(-180deg); }
+        .back { 
+            transform: rotateY(180deg); 
+            -webkit-transform: rotateY(180deg);
+            border-radius: 8px 2px 2px 8px; 
+            box-shadow: inset -5px 0 20px rgba(0,0,0,0.08), -8px 10px 25px rgba(0,0,0,0.4);
+        }
         
+        .flipped { 
+            transform: rotateY(-180deg); 
+            -webkit-transform: rotateY(-180deg);
+        }
+        
+        /* COPERTINE */
         .cover-front { 
             background-color: #3b2818; 
             color: white; 
@@ -76,26 +92,35 @@
         h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
         p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px; color: #333; text-align: justify; }
         
-        /* AREE CLICCABILI AGGIORNATE E RISOLTE */
-        /* Ora coprono l'intera pagina (100%), clicchi ovunque e la pagina gira! */
+        /* AREE CLICCABILI: Grandi quanto l'intera pagina */
         .click-right, .click-left { 
             position: absolute; 
-            top: 0; 
-            left: 0;
+            top: 0; left: 0;
             width: 100%; 
             height: 100%; 
             cursor: pointer; 
             z-index: 100; 
         }
         
+        /* Ordine di partenza */
         #p1 { z-index: 3; }
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
+
+        /* ADATTAMENTO SCHERMI PICCOLI (Se metti l'ipad in verticale) */
+        @media (max-width: 950px) {
+            .book { transform: translateX(-25%) scale(0.85); }
+            .book.open { transform: translateX(0) scale(0.85); }
+        }
+        @media (max-width: 750px) {
+            .book { transform: translateX(-25%) scale(0.5); }
+            .book.open { transform: translateX(0) scale(0.5); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="book">
+    <div class="book" id="book-container">
         
         <!-- FOGLIO 1: Copertina e Pagina 1 -->
         <div class="paper" id="p1">
@@ -108,7 +133,7 @@
             <div class="back">
                 <h2>L'inizio</h2>
                 <p>Tra le pieghe delle prime pagine di giornale si nascondono prospettive inesplorate. Questa è la prima pagina del tuo articolo.</p>
-                <p>Clicca in un punto qualsiasi di questa pagina a sinistra per richiudere il libro.</p>
+                <p>Clicca in un punto qualsiasi a sinistra per richiudere il libro.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -118,7 +143,7 @@
             <div class="front">
                 <h2>Lo Sviluppo</h2>
                 <p>La narrazione continua su questa pagina. Puoi formattare il testo esattamente come faresti in un libro reale.</p>
-                <p>Clicca in un punto qualsiasi di questa pagina a destra per proseguire la lettura.</p>
+                <p>Clicca in un punto qualsiasi a destra per proseguire la lettura.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
@@ -149,24 +174,31 @@
         let numOfPapers = 3; 
         let maxLocation = numOfPapers + 1;
 
+        const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
         const p3 = document.getElementById("p3");
 
         function goNext() {
             if(currentLocation < maxLocation) {
+                // Se apro la prima pagina, faccio scivolare il libro al centro
+                if (currentLocation === 1) {
+                    book.classList.add("open");
+                }
+                
                 switch(currentLocation) {
                     case 1: 
                         p1.classList.add("flipped"); 
-                        p1.style.zIndex = 1; 
+                        // Ritardo l'abbassamento di livello per non farlo compenetrare con Safari
+                        setTimeout(() => { p1.style.zIndex = 1; }, 400);
                         break;
                     case 2: 
                         p2.classList.add("flipped"); 
-                        p2.style.zIndex = 2; 
+                        setTimeout(() => { p2.style.zIndex = 2; }, 400);
                         break;
                     case 3: 
                         p3.classList.add("flipped"); 
-                        p3.style.zIndex = 3; 
+                        setTimeout(() => { p3.style.zIndex = 3; }, 400);
                         break;
                 }
                 currentLocation++;
@@ -177,16 +209,21 @@
             if(currentLocation > 1) {
                 switch(currentLocation) {
                     case 2: 
+                        p1.style.zIndex = 4;
                         p1.classList.remove("flipped"); 
-                        p1.style.zIndex = 3; 
+                        setTimeout(() => { p1.style.zIndex = 3; }, 400);
+                        // Chiudo il libro e lo faccio scivolare a sinistra
+                        book.classList.remove("open");
                         break;
                     case 3: 
+                        p2.style.zIndex = 4; 
                         p2.classList.remove("flipped"); 
-                        p2.style.zIndex = 2; 
+                        setTimeout(() => { p2.style.zIndex = 2; }, 400);
                         break;
                     case 4: 
+                        p3.style.zIndex = 4; 
                         p3.classList.remove("flipped"); 
-                        p3.style.zIndex = 1; 
+                        setTimeout(() => { p3.style.zIndex = 1; }, 400);
                         break;
                 }
                 currentLocation--;
