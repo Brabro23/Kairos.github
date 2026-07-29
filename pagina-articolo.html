@@ -100,7 +100,6 @@
             flex-direction: column;
         }
 
-        /* FIX DEFINITIVO PER IL PULSANTE KAIROS */
         .home-link {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 4rem;
@@ -112,8 +111,9 @@
             z-index: 100000;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             transition: transform 0.3s ease;
-            display: inline-block; /* Obbligatorio per attivare il transform sui link */
-            transform: translateZ(30px); /* Spinge il pulsante in primissimo piano fuori dal bug 3D */
+            display: inline-block; 
+            transform: translateZ(30px); 
+            cursor: pointer;
         }
         
         .home-link:hover {
@@ -176,10 +176,11 @@
                 transition: opacity 0.5s ease; 
             }
             
+            /* FIX DEFINITIVO CELLULARE: Forziamo il tocco */
             .mobile-active {
                 opacity: 1 !important;
                 z-index: 100;
-                pointer-events: auto;
+                pointer-events: auto !important; 
             }
 
             .mobile-nav {
@@ -187,7 +188,6 @@
                 position: fixed;
                 top: 0;
                 height: 100vh;
-                /* Ristretto al 20% dello schermo per lasciare completamente libero il centro per il pulsante */
                 width: 20vw; 
                 z-index: 9999;
                 -webkit-tap-highlight-color: transparent; 
@@ -200,7 +200,13 @@
             h2 { font-size: 2rem; }
             p { font-size: 1.15rem; }
             
-            .home-link { font-size: 3.2rem; }
+            /* Rimuove i conflitti 3D su telefono e allarga l'area cliccabile */
+            .home-link { 
+                font-size: 3.2rem; 
+                transform: none !important; 
+                padding: 40px; 
+                pointer-events: auto !important;
+            }
         }
     </style>
 </head>
@@ -253,11 +259,11 @@
             
             <div class="back cover-back">
                 
-                <!-- Area invisibile per tornare indietro (Spostata PRIMA del bottone per non coprirlo) -->
+                <!-- Area invisibile per tornare indietro -->
                 <div class="click-left" onclick="goPrev()"></div>
                 
-                <!-- BOTTONE KAIROS (Rimane rigorosamente in primo piano) -->
-                <a href="index.html" class="home-link">KAIROS</a>
+                <!-- BOTTONE KAIROS DOPPIA MANDATA (onclick JS + href HTML) per aggirare i bug del telefono -->
+                <a href="index.html" onclick="window.location.href='index.html';" class="home-link">KAIROS</a>
                 
             </div>
         </div>
