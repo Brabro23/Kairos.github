@@ -204,7 +204,7 @@ nav a:hover {
     /* NUOVE REGOLE PER IL LINK E L'ANIMAZIONE */
     text-decoration: none; /* Toglie la fastidiosa riga sotto il testo del link */
     position: relative; 
-    z-index: 1; /* Livello di base */
+    z-index: 50; /* Livello di base */
     transform-origin: bottom center; /* Fondamentale: si ingrandisce verso l'alto, restando poggiato al legno */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Movimento elastico e realistico */
 }
