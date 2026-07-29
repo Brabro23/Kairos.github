@@ -21,31 +21,27 @@
             overflow: hidden; 
         }
         
-        /* IL NUOVO CONTENITORE: È largo quanto il libro APERTO (900px) */
         .book {
             position: relative;
             width: 900px; 
             height: 600px; 
             perspective: 2000px; 
             transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-            /* Quando è chiuso, lo sposto a sinistra per centrare la copertina nello schermo */
             transform: translateX(-25%);
         }
         
-        /* Classe aggiunta quando il libro si apre: lo sposta al centro esatto */
         .book.open {
             transform: translateX(0); 
         }
         
-        /* I FOGLI (Larghi la metà, posizionati sulla destra del contenitore) */
         .paper {
             position: absolute;
-            width: 50%; /* 450px */
+            width: 50%; 
             height: 100%;
             top: 0; right: 0; 
             transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d; /* Fix essenziale per Safari/iPad */
-            transform-origin: left center; /* Il perno ora è esattamente al centro del libro! */
+            -webkit-transform-style: preserve-3d; 
+            transform-origin: left center; 
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
         }
         
@@ -55,13 +51,20 @@
             height: 100%;
             top: 0; left: 0;
             backface-visibility: hidden; 
-            -webkit-backface-visibility: hidden; /* Impedisce alle pagine di "sparire" su iPad */
+            -webkit-backface-visibility: hidden; 
             background-color: #fdfbf7; 
             padding: 50px 40px;
-            /* L'ombra ora è sui singoli fogli, non sul contenitore */
             box-shadow: inset 5px 0 20px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.4); 
             border-radius: 2px 8px 8px 2px;
         }
+
+        /* --- FIX DEFINITIVO PER IL BUG DEI CLICK FANTASMA SU IPAD --- */
+        /* Disabilita i tap sulle facce nascoste del foglio */
+        .front { pointer-events: auto; }
+        .back { pointer-events: none; }
+        .flipped .front { pointer-events: none; }
+        .flipped .back { pointer-events: auto; }
+        /* ----------------------------------------------------------- */
         
         .back { 
             transform: rotateY(180deg); 
@@ -75,7 +78,6 @@
             -webkit-transform: rotateY(-180deg);
         }
         
-        /* COPERTINE */
         .cover-front { 
             background-color: #3b2818; 
             color: white; 
@@ -92,7 +94,6 @@
         h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
         p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px; color: #333; text-align: justify; }
         
-        /* AREE CLICCABILI: Grandi quanto l'intera pagina */
         .click-right, .click-left { 
             position: absolute; 
             top: 0; left: 0;
@@ -102,12 +103,10 @@
             z-index: 100; 
         }
         
-        /* Ordine di partenza */
         #p1 { z-index: 3; }
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
 
-        /* ADATTAMENTO SCHERMI PICCOLI (Se metti l'ipad in verticale) */
         @media (max-width: 950px) {
             .book { transform: translateX(-25%) scale(0.85); }
             .book.open { transform: translateX(0) scale(0.85); }
@@ -122,7 +121,7 @@
 
     <div class="book" id="book-container">
         
-        <!-- FOGLIO 1: Copertina e Pagina 1 -->
+        <!-- FOGLIO 1 -->
         <div class="paper" id="p1">
             <div class="front cover-front">
                 <h1>TITOLO DELL'ARTICOLO</h1>
@@ -138,7 +137,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 2: Pagina 2 e Pagina 3 -->
+        <!-- FOGLIO 2 -->
         <div class="paper" id="p2">
             <div class="front">
                 <h2>Lo Sviluppo</h2>
@@ -154,7 +153,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 3: Pagina 4 e Retro Copertina -->
+        <!-- FOGLIO 3 -->
         <div class="paper" id="p3">
             <div class="front">
                 <h2>La Conclusione</h2>
@@ -181,7 +180,6 @@
 
         function goNext() {
             if(currentLocation < maxLocation) {
-                // Se apro la prima pagina, faccio scivolare il libro al centro
                 if (currentLocation === 1) {
                     book.classList.add("open");
                 }
@@ -189,7 +187,6 @@
                 switch(currentLocation) {
                     case 1: 
                         p1.classList.add("flipped"); 
-                        // Ritardo l'abbassamento di livello per non farlo compenetrare con Safari
                         setTimeout(() => { p1.style.zIndex = 1; }, 400);
                         break;
                     case 2: 
@@ -212,7 +209,6 @@
                         p1.style.zIndex = 4;
                         p1.classList.remove("flipped"); 
                         setTimeout(() => { p1.style.zIndex = 3; }, 400);
-                        // Chiudo il libro e lo faccio scivolare a sinistra
                         book.classList.remove("open");
                         break;
                     case 3: 
