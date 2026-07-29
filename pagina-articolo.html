@@ -94,14 +94,13 @@
             background-size: cover;
             background-position: center;
             border-right: 10px solid #2a1c10; 
-            /* Aggiunte per centrare il pulsante Kairos */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
 
-        /* Il pulsante KAIROS sulla copertina posteriore */
+        /* FIX DEFINITIVO PER IL PULSANTE KAIROS */
         .home-link {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 4rem;
@@ -110,13 +109,15 @@
             text-decoration: none;
             letter-spacing: 2px;
             position: relative;
-            z-index: 100000; /* Livello massimo per renderlo cliccabile sopra le aree invisibili */
+            z-index: 100000;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             transition: transform 0.3s ease;
+            display: inline-block; /* Obbligatorio per attivare il transform sui link */
+            transform: translateZ(30px); /* Spinge il pulsante in primissimo piano fuori dal bug 3D */
         }
         
         .home-link:hover {
-            transform: scale(1.05); /* Si ingrandisce leggermente passando col mouse */
+            transform: scale(1.05) translateZ(30px); 
         }
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
@@ -136,7 +137,6 @@
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
 
-        /* Aree di clic specifiche per il telefono (invisibili su PC) */
         .mobile-nav { display: none; }
 
         /* =========================================
@@ -187,7 +187,8 @@
                 position: fixed;
                 top: 0;
                 height: 100vh;
-                width: 35vw; /* Lasciamo liberi i lati centrali per cliccare KAIROS */
+                /* Ristretto al 20% dello schermo per lasciare completamente libero il centro per il pulsante */
+                width: 20vw; 
                 z-index: 9999;
                 -webkit-tap-highlight-color: transparent; 
             }
@@ -199,7 +200,6 @@
             h2 { font-size: 2rem; }
             p { font-size: 1.15rem; }
             
-            /* Il logo Kairos si rimpicciolisce un po' su smartphone */
             .home-link { font-size: 3.2rem; }
         }
     </style>
@@ -253,11 +253,12 @@
             
             <div class="back cover-back">
                 
-                <!-- NUOVO BOTTONE: Logo Kairos che rimanda alla pagina principale -->
+                <!-- Area invisibile per tornare indietro (Spostata PRIMA del bottone per non coprirlo) -->
+                <div class="click-left" onclick="goPrev()"></div>
+                
+                <!-- BOTTONE KAIROS (Rimane rigorosamente in primo piano) -->
                 <a href="index.html" class="home-link">KAIROS</a>
                 
-                <!-- Area per tornare indietro al libro (funziona solo toccando fuori dal bottone Kairos) -->
-                <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
         
