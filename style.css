@@ -211,12 +211,13 @@ nav a:hover {
 
 /* L'effetto quando ci passi sopra col mouse */
 .mini-book:hover {
-    transform: scale(1.6); /* Si ingrandisce del 60% per farsi leggere bene */
-    background-color: #3b2818; /* Prende un colore caldo da copertina in pelle */
+    transform: scale(1.6); 
+    background-color: #3b2818; 
     color: #fff;
-    z-index: 10; /* Balza in primissimo piano coprendo i bordi dello scaffale */
+    z-index: 999; /* Alzato al massimo per sormontare tutti gli altri libri e il legno! */
     box-shadow: 15px 30px 40px rgba(0,0,0,0.9), -2px 0 10px rgba(255,255,255,0.1);
 }
+
 
 /* =========================================
    LIBRO 3D "LETTURE" (In fondo alla pagina)
