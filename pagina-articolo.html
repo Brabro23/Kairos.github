@@ -78,16 +78,20 @@
             -webkit-transform: rotateY(-180deg);
         }
         
-        .cover-front { 
-            background-color: #3b2818; 
+                .cover-front { 
+            /* Sostituisci copertina.jpg con il nome esatto della tua immagine */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('copertina.jpg');
+            background-size: cover;
+            background-position: center;
             color: white; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center; 
             text-align: center;
-            border-left: 10px solid #2a1c10; 
+            border-left: 10px solid #2a1c10; /* Mantiene il dettaglio realistico del dorso rigido in pelle */
         }
+
         .cover-back { background-color: #3b2818; border-right: 10px solid #2a1c10; }
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
