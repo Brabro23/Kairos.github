@@ -9,22 +9,17 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-             body {
+        body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* Aggiunto un velo d'ombra per simulare la penombra e far sbalzare il libro in 3D */
-            /* Ricordati di inserire il nome esatto della tua foto del leggio al posto di image_8.png */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('E95FCF65-0D4D-427A-8413-039A1430922A.png');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('image_8.png');
             background-size: cover;
             background-position: center;
-            
             font-family: 'Playfair Display', serif;
             overflow: hidden; 
         }
-
         
         .book {
             position: relative;
@@ -63,13 +58,10 @@
             border-radius: 2px 8px 8px 2px;
         }
 
-        /* --- FIX DEFINITIVO PER IL BUG DEI CLICK FANTASMA SU IPAD --- */
-        /* Disabilita i tap sulle facce nascoste del foglio */
         .front { pointer-events: auto; }
         .back { pointer-events: none; }
         .flipped .front { pointer-events: none; }
         .flipped .back { pointer-events: auto; }
-        /* ----------------------------------------------------------- */
         
         .back { 
             transform: rotateY(180deg); 
@@ -83,9 +75,8 @@
             -webkit-transform: rotateY(-180deg);
         }
         
-                .cover-front { 
-            /* Sostituisci copertina.jpg con il nome esatto della tua immagine */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('8C77115A-5A6C-4213-9BA8-5F8C6F8B90FF.png');
+        .cover-front { 
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('copertina.jpg');
             background-size: cover;
             background-position: center;
             color: white; 
@@ -94,10 +85,15 @@
             justify-content: center; 
             align-items: center; 
             text-align: center;
-            border-left: 10px solid #2a1c10; /* Mantiene il dettaglio realistico del dorso rigido in pelle */
+            border-left: 10px solid #2a1c10; 
         }
 
-        .cover-back { background-color: #3b2818; border-right: 10px solid #2a1c10; }
+        .cover-back { 
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('copertina.jpg');
+            background-size: cover;
+            background-position: center;
+            border-right: 10px solid #2a1c10; 
+        }
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
@@ -116,13 +112,27 @@
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
 
+        /* =========================================
+           ADATTAMENTO SCHERMI PICCOLI E SMARTPHONE
+           ========================================= */
+           
         @media (max-width: 950px) {
-            .book { transform: translateX(-25%) scale(0.85); }
-            .book.open { transform: translateX(0) scale(0.85); }
+            .book { transform: translateX(-25%) scale(0.80); }
+            .book.open { transform: translateX(0) scale(0.80); }
         }
+        
         @media (max-width: 750px) {
-            .book { transform: translateX(-25%) scale(0.5); }
-            .book.open { transform: translateX(0) scale(0.5); }
+            .book { 
+                transform: translateX(-25%) scale(0.42); 
+            }
+            .book.open { 
+                transform: translateX(0) scale(0.42); 
+            }
+            
+            .front, .back { padding: 40px 30px; }
+            h1 { font-size: 4.5rem; line-height: 1.1; }
+            h2 { font-size: 3.2rem; margin-bottom: 35px; }
+            p { font-size: 2rem; line-height: 1.6; margin-bottom: 25px; }
         }
     </style>
 </head>
@@ -130,11 +140,11 @@
 
     <div class="book" id="book-container">
         
-        <!-- FOGLIO 1 -->
+        <!-- FOGLIO 1: Copertina e Pagina 1 -->
         <div class="paper" id="p1">
             <div class="front cover-front">
-                <h1>L'IDEA DI UN SOLO UOMO. </h1>
-                <p style="color: #ccc; text-align: center;">Ulisse di Nolan</p>
+                <h1>L'IDEA DI UN<br>SOLO UOMO</h1>
+                <p style="color: #ccc; text-align: center;">di Brian Pieroni</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
@@ -146,7 +156,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 2 -->
+        <!-- FOGLIO 2: Pagina 2 e Pagina 3 -->
         <div class="paper" id="p2">
             <div class="front">
                 <h2>Lo Sviluppo</h2>
@@ -162,7 +172,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 3 -->
+        <!-- FOGLIO 3: Pagina 4 e Retro Copertina -->
         <div class="paper" id="p3">
             <div class="front">
                 <h2>La Conclusione</h2>
@@ -170,14 +180,12 @@
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
-                    .cover-back { 
-            /* Richiama la stessa immagine usata per la copertina frontale */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('8C77115A-5A6C-4213-9BA8-5F8C6F8B90FF.png');
-            background-size: cover;
-            background-position: center;
-            border-right: 10px solid #2a1c10; 
-        }
-
+            <div class="back cover-back">
+                <div class="click-left" onclick="goPrev()"></div>
+            </div>
+        </div>
+        
+    </div>
 
     <script>
         let currentLocation = 1;
