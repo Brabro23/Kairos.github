@@ -14,56 +14,52 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Sfondo del leggio. Sostituisci 'leggio.jpg' con l'immagine di un legno che preferisci */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('leggio.jpg');
+            
+            /* Sfondo aggiornato: usa la tua foto al naturale, senza filtri scuri */
+            background-image: url('IMG_6707.jpeg');
             background-size: cover;
             background-position: center;
+            
             font-family: 'Playfair Display', serif;
-            overflow: hidden; /* Evita lo scroll laterale */
+            overflow: hidden; 
         }
         
         /* IL LIBRO */
         .book {
             position: relative;
-            width: 450px; /* Larghezza del libro chiuso */
-            height: 600px; /* Altezza del libro */
-            perspective: 1800px; /* Profondità per l'effetto 3D */
-            /* Ombra proiettata dal libro sul leggio */
-            box-shadow: 20px 20px 40px rgba(0,0,0,0.7);
+            width: 450px; 
+            height: 600px; 
+            perspective: 1800px; 
+            /* Aumentata l'ombra per far risaltare il libro staccandolo dal legno chiaro */
+            box-shadow: 25px 25px 45px rgba(0,0,0,0.7);
             border-radius: 2px 8px 8px 2px;
         }
         
-        /* I FOGLI (Raggruppano fronte e retro) */
         .paper {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0; left: 0;
             transform-style: preserve-3d;
-            transform-origin: left center; /* Il perno (la rilegatura) è a sinistra */
-            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); /* Movimento pagina molto fluido */
+            transform-origin: left center; 
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
         }
         
-        /* LE FACCIATE DELLE PAGINE */
         .front, .back {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0; left: 0;
-            backface-visibility: hidden; /* Nasconde il retro quando non è girato */
-            background-color: #fdfbf7; /* Colore carta avorio */
+            backface-visibility: hidden; 
+            background-color: #fdfbf7; 
             padding: 50px 40px;
-            box-shadow: inset 5px 0 20px rgba(0,0,0,0.08); /* Ombra della rilegatura */
+            box-shadow: inset 5px 0 20px rgba(0,0,0,0.08); 
             border-radius: 2px 8px 8px 2px;
         }
         
-        /* La facciata posteriore parte già ruotata a specchio */
         .back { transform: rotateY(180deg); border-radius: 8px 2px 2px 8px; }
-        
-        /* Classe applicata con JS per girare il foglio */
         .flipped { transform: rotateY(-180deg); }
         
-        /* STILI SPECIFICI COPERTINA */
         .cover-front { 
             background-color: #3b2818; 
             color: white; 
@@ -72,28 +68,26 @@
             justify-content: center; 
             align-items: center; 
             text-align: center;
-            border-left: 10px solid #2a1c10; /* Dorso rigido */
+            border-left: 10px solid #2a1c10; 
         }
-        .cover-back { background-color: #3b2818; }
+        .cover-back { background-color: #3b2818; border-right: 10px solid #2a1c10; }
         
-        /* TESTI INTERNI */
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
         p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px; color: #333; text-align: justify; }
         
-        /* AREE CLICCABILI (Invisibili) per sfogliare */
+        /* AREE CLICCABILI AGGIORNATE E RISOLTE */
+        /* Ora coprono l'intera pagina (100%), clicchi ovunque e la pagina gira! */
         .click-right, .click-left { 
             position: absolute; 
             top: 0; 
-            width: 50%; 
+            left: 0;
+            width: 100%; 
             height: 100%; 
             cursor: pointer; 
             z-index: 100; 
         }
-        .click-right { right: 0; }
-        .click-left { left: 0; }
         
-        /* Z-INDEX BASE (Definisce quale foglio sta sopra a libro chiuso) */
         #p1 { z-index: 3; }
         #p2 { z-index: 2; }
         #p3 { z-index: 1; }
@@ -103,29 +97,28 @@
 
     <div class="book">
         
-        <!-- FOGLIO 1: Copertina (Fronte) e Pagina 1 (Retro) -->
+        <!-- FOGLIO 1: Copertina e Pagina 1 -->
         <div class="paper" id="p1">
             <div class="front cover-front">
                 <h1>TITOLO DELL'ARTICOLO</h1>
                 <p style="color: #ccc; text-align: center;">di Brian Pieroni</p>
-                <!-- Area invisibile per cliccare avanti -->
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
                 <h2>L'inizio</h2>
                 <p>Tra le pieghe delle prime pagine di giornale si nascondono prospettive inesplorate. Questa è la prima pagina del tuo articolo.</p>
-                <p>Clicca sulla metà destra per proseguire la lettura, oppure sulla metà sinistra per richiudere la copertina.</p>
-                <!-- Area per tornare indietro -->
+                <p>Clicca in un punto qualsiasi di questa pagina a sinistra per richiudere il libro.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
 
-        <!-- FOGLIO 2: Pagina 2 (Fronte) e Pagina 3 (Retro) -->
+        <!-- FOGLIO 2: Pagina 2 e Pagina 3 -->
         <div class="paper" id="p2">
             <div class="front">
                 <h2>Lo Sviluppo</h2>
                 <p>La narrazione continua su questa pagina. Puoi formattare il testo esattamente come faresti in un libro reale.</p>
+                <p>Clicca in un punto qualsiasi di questa pagina a destra per proseguire la lettura.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
@@ -136,7 +129,7 @@
             </div>
         </div>
 
-        <!-- FOGLIO 3: Pagina 4 (Fronte) e Retro Copertina (Retro) -->
+        <!-- FOGLIO 3: Pagina 4 e Retro Copertina -->
         <div class="paper" id="p3">
             <div class="front">
                 <h2>La Conclusione</h2>
@@ -145,7 +138,6 @@
             </div>
             
             <div class="back cover-back">
-                <!-- Retro rigido del libro, senza testi -->
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -153,12 +145,10 @@
     </div>
 
     <script>
-        // MOTORE JAVASCRIPT PER LO SFOGLIO DELLE PAGINE
-        let currentLocation = 1;      // Posizione attuale
-        let numOfPapers = 3;          // Numero totale dei fogli (puoi aumentarli copiando/incollando il blocco HTML)
+        let currentLocation = 1;
+        let numOfPapers = 3; 
         let maxLocation = numOfPapers + 1;
 
-        // Seleziono i fogli
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
         const p3 = document.getElementById("p3");
@@ -168,7 +158,7 @@
                 switch(currentLocation) {
                     case 1: 
                         p1.classList.add("flipped"); 
-                        p1.style.zIndex = 1; // Lo metto sotto per non coprire il prossimo
+                        p1.style.zIndex = 1; 
                         break;
                     case 2: 
                         p2.classList.add("flipped"); 
@@ -188,7 +178,7 @@
                 switch(currentLocation) {
                     case 2: 
                         p1.classList.remove("flipped"); 
-                        p1.style.zIndex = 3; // Lo riporto in cima
+                        p1.style.zIndex = 3; 
                         break;
                     case 3: 
                         p2.classList.remove("flipped"); 
