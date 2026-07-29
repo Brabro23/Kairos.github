@@ -94,6 +94,29 @@
             background-size: cover;
             background-position: center;
             border-right: 10px solid #2a1c10; 
+            /* Aggiunte per centrare il pulsante Kairos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Il pulsante KAIROS sulla copertina posteriore */
+        .home-link {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 100000; /* Livello massimo per renderlo cliccabile sopra le aree invisibili */
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .home-link:hover {
+            transform: scale(1.05); /* Si ingrandisce leggermente passando col mouse */
         }
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
@@ -117,7 +140,7 @@
         .mobile-nav { display: none; }
 
         /* =========================================
-           ADATTAMENTO PER CELLULARI (A tutto schermo)
+           ADATTAMENTO PER CELLULARI E IPAD
            ========================================= */
         @media (max-width: 950px) {
             .book { transform: translateX(-25%) scale(0.80); }
@@ -125,7 +148,6 @@
         }
         
         @media (max-width: 750px) {
-            /* 1. Il libro perde il 3D e diventa grande quanto lo schermo */
             .book { 
                 width: 100vw; 
                 height: 100vh; 
@@ -139,7 +161,6 @@
                 transition: none; 
             }
             
-            /* 2. Le singole pagine diventano rettangoli a tutto schermo */
             .front, .back { 
                 width: 100vw; 
                 height: 100vh;
@@ -150,42 +171,41 @@
                 transform: none !important; 
                 position: absolute; 
                 top: 0; left: 0; 
-                opacity: 0; /* Nasconde tutte le pagine di base */
+                opacity: 0; 
                 pointer-events: none;
                 transition: opacity 0.5s ease; 
             }
             
-            /* 3. Classe che rende visibile solo 1 pagina alla volta */
             .mobile-active {
                 opacity: 1 !important;
                 z-index: 100;
                 pointer-events: auto;
             }
 
-            /* 4. Aree di tocco ai lati dello schermo (40% sinistra, 40% destra) */
             .mobile-nav {
                 display: block;
                 position: fixed;
                 top: 0;
                 height: 100vh;
-                width: 40vw;
+                width: 35vw; /* Lasciamo liberi i lati centrali per cliccare KAIROS */
                 z-index: 9999;
-                -webkit-tap-highlight-color: transparent; /* Toglie il lampo blu su iPhone */
+                -webkit-tap-highlight-color: transparent; 
             }
             .mobile-nav.left { left: 0; }
             .mobile-nav.right { right: 0; }
-            .click-right, .click-left { display: none !important; } /* Spegne i clic del PC */
+            .click-right, .click-left { display: none !important; } 
 
-            /* 5. Testi ricalibrati per il nuovo formato a tutto schermo */
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
             p { font-size: 1.15rem; }
+            
+            /* Il logo Kairos si rimpicciolisce un po' su smartphone */
+            .home-link { font-size: 3.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Pulsanti invisibili per mandare avanti e indietro le pagine sul telefono -->
     <div class="mobile-nav left" onclick="goPrev()"></div>
     <div class="mobile-nav right" onclick="goNext()"></div>
 
@@ -232,7 +252,11 @@
             </div>
             
             <div class="back cover-back">
-                <!-- Retro copertina -->
+                
+                <!-- NUOVO BOTTONE: Logo Kairos che rimanda alla pagina principale -->
+                <a href="index.html" class="home-link">KAIROS</a>
+                
+                <!-- Area per tornare indietro al libro (funziona solo toccando fuori dal bottone Kairos) -->
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -240,7 +264,6 @@
     </div>
 
     <script>
-        // Variabili per il PC
         let desktopLocation = 1;
         let maxDesktopLocation = 4;
         const book = document.getElementById("book-container");
@@ -248,7 +271,6 @@
         const p2 = document.getElementById("p2");
         const p3 = document.getElementById("p3");
 
-        // Preparazione Motore Telefono (Estrae tutte le singole pagine)
         const mobilePages = [
             p1.querySelector('.front'), p1.querySelector('.back'),
             p2.querySelector('.front'), p2.querySelector('.back'),
@@ -256,21 +278,18 @@
         ];
         let currentMobilePage = 0;
 
-        // Accende subito la prima pagina se siamo da telefono
         if (window.innerWidth <= 750) {
             mobilePages[0].classList.add('mobile-active');
         }
 
         function goNext() {
             if (window.innerWidth <= 750) {
-                // LOGICA TELEFONO (1 Pagina alla volta)
                 if (currentMobilePage < mobilePages.length - 1) {
                     mobilePages[currentMobilePage].classList.remove('mobile-active');
                     currentMobilePage++;
                     mobilePages[currentMobilePage].classList.add('mobile-active');
                 }
             } else {
-                // LOGICA PC E IPAD (Libro 3D)
                 if(desktopLocation < maxDesktopLocation) {
                     if (desktopLocation === 1) book.classList.add("open");
                     switch(desktopLocation) {
@@ -285,14 +304,12 @@
 
         function goPrev() {
             if (window.innerWidth <= 750) {
-                // LOGICA TELEFONO (1 Pagina alla volta)
                 if (currentMobilePage > 0) {
                     mobilePages[currentMobilePage].classList.remove('mobile-active');
                     currentMobilePage--;
                     mobilePages[currentMobilePage].classList.add('mobile-active');
                 }
             } else {
-                // LOGICA PC E IPAD (Libro 3D)
                 if(desktopLocation > 1) {
                     switch(desktopLocation) {
                         case 2: p1.style.zIndex = 4; p1.classList.remove("flipped"); setTimeout(() => { p1.style.zIndex = 3; }, 400); book.classList.remove("open"); break;
