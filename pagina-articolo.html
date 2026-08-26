@@ -122,7 +122,9 @@
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
-        p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px; color: #333; text-align: justify; }
+        
+        /* Aggiustato il line-height e margin per i tuoi paragrafi letterari */
+        p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 18px; color: #222; text-align: justify; }
         
         .click-right, .click-left { 
             position: absolute; 
@@ -176,7 +178,6 @@
                 transition: opacity 0.5s ease; 
             }
             
-            /* FIX DEFINITIVO CELLULARE: Forziamo il tocco */
             .mobile-active {
                 opacity: 1 !important;
                 z-index: 100;
@@ -200,7 +201,6 @@
             h2 { font-size: 2rem; }
             p { font-size: 1.15rem; }
             
-            /* Rimuove i conflitti 3D su telefono e allarga l'area cliccabile */
             .home-link { 
                 font-size: 3.2rem; 
                 transform: none !important; 
@@ -226,9 +226,9 @@
             </div>
             
             <div class="back">
-                <h2>L'inizio</h2>
-                <p>Tra le pieghe delle prime pagine di giornale si nascondono prospettive inesplorate. Questa è la prima pagina del tuo articolo.</p>
-                <p>Clicca nella parte sinistra dello schermo per tornare indietro.</p>
+                <h2>La perdita del fiuto</h2>
+                <p>Lentamente, la volpe perde il fiuto. Ulisse, dalle molte vie (<em>polytropon</em>), apre il suo monologo davanti a Penelope navigando a vista tutto ciò che non ha veduto. Un ritratto vivido degno di essere esposto a una mostra che abbia per tema la nevrosi novecentesca.</p>
+                <p><em>"E se l’Ulisse che conoscevi avesse perso la strada? E se lui una notte, in una città straniera, avesse visto cose che gli hanno fatto pensare che la casa che conosceva avrebbe potuto non esserci più? E se lui, uscito dalla pancia del cavallo, e aperte le porte di Troia, avesse visto dieci anni di rabbia riversati su quella città in una notte? [...] se avesse capito esattamente che cosa aveva fatto? L’idea di un solo uomo. L’inganno di un solo uomo."</em></p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -236,15 +236,17 @@
         <!-- FOGLIO 2 -->
         <div class="paper" id="p2">
             <div class="front">
-                <h2>Lo Sviluppo</h2>
-                <p>La narrazione continua su questa pagina. Puoi formattare il testo esattamente come faresti in un libro reale.</p>
-                <p>Clicca nella parte destra dello schermo per andare avanti.</p>
+                <h2>Un sovrappiù di vita</h2>
+                <p>Ulisse cercava in questi movimenti molteplici, un sovrappiù di vita, la vita in tutte le sue forme e sfaccettature. In questo, è l’uomo che non rinuncia a niente. Polifemo andrebbe evitato, lui gli va incontro.</p>
+                <p>Una maniera di porsi simile all’inconscio, lo spazio che per antonomasia resta aperto a tutto. Ha una conoscenza pratica malleabile, si lascia toccare dalle cose e non impone mai la sua visione. Lo fa per non sottomettere il molteplice e lasciarsi attraversare da esso. Appartiene a quel tipo d’intelligenza speciale che Heidegger ci spiega nascere dalla mano.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <h2>Approfondimento</h2>
-                <p>Un'altra pagina voltata. L'illusione della carta digitale ti permette di dare fisicità a testi che altrimenti sarebbero semplici schermate piatte.</p>
+                <h2>L'intelligenza pratica</h2>
+                <p>L’astuzia di colui che ha vinto la rocca di Priamo parte dalla sua mano, e non è un assurdo. Normalmente siamo abituati a pensare che soltanto tramite l’applicazione dei nostri strumenti razionali possiamo uscire dai problemi. E se per alcuni fosse vero il contrario?</p>
+                <p>Ogni volta devo leggere la realtà, capire i punti deboli, i punti di forza e intervenire nel punto giusto. La cassetta degli attrezzi per riparare a qualcosa la costruisco partendo dalla realtà. L’allenamento allora dovrà procedere ad acquisire una sorta di malleabilità sulle cose, senza che la mia visione si frapponga.</p>
+                <p><em>"Questa dimensione del lasciarsi portare è parte fondamentale del suo cercare a sè la vita. Non si cerca a sè la vita con la barra dritta. E fa male. Ulisse piange molto, non una lacrima passeggera: spesse volte è ritratto come doloso, afflitto."</em></p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -252,19 +254,15 @@
         <!-- FOGLIO 3 -->
         <div class="paper" id="p3">
             <div class="front">
-                <h2>La Conclusione</h2>
-                <p>Fine dell'articolo. Spero che questa esperienza di lettura ti abbia affascinato.</p>
+                <h2>L'informe</h2>
+                <p>Winnicott, parlando del vero sé, diceva: come arrivo al vero psychè? Non ci arrivo se mi privo di tutti gli incontri, di tutte le esperienze, dell’altro.</p>
+                <p>Ulisse è l’uomo dalle molte forme, ed è bandiera di un principio di non-contraddizione che si disfa in ogni spazio e tempo nuovi. L’inconscio non ammette la logica della non-contraddizione. L’inconscio è un fluido incoerente, perché informe è la vita.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back cover-back">
-                
-                <!-- Area invisibile per tornare indietro -->
                 <div class="click-left" onclick="goPrev()"></div>
-                
-                <!-- BOTTONE KAIROS DOPPIA MANDATA (onclick JS + href HTML) per aggirare i bug del telefono -->
                 <a href="index.html" onclick="window.location.href='index.html';" class="home-link">KAIROS</a>
-                
             </div>
         </div>
         
