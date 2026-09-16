@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('5B1D9667-1FB9-41FD-B309-796DBCABF7B3.png');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('image_11.png');
             background-size: cover;
             background-position: center;
             font-family: 'Playfair Display', serif;
@@ -123,12 +123,10 @@
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         
-        /* Font leggermente ingrandito e spaziato per riempire elegantemente le pagine */
-        h2 { font-size: 1.5rem; margin-bottom: 18px; color: #111; }
-        
+        /* Font ingrandito per evitare spazi bianchi eccessivi */
         p { 
             font-family: 'Lora', Georgia, serif;
-            font-size: 0.95rem; 
+            font-size: 0.98rem; 
             line-height: 1.7; 
             margin-bottom: 15px; 
             color: #222; 
@@ -150,10 +148,10 @@
         .quote-block {
             border-left: 3px solid #6c4e31;
             padding-left: 15px;
-            margin: 20px 0;
+            margin: 22px 0;
             font-style: italic;
             color: #444;
-            font-size: 0.98rem;
+            font-size: 1rem;
         }
         
         .click-right, .click-left { 
@@ -196,7 +194,7 @@
             .front, .back { 
                 width: 100vw; 
                 height: 100vh;
-                padding: 40px 25px; 
+                padding: 35px 25px; 
                 border-radius: 0 !important; 
                 border: none !important; 
                 box-shadow: none !important; 
@@ -228,7 +226,6 @@
             .click-right, .click-left { display: none !important; } 
 
             h1 { font-size: 2.8rem; }
-            h2 { font-size: 1.8rem; margin-bottom: 20px;}
             p { font-size: 1.05rem; line-height: 1.6; }
             
             .home-link { 
@@ -258,8 +255,9 @@
             
             <!-- Pagina Interna 1 -->
             <div class="back">
-                <p><span class="drop-cap">D</span>iventare qualcuno, possedere qualcosa: essere e avere. Nell’epos omerico, l’Odissea e l’Iliade: una lunga cronistoria di bottini depredati, ritorsioni atroci e istinti animaleschi e l’agognata ricerca di una storia che leghi le altre.</p>
-                <p>Affascina pensare che la costante che le tiene unite sia valida ancora oggi: la sete di possesso può estinguersi solo lungo le ramificazioni di un viaggio, intrapreso per ritornare a casa. A patto che tu non abbia da spergiurare contro ciò che non controlli, e non osi impostare i movimenti che farai lungo il tragitto.</p>
+                <p><span class="drop-cap">L</span>'Iliade. Una lunga cronistoria di bottini depredati, ritorsioni atroci e istinti animaleschi. L'Odissea. L’agognata ricerca per mare di un'anima perduta, nel mondo che ha voluto.</p>
+                <p>Una costante le tiene unite, ed è valida ancora oggi: la sete di possesso (Iliade) può estinguersi solo lungo le ramificazioni di un viaggio, intrapreso per ritornare a casa (Odissea).</p>
+                <p>Per il mare aperto bisogna levare l'ancora, e applicare alcune precauzioni: evitare di spergiurare contro ciò che non controlli, e non impostare i movimenti che farai lungo il tragitto.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -268,7 +266,6 @@
         <div class="paper" id="p2">
             <!-- Pagina Interna 2 -->
             <div class="front">
-                <h2>Cercare a sé la vita</h2>
                 <p><em>"Questa dimensione del lasciarsi portare è parte fondamentale del suo cercare a sé la vita. Non si cerca a sé la vita con la barra dritta. E fa male. Odisseo piange molto, non una lacrima passeggera: spesse volte è ritratto come doloso, afflitto."</em></p>
                 <p>Odisseo cerca a sé la vita. Un’attitudine unica. Non significa "cercare dentro di sé cosa si vuole dalla vita" (introspezione), né "cercare per sé un posto nella vita" (ambizione, carriera). Significa piuttosto: <strong>attirare la vita verso di sé, farla convergere su di sé assecondando i punti della realtà in cui si cela un incontro.</strong></p>
                 <div class="click-right" onclick="goNext()"></div>
@@ -276,9 +273,9 @@
             
             <!-- Pagina Interna 3 -->
             <div class="back">
-                <p>Prima di essere nominato, Odisseo è presentato - nel proemio dell’opera - dall’epiteto <strong><em>polytropos</em></strong>, “<em>dalle molte vie</em>”. Leggendo la traduzione percepiamo la densità di mille percorsi difficili da scartare. Anche perché: di quante e quali vie si tratta?</p>
-                <p>Una prima considerazione la possiamo fare sulla loro esistenza: <strong><em>le molte vie</em></strong> dichiarate fin dal principio <strong>non preesistono al passaggio</strong>, non sono visibili a Odisseo prima di salpare.</p>
-                <p class="quote-block">"Narrami, o Musa, dell’uomo dalle molte vie, che tanto vagò e di molti uomini vide la città e conobbe i pensieri."</p>
+                <p>Dove il proemio dell'Iliade identifica (<em>Canta, o dea, l'ira di Achille figlio di Peleo</em>), quello dell'Odissea nasconde:</p>
+                <p class="quote-block"><strong>Ἄνδρα</strong> (l'uomo) <strong>μοι</strong> (a me) <strong>ἔννεπε</strong> (narra), <strong>Μοῦσα</strong> (o Musa), <strong>πολύτροπον</strong> (dalle molte vie)</p>
+                <p>Di chi si parla? L'esperienza precede l'identità. Una prima considerazione possiamo farla sulla loro esistenza: <strong><em>le molte vie</em></strong> dichiarate fin dal principio <strong>non preesistono al passaggio</strong>, non sono visibili a Odisseo prima di salpare.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -287,9 +284,8 @@
         <div class="paper" id="p3">
             <!-- Pagina Interna 4 -->
             <div class="front">
-                <p>Ora tra l'epiteto e "vide/conobbe" si inserisce una terza informazione: "che tanto vagò". Il verbo che regge "tanto vagò" è <strong>πλάγχθη</strong> (<em>plánchthē</em>) — e non è un verbo attivo. È un <strong>aoristo passivo</strong> di <em>plázō</em>, che significa letteralmente "fu spinto/sballottato fuori rotta", "fu fatto vagare".</p>
-                <p>Non "vagò" nel senso di "scelse di girovagare", ma "<strong>fu costretto a errare</strong>" dagli dèi, a seguito di quanto successo alla rocca di Priamo. La struttura reale del verso è quindi: <em>prima</em> un'azione subita (<strong>πλάγχθη</strong>, passivo: viene fatto vagare), <em>poi</em> un'azione compiuta (ἴδεν... ἔγνω, attivo: vide, conobbe).</p>
-                <p>Il proemio, in appena tre versi, mette in scena esattamente questo meccanismo: <strong>un incontro contiene molte vie</strong>.</p>
+                <p>Tra l'epiteto e le azioni successive si inserisce un'informazione chiave: "che tanto vagò". Il verbo greco che regge l'azione è <strong>πλάγχθη</strong> (<em>plánchthē</em>) — e non è un verbo attivo. È un <strong>aoristo passivo</strong> di <em>plázō</em>: non "scelse di girovagare", ma "<strong>fu costretto a errare</strong>".</p>
+                <p>La struttura reale del verso è scandita in sequenza: <em>prima</em> un'azione subita (viene fatto vagare), <em>poi</em> un'azione compiuta (vide, conobbe). Le molte vie nascono quindi dall'incontro — un incontro che comincia sempre, grammaticalmente, come qualcosa che accade a lui, prima di diventare qualcosa che lui fa.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
