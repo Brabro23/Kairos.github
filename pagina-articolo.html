@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Sfondo aggiornato con il nuovo repository */
+            /* Sfondo confermato */
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('5B1D9667-1FB9-41FD-B309-796DBCABF7B3.png');
             background-size: cover;
             background-position: center;
@@ -55,7 +55,7 @@
             backface-visibility: hidden; 
             -webkit-backface-visibility: hidden; 
             background-color: #fdfbf7; 
-            padding: 40px 35px; 
+            padding: 45px 35px; 
             overflow: hidden; 
             box-shadow: inset 5px 0 20px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.4); 
             border-radius: 2px 8px 8px 2px;
@@ -124,20 +124,19 @@
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         
-        /* Font calibrato al millimetro per la massima capienza senza sacrificare la bellezza */
+        /* Font ricalibrato più grande e leggibile grazie alle nuove pagine */
         p { 
             font-family: 'Lora', Georgia, serif;
-            font-size: 0.88rem; 
-            line-height: 1.55; 
-            margin-bottom: 10px; 
+            font-size: 0.96rem; 
+            line-height: 1.6; 
+            margin-bottom: 15px; 
             color: #222; 
             text-align: justify; 
         }
 
-        /* Capolettera Elegante per l'Incipit */
         .drop-cap {
             float: left;
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             line-height: 0.8;
             padding-top: 4px;
             padding-right: 8px;
@@ -145,14 +144,13 @@
             color: #1a110b;
         }
 
-        /* Stile elegante per la citazione di Omero */
         .quote-block {
             border-left: 3px solid #6c4e31;
             padding-left: 15px;
-            margin: 12px 0;
+            margin: 18px 0;
             font-style: italic;
             color: #444;
-            font-size: 0.88rem;
+            font-size: 0.96rem;
         }
         
         .click-right, .click-left { 
@@ -164,9 +162,11 @@
             z-index: 100; 
         }
         
-        #p1 { z-index: 3; }
-        #p2 { z-index: 2; }
-        #p3 { z-index: 1; }
+        /* Livelli Z-Index aggiornati per 4 fogli */
+        #p1 { z-index: 4; }
+        #p2 { z-index: 3; }
+        #p3 { z-index: 2; }
+        #p4 { z-index: 1; }
 
         .mobile-nav { display: none; }
 
@@ -195,7 +195,7 @@
             .front, .back { 
                 width: 100vw; 
                 height: 100vh;
-                padding: 30px 20px; 
+                padding: 35px 25px; 
                 border-radius: 0 !important; 
                 border: none !important; 
                 box-shadow: none !important; 
@@ -227,7 +227,7 @@
             .click-right, .click-left { display: none !important; } 
 
             h1 { font-size: 2.8rem; }
-            p { font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; }
+            p { font-size: 0.95rem; line-height: 1.6; }
             
             .home-link { 
                 font-size: 3.2rem; 
@@ -256,10 +256,11 @@
             
             <!-- Pagina Interna 1 -->
             <div class="back">
-                <p><span class="drop-cap">U</span>na lunga cronistoria di bottini depredati, ritorsioni atroci e istinti animaleschi: l'Iliade. Lo spirito vuoto di un eroe in cui il vento ha infuso l'anima del mare: l’Odissea. Affascina pensare che il nesso che le tiene unite sia valido ancora oggi: la sete di possesso (Iliade) può estinguersi solo lungo le ramificazioni di un viaggio, intrapreso per ritornare a casa (Odissea).</p>
-                <p>I primi sentori che l'una sia la soluzione dell'altra li abbiamo a partire dai rispettivi proemi. Dove l'Iliade identifica il soggetto (<em>Canta, o dea, l'ira di Achille figlio di Peleo</em>), l'Odissea lo nasconde:</p>
+                <p><span class="drop-cap">U</span>na lunga cronistoria di bottini depredati, ritorsioni atroci e istinti animaleschi: l'Iliade. Lo spirito vuoto di un eroe in cui il vento ha infuso l'anima del mare: l’Odissea.</p>
+                <p>Affascina pensare che il nesso che le tiene unite sia valido ancora oggi: la sete di possesso (Iliade) può estinguersi solo lungo le ramificazioni di un viaggio, intrapreso per ritornare a casa (Odissea). I primi sentori che l'una sia la soluzione dell'altra li abbiamo a partire dai rispettivi proemi.</p>
+                <p>Dove l'Iliade identifica il soggetto (<em>Canta, o dea, l'ira di Achille figlio di Peleo</em>), l'Odissea lo nasconde:</p>
                 <p class="quote-block"><strong>Ἄνδρα</strong> (l'uomo) μοι (a me) ἔννεπε (narra), Μοῦσα (o Musa), <strong>πολύτροπον</strong> (dalle molte vie)</p>
-                <p>Di chi si parla? Chi è costui dalle molte vie? Nessuna menzione, eppure dentro una capsula narrativa c'è la trama di un poema. Perché qui c'è tutto, anche se manca il nome. C'è la densità di un percorso dalle mille svolte, dagli indistinti confini; le mille miglia in un passo. Ma soprattutto l'idea che l'esperienza preceda l'identità. Là l'ira di Achille, statica e granitica, qui le molte vie di un uomo, mutevoli e infinite.</p>
+                <p>Di chi si parla? Chi è costui dalle molte vie? Nessuna menzione, eppure dentro una capsula narrativa c'è la trama di un poema.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -268,19 +269,19 @@
         <div class="paper" id="p2">
             <!-- Pagina Interna 2 -->
             <div class="front">
+                <p>Perché qui c'è tutto, anche se manca il nome. C'è la densità di un percorso dalle mille svolte, dagli indistinti confini; le mille miglia in un passo. Ma soprattutto l'idea che l'esperienza preceda l'identità. Là l'ira di Achille, statica e granitica, qui le molte vie di un uomo, mutevoli e infinite.</p>
                 <p>L'epiteto che sprigiona la forza dell'immaginazione è <strong>πολύτροπον</strong> (<em>polytropon</em>): l'unione di <em>poly</em> (molto) e <em>tropos</em> (<em>gr. trepo</em>: voltare, curvare, svoltare, <strong>cambiare direzione</strong>).</p>
                 <p><em>"Questa dimensione del <strong>lasciarsi portare</strong> è parte fondamentale del suo <strong>cercare a sé la vita</strong>. Non si cerca a sé la vita con la barra dritta. E fa male. Odisseo piange molto, non una lacrima passeggera: spesse volte è ritratto come doloso, afflitto."</em></p>
                 <p>L’Odissea segue le vicende di una persona metamorfica, camaleontica, che non cerca dentro di sé cosa si vuole dalla vita (introspezione), né cerca per sé un posto nella vita (ambizione, carriera). <strong>Attira la vita verso di sé, la fa convergere su di sé assecondando il contesto.</strong></p>
-                <p class="quote-block">[…] uno dei tratti distintivi della sua personalità è proprio la capacità di sopportare le sventure, di accettare stoicamente tutte le situazioni, anche le più difficili, e di fare fronte alle avversità con tenacia, senza tuttavia arrendersi all’inazione.</p>
-                <p><strong>Polytlas</strong> è anche detto, cioè colui <em>che molto sopporta</em>, al contrario dalla sua nemesi Achille. L’Iliade, infatti, comincia nel bel mezzo di una contesa, per una lite di proprietà.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <!-- Pagina Interna 3 -->
             <div class="back">
-                <p>Agamennone furibondo comanda ai suoi scudieri di prelevare dalla tenda di Achille il suo premio - una donna, Briseide - per la sua oltraggiosa indisponenza avuta alla tenda del sovrano. Una volta subiti gli ordini del suo re, Achille conturbato rimane <em>adirato nel cuore per la donna dalla bella cintura che, con la forza, gli avevano tolto a dispetto.</em> E così l’ira di Achille per tutta l’Iliade resta tesa e indomabile come un urlo di guerra.</p>
-                <p>Zhuang Zi tramanda di un uomo che attraversa un fiume in barca. Se una barca vuota lo urta, per quanto collerico, non si adira; tuttavia se in quella barca c'è qualcuno, grida fino a imprecare se non è ascoltato. La differenza non sta nell'urto, identico in entrambi i casi: sta nel fatto che nel secondo caso <em>c'è qualcuno</em> che ti è venuto addosso. <strong>Se un uomo sapesse vuotare sé stesso nel proprio cammino nel mondo - si chiede a un certo punto Zhuang Zi - chi potrebbe più nuocergli?</strong></p>
-                <p>All’alba del poema, Agamennone e Achille sono due barche piene; cariche di onore da difendere, di premi da rivendicare, gonfie di un "sé" infettato dall'angoscia del dominio. La furia nasce conseguente a questo stato, nell'istante in cui ambedue percepiscono un'intenzione ostile, un'invasione del proprio spazio.</p>
+                <p class="quote-block">[…] uno dei tratti distintivi della sua personalità è proprio la capacità di sopportare le sventure, di accettare stoicamente tutte le situazioni, anche le più difficili, e di fare fronte alle avversità con tenacia, senza tuttavia arrendersi all’inazione.</p>
+                <p><strong>Polytlas</strong> è anche detto, cioè colui <em>che molto sopporta</em>, al contrario dalla sua nemesi Achille. L’Iliade, infatti, comincia nel bel mezzo di una contesa, per una lite di proprietà. Agamennone furibondo comanda ai suoi scudieri di prelevare dalla tenda di Achille il suo premio - una donna, Briseide - per la sua oltraggiosa indisponenza avuta alla tenda del sovrano.</p>
+                <p>Una volta subiti gli ordini del suo re, Achille conturbato rimane <em>adirato nel cuore per la donna dalla bella cintura che, con la forza, gli avevano tolto a dispetto.</em> E così l’ira di Achille per tutta l’Iliade resta tesa e indomabile come un urlo di guerra.</p>
+                <p>Zhuang Zi tramanda di un uomo che attraversa un fiume in barca. Se una barca vuota lo urta, per quanto collerico, non si adira; tuttavia se in quella barca c'è qualcuno, grida fino a imprecare se non è ascoltato.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -289,9 +290,27 @@
         <div class="paper" id="p3">
             <!-- Pagina Interna 4 -->
             <div class="front">
+                <p>La differenza non sta nell'urto, identico in entrambi i casi: sta nel fatto che nel secondo caso <em>c'è qualcuno</em> che ti è venuto addosso. <strong>Se un uomo sapesse vuotare sé stesso nel proprio cammino nel mondo - si chiede a un certo punto Zhuang Zi - chi potrebbe più nuocergli?</strong></p>
+                <p>All’alba del poema, Agamennone e Achille sono due barche piene; cariche di onore da difendere, di premi da rivendicare, gonfie di un "sé" infettato dall'angoscia del dominio. La furia nasce conseguente a questo stato, nell'istante in cui ambedue percepiscono un'intenzione ostile, un'invasione del proprio spazio.</p>
                 <p>Non è un caso allora che nel <strong>poema dell’essere</strong>, aggrappato al legno di una zattera, Odisseo diventi naufrago. <strong>Naufragio</strong> deriva dal latino <em>naufragium</em>, un termine composto da <em>nàvis</em> (nave) e <em>fragium</em> (dal tema di <em>fràngere</em>, rompere) = in sintesi, un naufrago è colui che ha <strong>perduto la nave</strong>. Lasciato in balia del Mediterraneo, Odisseo si ritrova senza più una barca da difendere, senza nulla da reclamare. Ha perso quel tutto in cui prima s’identificava.</p>
+                <div class="click-right" onclick="goNext()"></div>
+            </div>
+            
+            <!-- Pagina Interna 5 -->
+            <div class="back">
                 <p>Giovanni Bottiroli, nel suo saggio <em>L’identità esiste soltanto nei suoi modi</em>, affronta un problema tutt’altro che banale. Parafrasando ciò che viene trattato, ognuno - dice Bottiroli - ha una <strong>concezione proprietaria di sé</strong>: Io esisto in quanto posseggo un lavoro, una relazione, un credo religioso, una opinione politica e il segno di alcuni traumi. Abbarbicati su questi scogli, quando capita uno strappo ci troviamo a essere al contempo sia noi stessi - poiché manteniamo alcuni tratti identitari - sia estranei a noi stessi. Che ne è della nostra integrità se un pezzo manca? Come siamo quando perdiamo qualcosa?</p>
-                <p>L'inganno supremo dell'identità è credere che essa si realizzi nel ritorno a una forma statica, al focolare, alla coincidenza con se stessi mediante il riconoscimento di ciò che ci appartiene. Ma l'uomo che ha accettato la metamorfosi, l'uomo che si è fatto <em>Nessuno</em> e ha lasciato che il mare gli soffiasse dentro l'anima, sa che il ritorno è un'illusione. Nolan coglie questo dramma a perfezione, e pone in bocca a Odisseo una confessione spietata sul canto delle Sirene: «Era il delizioso prurito che vorresti grattare, ma è sotto la pelle e non puoi arrivarci. [...] Era il canto di tutte le promesse che non ho mantenuto. E che mi ha detto che non voglio tornare a casa veramente». Ecco la maledizione e la grandezza della mente poliedrica: chi ha imparato a riflettere infiniti punti dell'universo, chi ha usato la propria intelligenza per far girare le ruote del destino leggendo i segni di un mondo doloroso, non può più rassegnarsi alla rigidità di una singola stanza. <em>Itaca ti ha dato il bel viaggio -</em> riflette Kavafis - <em>senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</em></p>
+                <p>L'inganno supremo dell'identità è credere che essa si realizzi nel ritorno a una forma statica, al focolare, alla coincidenza con se stessi mediante il riconoscimento di ciò che ci appartiene. Ma l'uomo che ha accettato la metamorfosi, l'uomo che si è fatto <em>Nessuno</em> e ha lasciato che il mare gli soffiasse dentro l'anima, sa che il ritorno è un'illusione.</p>
+                <div class="click-left" onclick="goPrev()"></div>
+            </div>
+        </div>
+
+        <!-- FOGLIO 4 (NUOVO FOGLIO) -->
+        <div class="paper" id="p4">
+            <!-- Pagina Interna 6 -->
+            <div class="front">
+                <p>Nolan coglie questo dramma a perfezione, e pone in bocca a Odisseo una confessione spietata sul canto delle Sirene: «Era il delizioso prurito che vorresti grattare, ma è sotto la pelle e non puoi arrivarci. [...] Era il canto di tutte le promesse che non ho mantenuto. E che mi ha detto che non voglio tornare a casa veramente».</p>
+                <p>Ecco la maledizione e la grandezza della mente poliedrica: chi ha imparato a riflettere infiniti punti dell'universo, chi ha usato la propria intelligenza per far girare le ruote del destino leggendo i segni di un mondo doloroso, non può più rassegnarsi alla rigidità di una singola stanza.</p>
+                <p class="quote-block">Itaca ti ha dato il bel viaggio - riflette Kavafis - senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
@@ -306,16 +325,18 @@
 
     <script>
         let desktopLocation = 1;
-        let maxDesktopLocation = 4;
+        let maxDesktopLocation = 5; // Aumentato a 5 per supportare il nuovo foglio
         const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
         const p3 = document.getElementById("p3");
+        const p4 = document.getElementById("p4"); // Aggiunta la variabile per il nuovo foglio
 
         const mobilePages = [
             p1.querySelector('.front'), p1.querySelector('.back'),
             p2.querySelector('.front'), p2.querySelector('.back'),
-            p3.querySelector('.front'), p3.querySelector('.back')
+            p3.querySelector('.front'), p3.querySelector('.back'),
+            p4.querySelector('.front'), p4.querySelector('.back') // Aggiunti i lati del nuovo foglio
         ];
         let currentMobilePage = 0;
 
@@ -337,6 +358,7 @@
                         case 1: p1.classList.add("flipped"); setTimeout(() => { p1.style.zIndex = 1; }, 400); break;
                         case 2: p2.classList.add("flipped"); setTimeout(() => { p2.style.zIndex = 2; }, 400); break;
                         case 3: p3.classList.add("flipped"); setTimeout(() => { p3.style.zIndex = 3; }, 400); break;
+                        case 4: p4.classList.add("flipped"); setTimeout(() => { p4.style.zIndex = 4; }, 400); break; // Nuovo caso per girare pagina 4
                     }
                     desktopLocation++;
                 }
@@ -353,9 +375,10 @@
             } else {
                 if(desktopLocation > 1) {
                     switch(desktopLocation) {
-                        case 2: p1.style.zIndex = 4; p1.classList.remove("flipped"); setTimeout(() => { p1.style.zIndex = 3; }, 400); book.classList.remove("open"); break;
-                        case 3: p2.style.zIndex = 4; p2.classList.remove("flipped"); setTimeout(() => { p2.style.zIndex = 2; }, 400); break;
-                        case 4: p3.style.zIndex = 4; p3.classList.remove("flipped"); setTimeout(() => { p3.style.zIndex = 1; }, 400); break;
+                        case 2: p1.style.zIndex = 5; p1.classList.remove("flipped"); setTimeout(() => { p1.style.zIndex = 4; }, 400); book.classList.remove("open"); break;
+                        case 3: p2.style.zIndex = 5; p2.classList.remove("flipped"); setTimeout(() => { p2.style.zIndex = 3; }, 400); break;
+                        case 4: p3.style.zIndex = 5; p3.classList.remove("flipped"); setTimeout(() => { p3.style.zIndex = 2; }, 400); break;
+                        case 5: p4.style.zIndex = 5; p4.classList.remove("flipped"); setTimeout(() => { p4.style.zIndex = 1; }, 400); break; // Nuovo caso per tornare indietro
                     }
                     desktopLocation--;
                 }
