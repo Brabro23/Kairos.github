@@ -11,6 +11,7 @@
         
         body {
             height: 100vh;
+            /* Sfondo aggiornato con il tuo file */
             background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.9)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
             background-size: cover;
             background-position: center;
@@ -105,23 +106,6 @@
             overflow: hidden;
         }
 
-        .open-hint {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2a1c10;
-            color: #fdfbf7;
-            padding: 10px 20px;
-            font-family: 'Helvetica Neue', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0;
-            transition: opacity 0.5s ease 0.4s;
-            border-radius: 3px;
-        }
-
         @keyframes slideInLeft {
             0% { opacity: 0; transform: translateX(-100px) rotateY(15deg); }
             100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
@@ -133,6 +117,7 @@
 
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
         .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
+        .article-card:nth-child(3) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s; }
 
         .article-card.selected {
             position: fixed;
@@ -141,11 +126,6 @@
             transform: translate(-50%, -50%) scale(1.15) !important;
             z-index: 1000;
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 100px rgba(0,0,0,0.5);
-            cursor: pointer;
-        }
-
-        .article-card.selected .open-hint {
-            opacity: 1;
         }
 
         .articles-gallery.has-selection .article-card:not(.selected) {
@@ -185,18 +165,13 @@
 
     <div class="articles-gallery" id="gallery">
         
-        <!-- ARTICOLO MASINI -->
         <div class="article-card" onclick="handleCardClick(this, 'masini.html')">
-            <!-- CARICA LA TUA FOTO NEL REPOSITORY CON IL NOME 'copertina-masini.jpg' -->
-            <div class="card-image" style="background-image: url('FullSizeRender.jpeg');"></div>
+            <div class="card-image" style="background-image: url('copertina-masini.jpg');"></div>
             <div class="card-content">
                 <h2>L'amore libero</h2>
                 <p>Vittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore più vera che l’artista è riuscito a strappare dalle fauci della sua rabbia...</p>
             </div>
-            <div class="open-hint">Apri e Leggi</div>
         </div>
-
-        <!-- Puoi aggiungere altri articoli qui sotto seguendo la stessa struttura -->
 
     </div>
 
@@ -204,26 +179,19 @@
         function handleCardClick(cardElement, targetUrl) {
             const gallery = document.getElementById('gallery');
             
-            if (cardElement.classList.contains('selected')) {
+            if (cardElement.classList.contains('selected')) return;
+
+            gallery.classList.add('has-selection');
+            cardElement.classList.add('selected');
+            
+            setTimeout(() => {
                 document.body.style.transition = "opacity 0.5s ease";
                 document.body.style.opacity = 0;
                 
                 setTimeout(() => {
                     window.location.href = targetUrl;
                 }, 500);
-                return;
-            }
-
-            gallery.classList.add('has-selection');
-            cardElement.classList.add('selected');
-            
-            document.body.onclick = function(e) {
-                if(!cardElement.contains(e.target)) {
-                    cardElement.classList.remove('selected');
-                    gallery.classList.remove('has-selection');
-                    document.body.onclick = null; 
-                }
-            };
+            }, 800);
         }
     </script>
 </body>
