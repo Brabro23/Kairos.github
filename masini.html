@@ -7,13 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* =========================================
-           RESET E VARIABILI
-           ========================================= */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         :root {
-            --bg-color: #fdfbf7; /* Crema chiarissimo, riposante per gli occhi */
+            --bg-color: #fdfbf7;
             --text-color: #1a110b;
             --accent-color: #6c4e31;
             --font-heading: 'Playfair Display', serif;
@@ -29,9 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================================
-           PROGRESS BAR DI LETTURA
-           ========================================= */
         .progress-container {
             position: fixed;
             top: 0;
@@ -47,9 +41,6 @@
             width: 0%;
         }
 
-        /* =========================================
-           NAVIGAZIONE (Torna agli articoli)
-           ========================================= */
         .top-nav {
             position: absolute;
             top: 30px;
@@ -68,20 +59,16 @@
         }
         .back-btn:hover { opacity: 0.7; }
 
-        /* =========================================
-           HERO SECTION (Copertina e Titolo)
-           ========================================= */
         .hero {
             position: relative;
             width: 100%;
-            height: 70vh; /* L'immagine occupa il 70% dello schermo all'apertura */
+            height: 70vh; 
             background-color: #222;
         }
         .hero-image {
             width: 100%;
             height: 100%;
-            /* SOSTITUISCI CON IL NOME DELLA TUA FOTO */
-            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('FullSizeRender.jpeg'); 
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('copertina-masini.jpg'); 
             background-size: cover;
             background-position: center;
         }
@@ -111,12 +98,9 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.6);
         }
 
-        /* =========================================
-           CORPO DELL'ARTICOLO
-           ========================================= */
         .article-content {
             width: 90%;
-            max-width: 680px; /* Larghezza ottimale per la lettura (circa 65-75 caratteri per riga) */
+            max-width: 680px; 
             margin: 60px auto 100px auto;
             font-size: 1.15rem;
         }
@@ -136,7 +120,6 @@
             color: var(--accent-color);
         }
 
-        /* Stile per i blocchi in MAIUSCOLO che mi hai fornito */
         .quote-block {
             border-left: 3px solid var(--accent-color);
             padding-left: 20px;
@@ -154,33 +137,34 @@
         }
 
         /* =========================================
-           FOOTER E LOGO
+           FOOTER CON SFONDO AGGIORNATO (FullSizeRender.jpeg)
            ========================================= */
         footer {
             text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid #e5e0d8;
-            background-color: #f7f4ec;
+            padding: 100px 20px;
+            border-top: 3px solid #2a1c10;
+            background-image: linear-gradient(rgba(20, 15, 10, 0.85), rgba(10, 5, 0, 0.95)), url('FullSizeRender.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .home-link {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: #2a1c10;
+            color: #fdfbf7; 
             text-decoration: none;
             letter-spacing: 4px;
             transition: transform 0.3s ease;
             display: inline-block; 
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
         }
         .home-link:hover {
             transform: scale(1.05);
-            color: var(--accent-color);
+            color: #ccc;
         }
 
-        /* =========================================
-           RESPONSIVE (SMARTPHONE)
-           ========================================= */
         @media (max-width: 750px) {
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; }
@@ -191,25 +175,22 @@
             }
             .drop-cap { font-size: 3.5rem; }
             .quote-block { font-size: 1.1rem; margin: 2rem 0; }
-            .home-link { font-size: 2.2rem; }
+            .home-link { font-size: 2.5rem; }
             .top-nav { top: 20px; left: 20px; }
-            /* Il pulsante indietro diventa nero se si scorre, ma qui all'inizio sta sull'immagine scura */
+            footer { padding: 80px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra di avanzamento lettura -->
     <div class="progress-container">
         <div class="progress-bar" id="myBar"></div>
     </div>
 
-    <!-- Bottone Indietro -->
     <nav class="top-nav">
         <a href="articoli.html" class="back-btn">← Torna agli articoli</a>
     </nav>
 
-    <!-- Intestazione Articolo -->
     <header class="hero">
         <div class="hero-image"></div>
         <div class="hero-text">
@@ -218,7 +199,6 @@
         </div>
     </header>
 
-    <!-- Corpo del Testo -->
     <main class="article-content">
         
         <p class="quote-block"><strong>BELLA STRONZA DI MARCO MASINI DEVE ESSERE RIADATTATA AI TEMPI.. IL TESTO CONTIENE CONCETTI MISOGINI E LE SUE STROFE DESCRIVONO ESPLICITAMENTE ATTI DI VIOLENZA.</strong></p>
@@ -253,12 +233,10 @@
 
     </main>
 
-    <!-- Footer con ritorno all'homepage -->
     <footer>
         <a href="index.html" class="home-link">KAIROS</a>
     </footer>
 
-    <!-- Script per la barra di progressione della lettura -->
     <script>
         window.onscroll = function() { updateProgressBar() };
 
