@@ -11,7 +11,6 @@
         
         body {
             height: 100vh;
-            /* Sfondo a tema studio editoriale/giornalistico */
             background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1455390582262-044cdead2708?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -132,12 +131,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Ritardi in base al numero di articoli */
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
         .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
-        .article-card:nth-child(3) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s; }
-        .article-card:nth-child(4) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s; }
-        .article-card:nth-child(5) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.0s; }
 
         .article-card.selected {
             position: fixed;
@@ -190,38 +185,18 @@
 
     <div class="articles-gallery" id="gallery">
         
-        <!-- ARTICOLO 1 -->
-        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-1.html')">
-            <!-- SOSTITUISCI 'foto-articolo-1.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
-            <div class="card-image" style="background-image: url('foto-articolo-1.jpg');"></div>
+        <!-- ARTICOLO MASINI -->
+        <div class="article-card" onclick="handleCardClick(this, 'masini.html')">
+            <!-- CARICA LA TUA FOTO NEL REPOSITORY CON IL NOME 'copertina-masini.jpg' -->
+            <div class="card-image" style="background-image: url('copertina-masini.jpg');"></div>
             <div class="card-content">
-                <h2>TITOLO ARTICOLO 1</h2>
-                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
+                <h2>L'amore libero</h2>
+                <p>Vittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore più vera che l’artista è riuscito a strappare dalle fauci della sua rabbia...</p>
             </div>
             <div class="open-hint">Apri e Leggi</div>
         </div>
 
-        <!-- ARTICOLO 2 -->
-        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-2.html')">
-            <!-- SOSTITUISCI 'foto-articolo-2.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
-            <div class="card-image" style="background-image: url('foto-articolo-2.jpg');"></div>
-            <div class="card-content">
-                <h2>TITOLO ARTICOLO 2</h2>
-                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
-            </div>
-            <div class="open-hint">Apri e Leggi</div>
-        </div>
-
-        <!-- ARTICOLO 3 -->
-        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-3.html')">
-            <!-- SOSTITUISCI 'foto-articolo-3.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
-            <div class="card-image" style="background-image: url('foto-articolo-3.jpg');"></div>
-            <div class="card-content">
-                <h2>TITOLO ARTICOLO 3</h2>
-                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
-            </div>
-            <div class="open-hint">Apri e Leggi</div>
-        </div>
+        <!-- Puoi aggiungere altri articoli qui sotto seguendo la stessa struttura -->
 
     </div>
 
@@ -239,7 +214,6 @@
                 return;
             }
 
-            const rect = cardElement.getBoundingClientRect();
             gallery.classList.add('has-selection');
             cardElement.classList.add('selected');
             
