@@ -22,7 +22,7 @@
         }
         
         /* =========================================
-           STILI DESKTOP E IPAD (Libro 3D)
+           STILI DESKTOP E IPAD (Libro 3D) - INVARIATI
            ========================================= */
         .book {
             position: relative;
@@ -110,7 +110,7 @@
             text-decoration: none;
             letter-spacing: 2px;
             position: relative;
-            z-index: 100000; /* Mantiene il link cliccabile sopra ad altri elementi */
+            z-index: 100000;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             transition: transform 0.3s ease;
             display: inline-block; 
@@ -178,7 +178,7 @@
         .mobile-nav { display: none; }
 
         /* =========================================
-           ADATTAMENTO SMARTPHONE
+           ADATTAMENTO SMARTPHONE CON FIX LINK
            ========================================= */
         @media (max-width: 950px) {
             .book { transform: translateX(-25%) scale(0.80); }
@@ -241,10 +241,11 @@
             h1 { font-size: 2.8rem; }
             p { font-size: 1rem; line-height: 1.6; }
             
+            /* FIX LINK: Rimpicciolito il padding e aggiunta sicurezza sul touch */
             .home-link { 
                 font-size: 3.2rem; 
                 transform: none !important; 
-                padding: 40px; 
+                padding: 20px; 
                 pointer-events: auto !important;
             }
         }
@@ -414,14 +415,15 @@
         <!-- FOGLIO 11 -->
         <div class="paper" id="p11">
             <div class="front">
-                <!-- Pagina intenzionalmente vuota per chiudere la rilegatura, oppure si gira per la retrocopertina -->
+                <!-- Pagina finale vuota per permettere il giro della copertina posteriore senza tagliare testi -->
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back cover-back">
                 <p class="quote-block" style="color: #fdfbf7; border-left-color: #fdfbf7; margin: 0 30px; text-align: left; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Itaca ti ha dato il bel viaggio - riflette Kavafis - senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</p>
                 <div class="click-left" onclick="goPrev()"></div>
-                <a href="index.html" class="home-link">KAIROS</a>
+                <!-- FIX LINK MOBILE -->
+                <a href="index.html" onclick="window.location.href='index.html'; return false;" class="home-link">KAIROS</a>
             </div>
         </div>
 
@@ -429,7 +431,7 @@
 
     <script>
         let desktopLocation = 1;
-        let maxDesktopLocation = 12; // Per gli 11 fogli 
+        let maxDesktopLocation = 12; // Modificato per i 11 fogli strutturali
         const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
