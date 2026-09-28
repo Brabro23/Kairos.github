@@ -110,7 +110,7 @@
             text-decoration: none;
             letter-spacing: 2px;
             position: relative;
-            z-index: 100000;
+            z-index: 100000; /* Mantiene il link cliccabile sopra ad altri elementi */
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             transition: transform 0.3s ease;
             display: inline-block; 
@@ -125,7 +125,6 @@
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         
-        /* Font elegante e leggibile, con interlinea ampia. Nessun overflow grazie alle 20 facciate! */
         p { 
             font-family: 'Lora', Georgia, serif;
             font-size: 0.98rem; 
@@ -164,7 +163,6 @@
             z-index: 100; 
         }
         
-        /* Livelli Z-Index perfetti per 11 fogli */
         #p1 { z-index: 11; }
         #p2 { z-index: 10; }
         #p3 { z-index: 9; }
@@ -180,7 +178,7 @@
         .mobile-nav { display: none; }
 
         /* =========================================
-           ADATTAMENTO SMARTPHONE (SCORRIMENTO SICURO)
+           ADATTAMENTO SMARTPHONE
            ========================================= */
         @media (max-width: 950px) {
             .book { transform: translateX(-25%) scale(0.80); }
@@ -201,7 +199,6 @@
                 transition: none; 
             }
             
-            /* overflow-y abilitato e padding-bottom a 120px per non far coprire il testo dalla barra */
             .front, .back { 
                 width: 100vw; 
                 height: 100dvh; 
@@ -311,12 +308,13 @@
             <div class="front">
                 <p>Se una barca vuota lo urta, per quanto collerico, non si adira; tuttavia se in quella barca c'è qualcuno, grida fino a imprecare all’offesa. La differenza non sta nell'urto, identico in entrambi i casi: sta nel fatto che nel secondo caso <em>c'è qualcuno</em> che ti è venuto addosso.</p>
                 <p>All’alba del poema, Agamennone e Achille sono due barche piene; cariche di onore da difendere, di premi da rivendicare, gonfie di un "sè" infettato dall'angoscia del dominio. La furia s’infiamma a seguito di questo stato, nell'istante in cui ambedue percepiscono un'intenzione ostile dell’altro, un'invasione del proprio spazio.</p>
+                <p>Non è un caso allora che nel <strong>poema del divenire</strong>, aggrappato ai resti di una zattera, <strong>Odisseo diventi naufrago</strong>.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>Non è un caso allora che nel <strong>poema del divenire</strong>, aggrappato ai resti di una zattera, <strong>Odisseo diventi naufrago</strong>. Naufragio deriva dal latino <em>naufragium</em>, un termine composto da <em>nàvis</em> (nave) e <em>fragium</em> (dal tema di <em>fràngere</em>, rompere). In sintesi, un naufrago è colui che ha <strong>perduto la nave</strong>.</p>
-                <p>Lasciato in balia del Mediterraneo, Odisseo si ritrova senza più una barca da difendere, senza nulla da reclamare. Ha perso quel tutto in cui prima s’identificava. Come osserva Giovanni Bottiroli - nel suo saggio <em>L’identità esiste soltanto nei suoi modi</em> - l'inganno supremo della nostra mente è la <strong>concezione proprietaria del sé</strong>:</p>
+                <p>Naufragio deriva dal latino <em>naufragium</em>, un termine composto da <em>nàvis</em> (nave) e <em>fragium</em> (dal tema di <em>fràngere</em>, rompere). In sintesi, un naufrago è colui che ha <strong>perduto la nave</strong>.</p>
+                <p>Lasciato in balia del Mediterraneo, Odisseo si ritrova senza più una barca da difendere, senza nulla da reclamare. Ha perso quel tutto in cui prima s’identificava. Come osserva Giovanni Bottiroli - nel suo saggio <em>L’identità esiste soltanto nei suoi modi</em> - l'inganno supremo della nostra mente è la <strong>concezione proprietaria del sé</strong>: Io esisto in quanto posseggo un lavoro, una relazione, un credo religioso, una opinione politica e il segno di alcuni traumi.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -324,14 +322,13 @@
         <!-- FOGLIO 5 -->
         <div class="paper" id="p5">
             <div class="front">
-                <p>Io esisto in quanto posseggo un lavoro, una relazione, un credo religioso, una opinione politica e il segno di alcuni traumi. Insomma, la sensazione che <strong>l'identità si realizzi attraverso il riconoscimento di ciò che ci appartiene</strong>. Ma il protagonista dell’Odissea a un certo punto - nell’antro di Polifemo - si è fatto <em>Nessuno</em>.</p>
-                <p>Ora, la parola greca per “nessuno”, o “non uno”, è <strong><em>outis</em></strong>: “<em>ou</em>” significa “non”, mentre “<em>tis</em>” è il pronome indefinito, “uno”. Affermando di “non essere uno”, Odisseo scompare dai radar della coincidenza con se stesso, svalicando nel territorio inafferrabile della molteplicità.</p>
+                <p>Insomma, la sensazione che <strong>l'identità si realizzi attraverso il riconoscimento di ciò che ci appartiene</strong>. Ma il protagonista dell’Odissea a un certo punto - nell’antro di Polifemo - si è fatto <em>Nessuno</em>.</p>
+                <p>Ora, la parola greca per “nessuno”, o “non uno”, è <strong><em>outis</em></strong>: “<em>ou</em>” significa “non”, mentre “<em>tis</em>” è il pronome indefinito, “uno”. Affermando di “non essere uno”, Odisseo scompare dai radar della coincidenza con se stesso, svalicando nel territorio inafferrabile della molteplicità. Può sembrare un paradosso astratto, eppure è la scissione che governa <strong>la nostra stessa mente, perennemente divisa tra due regimi</strong>.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>Può sembrare un paradosso astratto, eppure è la scissione che governa <strong>la nostra stessa mente, perennemente divisa tra due regimi</strong>. Da una parte, subiamo l<strong>a logica rigida della separazione</strong>: un pensiero razionale ossessionato dal possesso, che seziona il mondo in categorie stagne, non tollera contraddizioni e finisce per incatenarci in identità fisse e stereotipate. È la <strong>prigione dell'Uno</strong>, la barca piena di Agamennone.</p>
-                <p>Dall'altra parte, abita in noi una logica fluida e congiuntiva: un paesaggio interiore – che potremmo chiamare <strong>inconscio</strong> – fatto di legami ininterrotti, di associazioni libere e di forme in perenne mutamento.</p>
+                <p>Da una parte, subiamo l<strong>a logica rigida della separazione</strong>: un pensiero razionale ossessionato dal possesso, che seziona il mondo in categorie stagne, non tollera contraddizioni e finisce per incatenarci in identità fisse e stereotipate. È la <strong>prigione dell'Uno</strong>, la barca piena di Agamennone. Dall'altra parte, abita in noi una logica fluida e congiuntiva: un paesaggio interiore – che potremmo chiamare <strong>inconscio</strong> – fatto di legami ininterrotti, di associazioni libere e di forme in perenne mutamento. Un territorio invisibile, sconfinato e vivo, di cui la nostra frazione razionale è solo una minuscola e spaventata provincia cosciente.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -339,15 +336,15 @@
         <!-- FOGLIO 6 -->
         <div class="paper" id="p6">
             <div class="front">
-                <p>Un territorio invisibile, sconfinato e vivo, di cui la nostra frazione razionale è solo una minuscola e spaventata provincia cosciente.</p>
                 <p>Appurato ciò, siamo stati abituati a leggere l'Odissea con una compiacenza borghese. Ci consoliamo con l'idea che, per quanto il mondo là fuori possa essere spietato e multiforme, esista sempre un baricentro, un’Itaca, un perimetro di pietra in cui l'Io possa finalmente tornare a coincidere con se stesso, riprendendo possesso dei propri averi e della propria identità.</p>
-                <p>Ma se c’è un limite che condanna la nostra mente alla paralisi, è la fissità.</p>
+                <p>Ma se c’è un limite che condanna la nostra mente alla paralisi, è la fissità. <strong>Nelle nostre architetture razionali</strong>, un oggetto serve a uno scopo e a uno soltanto; <strong>un’idea esclude categoricamente il suo opposto</strong>. Immobili tra le nostre certezze, siamo incapaci di scorgere le funzioni latenti delle cose.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p><strong>Nelle nostre architetture razionali</strong>, un oggetto serve a uno scopo e a uno soltanto; <strong>un’idea esclude categoricamente il suo opposto</strong>. Immobili tra le nostre certezze, siamo incapaci di scorgere le funzioni latenti delle cose. Eppure, la vera saggezza si annida proprio <strong>nell'uso transitorio e strumentale del quotidiano</strong>, come insegna il saggio taoista Zhuangzi ricorrendo alla più umile delle immagini:</p>
+                <p>Eppure, la vera saggezza si annida proprio <strong>nell'uso transitorio e strumentale del quotidiano</strong>, come insegna il saggio taoista Zhuangzi ricorrendo alla più umile delle immagini:</p>
                 <p class="quote-block">«<em>Lo scopo del calappio è il coniglio, ottenuto il coniglio, riponi il calappio. Scopo della nassa è il pesce, ottenuto il pesce, riponi la nassa. Scopo delle parole è l'idea, ottenuta l'idea, riponi le parole</em>».</p>
+                <p>Finora non si è citato forse il più riconosciuto elemento che contraddistingue Odisseo: la sua <em>metis</em>, l'intelligenza pratica. La <em>metis</em> agisce secondo questa esatta economia: <strong>usa la forma, il nome o la maschera finché servono</strong>, per poi scartarli senza farsi mai possedere da essi.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -355,14 +352,14 @@
         <!-- FOGLIO 7 -->
         <div class="paper" id="p7">
             <div class="front">
-                <p>Finora non si è citato forse il più riconosciuto elemento che contraddistingue Odisseo: la sua <em>metis</em>, l'intelligenza pratica. La <em>metis</em> agisce secondo questa esatta economia: <strong>usa la forma, il nome o la maschera finché servono</strong>, per poi scartarli senza farsi mai possedere da essi.</p>
                 <p>Occorre però definire la flessibilità con l'esattezza logica che le spetta: essa è, a tutti gli effetti, una <em>proprietà disposizionale</em>. Ad esempio, la <strong>fragilità non è una proprietà che il vetro possiede</strong> indipendentemente dalle circostanze in cui effettivamente si manifesta, <strong>bensì la disposizione a rompersi</strong> in determinate circostanze.</p>
+                <p>Non vuol dire trovarsi passivamente in un certo stato, o subire l'inerzia di un cambiamento caotico; significa invece <strong>possedere in potenza la capacità</strong> — o persino l'imperativo — <strong>di assumere un determinato stato</strong> qualora si realizzi una precisa condizione nel mondo esterno.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>Non vuol dire trovarsi passivamente in un certo stato, o subire l'inerzia di un cambiamento caotico; significa invece <strong>possedere in potenza la capacità</strong> — o persino l'imperativo — <strong>di assumere un determinato stato</strong> qualora si realizzi una precisa condizione nel mondo esterno. È una tensione invisibile tenuta in serbo, <strong>un catalogo di possibilità quiescienti che attendono l'urto della realtà per uscire</strong>.</p>
-                <p>Dotato di questa proprietà, lo sguardo di Odisseo di fronte a un palo d'ulivo arroventato non vede più la naturalezza di un ramo, ma ne coglie la disposizione intrinseca a farsi arma; in un vello di pecora non scorge un animale, bensì la matrice esatta di un nascondiglio.</p>
+                <p>È una tensione invisibile tenuta in serbo, <strong>un catalogo di possibilità quiescienti che attendono l'urto della realtà per uscire</strong>. Dotato di questa proprietà, lo sguardo di Odisseo di fronte a un palo d'ulivo arroventato non vede più la naturalezza di un ramo, ma ne coglie la disposizione intrinseca a farsi arma; in un vello di pecora non scorge un animale, bensì la matrice esatta di un nascondiglio.</p>
+                <p class="quote-block"><em>…chi siamo noi, chi è ciascuno di noi se non una combinatoria d'esperienze, d'informazioni, di letture, d'immaginazioni? Ogni vita è un'enciclopedia, una biblioteca, un inventario d'oggetti, un campionario di stili, dove <strong>tutto può essere continuamente rimescolato e riordinato in tutti i modi possibili</strong>.</em><br><br>(Italo Calvino, <em>Molteplicità</em> in <em>Lezioni Americane</em>)</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -370,14 +367,14 @@
         <!-- FOGLIO 8 -->
         <div class="paper" id="p8">
             <div class="front">
-                <p class="quote-block"><em>…chi siamo noi, chi è ciascuno di noi se non una combinatoria d'esperienze, d'informazioni, di letture, d'immaginazioni? Ogni vita è un'enciclopedia, una biblioteca, un inventario d'oggetti, un campionario di stili, dove <strong>tutto può essere continuamente rimescolato e riordinato in tutti i modi possibili</strong>.</em><br><br>(Italo Calvino, <em>Molteplicità</em> in <em>Lezioni Americane</em>)</p>
-                <p>A questo punto, con la presa salda al timone, proviamo a navigare sull’onda di un’altra frequenza. Ogni giorno, in qualunque ambito, <strong>noi crediamo di subire il crollo del nostro mondo, quando invece ne siamo l’innesco</strong>. Nolan porta a galla questo meccanismo contorto.</p>
+                <p>A questo punto, con la presa salda al timone, proviamo a navigare sull’onda di un’altra frequenza. Ogni giorno, in qualunque ambito, <strong>noi crediamo di subire il crollo del nostro mondo, quando invece ne siamo l’innesco</strong>. Nolan porta a galla questo meccanismo contorto. Nel momento esatto in cui progetta il Cavallo di Troia, l'Ego cosciente di Odisseo si illude di aver forgiato la chiave per il rimpatrio; il suo inconscio, invece, ha calcolato l'esatta traiettoria per incenerirlo.</p>
+                <p>Profanando il confine del sacro e mutando un dono in un'arma di sterminio, la <em>metis</em> di Odisseo brucia i tradizionali costumi di un patrimonio antico, e con esse le fondamenta stesse di Itaca.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>Nel momento esatto in cui progetta il Cavallo di Troia, l'Ego cosciente di Odisseo si illude di aver forgiato la chiave per il rimpatrio; il suo inconscio, invece, ha calcolato l'esatta traiettoria per incenerirlo. Profanando il confine del sacro e mutando un dono in un'arma di sterminio, la <em>metis</em> di Odisseo brucia i tradizionali costumi di un patrimonio antico, e con esse le fondamenta stesse di Itaca.</p>
                 <p class="quote-block"><em>Abbiamo lasciato loro un dono, un’offerta di pace, che hanno portato dentro le loro mura. Abbiamo violato tutto quello che è sempre stato sacro, tra tutti i popoli. E trasformato una battaglia, in una caccia. Bruciare le mura di Troia, è stato bruciare il mondo intero, compresa la tua casa.</em></p>
+                <p>Odisseo inconsciamente manda in fumo il suo focolare domestico, l’unico perimetro entro il quale la sua identità coincideva con se stessa. Sotto questa luce, la confessione estorta dal silenzio delle Sirene nella pellicola di Nolan assume i contorni di una rivelazione.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -385,15 +382,15 @@
         <!-- FOGLIO 9 -->
         <div class="paper" id="p9">
             <div class="front">
-                <p>Odisseo inconsciamente manda in fumo il suo focolare domestico, l’unico perimetro entro il quale la sua identità coincideva con se stessa. Sotto questa luce, la confessione estorta dal silenzio delle Sirene nella pellicola di Nolan assume i contorni di una rivelazione.</p>
                 <p class="quote-block"><em>Te l'ho detto, quello che vuoi di più è quello che meno puoi avere; e quello che meno puoi avere, è quello che avevi già, e che hai perso. Era il canto di tutte le promesse che non ho mantenuto. E che mi ha detto che non voglio tornare a casa veramente.</em><br>(The Odyssey, Cristopher Nolan)</p>
+                <p><strong>C’è un discorso che procede senza di noi</strong>. Quel <em>«non voglio tornare a casa veramente»</em> è un freddo referto che Odisseo non sente dalle Sirene. Le Sirene non articolano nessun discorso, non parlano. Hanno teso però - come intuì Kafka - una trappola molto più spietata: il silenzio.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p><strong>C’è un discorso che procede senza di noi</strong>. Quel <em>«non voglio tornare a casa veramente»</em> è un freddo referto che Odisseo non sente dalle Sirene. Le Sirene non articolano nessun discorso, non parlano. Hanno teso però - come intuì Kafka - una trappola molto più spietata: il silenzio.</p>
                 <p>Odisseo, stretto all'albero maestro, nella speranza di udire una verità dal mondo esterno assume una postura di massima ricezione. E a fargli visita in questa posizione <strong>è una conversazione del suo inconscio portata a compimento.</strong></p>
-                <p>Per comprendere l'esattezza di questa meccanica, occorre osservare come <strong>in ciascuno di noi scorrano</strong>, paralleli e inseparabili, <strong>il binario del possibile e il binario dell'escluso</strong>.</p>
+                <p>Per comprendere l'esattezza di questa meccanica, occorre osservare come <strong>in ciascuno di noi scorrano</strong>, paralleli e inseparabili, <strong>il binario del possibile e il binario dell'escluso</strong>. Per tracciare una rotta all'interno delle innumerevoli variabili del reale, l'Ego ha bisogno di un pretesto, necessita di un'Itaca da raggiungere.</p>
+                <p>Per muoversi lungo la linea del possibile, <strong>ogni singola azione esige una rinuncia</strong>. Scegliere significa sempre perdere un'alternativa. Noi ci muoviamo convinti che l'opzione scartata svanisca nel nulla, liquidata come uno scarto di calcolo funzionale all'avanzamento.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -401,15 +398,15 @@
         <!-- FOGLIO 10 -->
         <div class="paper" id="p10">
             <div class="front">
-                <p>Per tracciare una rotta all'interno delle innumerevoli variabili del reale, l'Ego ha bisogno di un pretesto, necessita di un'Itaca da raggiungere. Per muoversi lungo la linea del possibile, <strong>ogni singola azione esige una rinuncia</strong>. Scegliere significa sempre perdere un'alternativa. Noi ci muoviamo convinti che l'opzione scartata svanisca nel nulla, liquidata come uno scarto di calcolo funzionale all'avanzamento.</p>
                 <p>Non è così. <strong>Le nostre esclusioni</strong> possiedono una gravità occulta. Non evaporano: sedimentano, si intrecciano e <strong>formano una sintassi autonoma</strong>. Sotto la soglia dell'attenzione, la moltitudine di ciò che abbiamo respinto inizia a dialogare. Tesse un discorso parallelo che evolve a nostra totale insaputa.</p>
+                <p>Quando il rumore del mondo improvvisamente viene meno — nella solitudine di noi stessi — <strong>possiamo intercettare il mormorio fantasma di queste rinunce</strong>, trovando una sintesi perfetta a cui il nostro Ego non ha mai partecipato.</p>
+                <p><strong>Deporre l'ossessione del possesso ci permette di afferrare l'alternativa scartata</strong>, quell'ipotesi esclusa che non ha mai smesso di pulsare.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>Quando il rumore del mondo improvvisamente viene meno — nella solitudine di noi stessi — <strong>possiamo intercettare il mormorio fantasma di queste rinunce</strong>, trovando una sintesi perfetta a cui il nostro Ego non ha mai partecipato.</p>
-                <p><strong>Deporre l'ossessione del possesso ci permette di afferrare l'alternativa scartata</strong>, quell'ipotesi esclusa che non ha mai smesso di pulsare.</p>
                 <p>È qui che si chiude il teorema del viaggio. La destinazione (Itaca) spogliata di ogni nostra pretesa, non sarà mai ricca di per sé. Non vi è alcun tesoro oggettivo nascosto nella pietra di Itaca.</p>
+                <p>La troveremo ricca a un'unica e imprescindibile condizione: <strong>quando cesseremo di cercarvi il riflesso di ciò che credevamo di possedere, e impareremo finalmente a dare una forma esatta e cosciente alle innumerevoli trasformazioni che ci hanno cambiato e ricostruito durante il percorso</strong>.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -417,15 +414,14 @@
         <!-- FOGLIO 11 -->
         <div class="paper" id="p11">
             <div class="front">
-                <p>La troveremo ricca a un'unica e imprescindibile condizione: <strong>quando cesseremo di cercarvi il riflesso di ciò che credevamo di possedere, e impareremo finalmente a dare una forma esatta e cosciente alle innumerevoli trasformazioni che ci hanno cambiato e ricostruito durante il percorso</strong>.</p>
+                <!-- Pagina intenzionalmente vuota per chiudere la rilegatura, oppure si gira per la retrocopertina -->
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
-            <!-- COPERTINA RETRO ISOLATA, MAI SOVRAPPOSTA A NESSUN TESTO -->
             <div class="back cover-back">
                 <p class="quote-block" style="color: #fdfbf7; border-left-color: #fdfbf7; margin: 0 30px; text-align: left; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Itaca ti ha dato il bel viaggio - riflette Kavafis - senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</p>
                 <div class="click-left" onclick="goPrev()"></div>
-                <a href="index.html" onclick="window.location.href='index.html';" class="home-link">KAIROS</a>
+                <a href="index.html" class="home-link">KAIROS</a>
             </div>
         </div>
 
@@ -433,7 +429,7 @@
 
     <script>
         let desktopLocation = 1;
-        let maxDesktopLocation = 12; // Modificato per i 11 fogli strutturali
+        let maxDesktopLocation = 12; // Per gli 11 fogli 
         const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
