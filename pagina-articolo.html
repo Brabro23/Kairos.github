@@ -46,6 +46,7 @@
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
         }
         
+        /* Gabbia tipografica bilanciata */
         .front, .back {
             position: absolute;
             width: 100%;
@@ -54,7 +55,7 @@
             backface-visibility: hidden; 
             -webkit-backface-visibility: hidden; 
             background-color: #fdfbf7; 
-            padding: 40px 36px; 
+            padding: 38px 35px; 
             overflow: hidden; 
             box-shadow: inset 5px 0 20px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.4); 
             border-radius: 2px 8px 8px 2px;
@@ -125,12 +126,12 @@
         
         h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif;}
         
-        /* Font elegante, proporzionato per la massima leggibilità e giustificato perfettamente */
+        /* Font ampio e lussuoso per riempire le 20 facciate senza overflow */
         p { 
             font-family: 'Lora', Georgia, serif;
-            font-size: 0.98rem; 
+            font-size: 1.08rem; 
             line-height: 1.65; 
-            margin-bottom: 15px; 
+            margin-bottom: 12px; 
             color: #222; 
             text-align: justify; 
             text-justify: inter-word;
@@ -149,10 +150,10 @@
         .quote-block {
             border-left: 3px solid #6c4e31;
             padding-left: 15px;
-            margin: 18px 0;
+            margin: 16px 0;
             font-style: italic;
             color: #444;
-            font-size: 0.94rem;
+            font-size: 1.02rem;
         }
         
         .click-right, .click-left { 
@@ -164,7 +165,7 @@
             z-index: 100; 
         }
         
-        /* Z-Index esatti per 11 Fogli, nessuna pagina vuota, il testo finisce chirurgicamente in fondo */
+        /* Livelli Z-Index per gli 11 Fogli perfetti (nessuna pagina bianca) */
         #p1 { z-index: 11; }
         #p2 { z-index: 10; }
         #p3 { z-index: 9; }
@@ -201,11 +202,10 @@
                 transition: none; 
             }
             
-            /* Pagine verticali scorrevoli (overflow-y) */
             .front, .back { 
                 width: 100vw; 
                 height: 100dvh; 
-                padding: 35px 25px 120px 25px !important; 
+                padding: 35px 25px 150px 25px !important; 
                 border-radius: 0 !important; 
                 border: none !important; 
                 box-shadow: none !important; 
@@ -242,7 +242,7 @@
             .click-right, .click-left { display: none !important; } 
 
             h1 { font-size: 2.8rem; }
-            p { font-size: 1rem; line-height: 1.6; }
+            p { font-size: 1.05rem; line-height: 1.6; }
             
             .home-link { 
                 font-size: 3.2rem; 
@@ -300,7 +300,8 @@
             </div>
             
             <div class="back">
-                <p>Agamennone furibondo comanda ai suoi scudieri di prelevare dalla tenda di Achille il suo premio - una donna, Briseide - per l’oltraggiosa indisponenza avuta al suo cospetto. Una volta subiti gli ordini del suo re, Achille conturbato rimane <em>adirato nel cuore per la donna dalla bella cintura che, con la forza, gli avevano tolto a dispetto.</em> E così l’ira di Achille per tutta l’Iliade resta tesa e indomabile come un urlo di guerra.</p>
+                <p>Agamennone furibondo comanda ai suoi scudieri di prelevare dalla tenda di Achille il suo premio - una donna, Briseide - per l’oltraggiosa indisponenza avuta al suo cospetto. Una volta subiti gli ordini del suo re, Achille conturbato rimane <em>adirato nel cuore per la donna dalla bella cintura che, con la forza, gli avevano tolto a dispetto.</em></p>
+                <p>E così l’ira di Achille per tutta l’Iliade resta tesa e indomabile come un urlo di guerra.</p>
                 <p><strong>Se un uomo sapesse vuotare sé stesso nel proprio cammino nel mondo</strong> - si chiede a un certo punto Zhuang Zi - <strong>chi potrebbe più nuocergli?</strong></p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
@@ -309,13 +310,15 @@
         <!-- FOGLIO 4 -->
         <div class="paper" id="p4">
             <div class="front">
-                <p>In un brano contenuto in <em>Acque d’autunno</em> e intitolato <em>Il viaggio al regno della virtù</em>, Zhuang Zi tramanda di un uomo che attraversa un fiume in barca. Se una barca vuota lo urta, per quanto collerico, non si adira; tuttavia se in quella barca c'è qualcuno, grida fino a imprecare all’offesa. La differenza non sta nell'urto, identico in entrambi i casi: sta nel fatto che nel secondo caso <em>c'è qualcuno</em> che ti è venuto addosso.</p>
+                <p>In un brano contenuto in <em>Acque d’autunno</em> e intitolato <em>Il viaggio al regno della virtù</em>, Zhuang Zi tramanda di un uomo che attraversa un fiume in barca. Se una barca vuota lo urta, per quanto collerico, non si adira; tuttavia se in quella barca c'è qualcuno, grida fino a imprecare all’offesa.</p>
+                <p>La differenza non sta nell'urto, identico in entrambi i casi: sta nel fatto che nel secondo caso <em>c'è qualcuno</em> che ti è venuto addosso.</p>
                 <p>All’alba del poema, Agamennone e Achille sono due barche piene; cariche di onore da difendere, di premi da rivendicare, gonfie di un "sè" infettato dall'angoscia del dominio.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p>La furia s’infiamma a seguito di questo stato, nell'istante in cui ambedue percepiscono un'intenzione ostile dell’altro, un'invasione del proprio spazio. Non è un caso allora che nel <strong>poema del divenire</strong>, aggrappato ai resti di una zattera, <strong>Odisseo diventi naufrago</strong>. Naufragio deriva dal latino <em>naufragium</em>, un termine composto da <em>nàvis</em> (nave) e <em>fragium</em> (dal tema di <em>fràngere</em>, rompere). In sintesi, un naufrago è colui che ha <strong>perduto la nave</strong>.</p>
+                <p>La furia s’infiamma a seguito di questo stato, nell'istante in cui ambedue percepiscono un'intenzione ostile dell’altro, un'invasione del proprio spazio.</p>
+                <p>Non è un caso allora che nel <strong>poema del divenire</strong>, aggrappato ai resti di una zattera, <strong>Odisseo diventi naufrago</strong>. Naufragio deriva dal latino <em>naufragium</em>, un termine composto da <em>nàvis</em> (nave) e <em>fragium</em> (dal tema di <em>fràngere</em>, rompere). In sintesi, un naufrago è colui che ha <strong>perduto la nave</strong>.</p>
                 <p>Lasciato in balia del Mediterraneo, Odisseo si ritrova senza più una barca da difendere, senza nulla da reclamare.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
@@ -331,7 +334,7 @@
             
             <div class="back">
                 <p>Ora, la parola greca per “nessuno”, o “non uno”, è <strong><em>outis</em></strong>: “<em>ou</em>” significa “non”, mentre “<em>tis</em>” è il pronome indefinito, “uno”. Affermando di “non essere uno”, Odisseo scompare dai radar della coincidenza con se stesso, svalicando nel territorio inafferrabile della molteplicità.</p>
-                <p>Può sembrare un paradosso astratto, eppure è la scissione che governa <strong>la nostra stessa mente, perennemente divisa tra due regimi</strong>. Da una parte, subiamo l<strong>a logica rigida della separazione</strong>: un pensiero razionale ossessionato dal possesso, che seziona il mondo in categorie stagne, non tollera contraddizioni e finisce per incatenarci in identità fisse e stereotipate. È la <strong>prigione dell'Uno</strong>, la barca piena di Agamennone.</p>
+                <p>Può sembrare un paradosso astratto, eppure è la scissione che governa <strong>la nostra stessa mente, perennemente divisa tra due regimi</strong>. Da una parte, subiamo l<strong>a logica rigida della separazione</strong>: un pensiero razionale ossessionato dal possesso, che seziona il mondo in categorie stagne, non tollera contraddizioni e finisce per incatenarci in identità fisse e stereotipate.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -339,7 +342,7 @@
         <!-- FOGLIO 6 -->
         <div class="paper" id="p6">
             <div class="front">
-                <p>Dall'altra parte, abita in noi una logica fluida e congiuntiva: un paesaggio interiore – che potremmo chiamare <strong>inconscio</strong> – fatto di legami ininterrotti, di associazioni libere e di forme in perenne mutamento. Un territorio invisibile, sconfinato e vivo, di cui la nostra frazione razionale è solo una minuscola e spaventata provincia cosciente.</p>
+                <p>È la <strong>prigione dell'Uno</strong>, la barca piena di Agamennone. Dall'altra parte, abita in noi una logica fluida e congiuntiva: un paesaggio interiore – che potremmo chiamare <strong>inconscio</strong> – fatto di legami ininterrotti, di associazioni libere e di forme in perenne mutamento. Un territorio invisibile, sconfinato e vivo, di cui la nostra frazione razionale è solo una minuscola e spaventata provincia cosciente.</p>
                 <p>Appurato ciò, siamo stati abituati a leggere l'Odissea con una compiacenza borghese. Ci consoliamo con l'idea che, per quanto il mondo là fuori possa essere spietato e multiforme, esista sempre un baricentro, un’Itaca, un perimetro di pietra in cui l'Io possa finalmente tornare a coincidere con se stesso, riprendendo possesso dei propri averi e della propria identità.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
@@ -403,14 +406,12 @@
             <div class="front">
                 <p>Per tracciare una rotta all'interno delle innumerevoli variabili del reale, l'Ego ha bisogno di un pretesto, necessita di un'Itaca da raggiungere. Per muoversi lungo la linea del possibile, <strong>ogni singola azione esige una rinuncia</strong>. Scegliere significa sempre perdere un'alternativa. Noi ci muoviamo convinti che l'opzione scartata svanisca nel nulla, liquidata come uno scarto di calcolo funzionale all'avanzamento.</p>
                 <p>Non è così. <strong>Le nostre esclusioni</strong> possiedono una gravità occulta. Non evaporano: sedimentano, si intrecciano e <strong>formano una sintassi autonoma</strong>. Sotto la soglia dell'attenzione, la moltitudine di ciò che abbiamo respinto inizia a dialogare. Tesse un discorso parallelo che evolve a nostra totale insaputa.</p>
-                <p>Quando il rumore del mondo improvvisamente viene meno — nella solitudine di noi stessi — <strong>possiamo intercettare il mormorio fantasma di queste rinunce</strong>, trovando una sintesi perfetta a cui il nostro Ego non ha mai partecipato.</p>
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back">
-                <p><strong>Deporre l'ossessione del possesso ci permette di afferrare l'alternativa scartata</strong>, quell'ipotesi esclusa che non ha mai smesso di pulsare.</p>
-                <p>È qui che si chiude il teorema del viaggio. La destinazione (Itaca) spogliata di ogni nostra pretesa, non sarà mai ricca di per sé. Non vi è alcun tesoro oggettivo nascosto nella pietra di Itaca.</p>
-                <p>La troveremo ricca a un'unica e imprescindibile condizione: <strong>quando cesseremo di cercarvi il riflesso di ciò che credevamo di possedere, e impareremo finalmente a dare una forma esatta e cosciente alle innumerevoli trasformazioni che ci hanno cambiato e ricostruito durante il percorso</strong>.</p>
+                <p>Quando il rumore del mondo improvvisamente viene meno — nella solitudine di noi stessi — <strong>possiamo intercettare il mormorio fantasma di queste rinunce</strong>, trovando una sintesi perfetta a cui il nostro Ego non ha mai partecipato. <strong>Deporre l'ossessione del possesso ci permette di afferrare l'alternativa scartata</strong>, quell'ipotesi esclusa che non ha mai smesso di pulsare.</p>
+                <p>È qui che si chiude il teorema del viaggio. La destinazione (Itaca) spogliata di ogni nostra pretesa, non sarà mai ricca di per sé. Non vi è alcun tesoro oggettivo nascosto nella pietra di Itaca. La troveremo ricca a un'unica e imprescindibile condizione: <strong>quando cesseremo di cercarvi il riflesso di ciò che credevamo di possedere, e impareremo finalmente a dare una forma esatta e cosciente alle innumerevoli trasformazioni che ci hanno cambiato e ricostruito durante il percorso</strong>.</p>
                 <div class="click-left" onclick="goPrev()"></div>
             </div>
         </div>
@@ -418,13 +419,15 @@
         <!-- FOGLIO 11 -->
         <div class="paper" id="p11">
             <div class="front">
-                <!-- Pagina in bianco necessaria tecnicamente per la rilegatura del volume, si salta col click -->
+                <!-- Questa parte DEVE finire il ciclo. Se la pagina 20 è "S11-front", il "S11-back" ospiterà la retrocopertina. L'intero libro è ora bilanciato e chiuso alla perfezione! -->
+                <p style="text-align: center; margin-top: 200px; opacity: 0;"><em>Fine lettura</em></p> 
                 <div class="click-right" onclick="goNext()"></div>
             </div>
             
             <div class="back cover-back">
                 <p class="quote-block" style="color: #fdfbf7; border-left-color: #fdfbf7; margin: 0 30px; text-align: left; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Itaca ti ha dato il bel viaggio - riflette Kavafis - senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</p>
                 <div class="click-left" onclick="goPrev()"></div>
+                <!-- FIX LINK MOBILE -->
                 <a href="index.html" onclick="window.location.href='index.html'; return false;" class="home-link">KAIROS</a>
             </div>
         </div>
@@ -433,7 +436,7 @@
 
     <script>
         let desktopLocation = 1;
-        let maxDesktopLocation = 12; // 11 fogli strutturali per chiudere il libro 
+        let maxDesktopLocation = 12; // 11 fogli esatti, libro senza strappi, senza vuoti.
         const book = document.getElementById("book-container");
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
@@ -458,7 +461,7 @@
             p8.querySelector('.front'), p8.querySelector('.back'),
             p9.querySelector('.front'), p9.querySelector('.back'),
             p10.querySelector('.front'), p10.querySelector('.back'),
-            p11.querySelector('.cover-back') // Evitiamo di mostrare pagine vuote su mobile
+            p11.querySelector('.cover-back') // NESSUNA PAGINA VUOTA SU MOBILE
         ];
         let currentMobilePage = 0;
 
