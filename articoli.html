@@ -11,7 +11,7 @@
         
         body {
             height: 100vh;
-            /* Sfondo a tema studio editoriale/giornalistico scuro ed elegante */
+            /* Sfondo a tema studio editoriale/giornalistico */
             background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1455390582262-044cdead2708?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -22,7 +22,6 @@
             padding: 0 5vw;
         }
 
-        /* Titolo della sezione in alto a sinistra */
         .page-title {
             position: absolute;
             top: 40px;
@@ -42,14 +41,12 @@
             width: 100%;
             height: 60vh;
             align-items: center;
-            /* Permette lo scorrimento orizzontale se ci sono molti articoli */
             overflow-x: auto;
             overflow-y: hidden;
             padding: 20px 0;
             scroll-behavior: smooth;
         }
 
-        /* Nascondiamo la scrollbar per eleganza */
         .articles-gallery::-webkit-scrollbar { display: none; }
         .articles-gallery { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -64,20 +61,17 @@
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             
-            /* Preparazione animazione d'ingresso da sinistra */
             opacity: 0;
             transform: translateX(-100vw) rotateY(15deg);
             transform-style: preserve-3d;
-            border-left: 8px solid #2a1c10; /* Simula il dorso di una rivista/libro */
+            border-left: 8px solid #2a1c10;
         }
 
-        /* Hover per far capire che è cliccabile */
         .article-card:hover:not(.selected) {
             transform: translateY(-15px) scale(1.02);
             box-shadow: -15px 25px 40px rgba(0,0,0,0.7);
         }
 
-        /* Copertina immagine */
         .card-image {
             width: 100%;
             height: 55%;
@@ -86,7 +80,6 @@
             border-bottom: 2px solid #2a1c10;
         }
 
-        /* Contenuto testuale della copertina */
         .card-content {
             padding: 25px;
             height: 45%;
@@ -108,12 +101,11 @@
             color: #444;
             line-height: 1.5;
             display: -webkit-box;
-            -webkit-line-clamp: 4; /* Taglia il testo a 4 righe con i puntini */
+            -webkit-line-clamp: 4; 
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        /* Istruzione che compare solo quando la carta è al centro */
         .open-hint {
             position: absolute;
             bottom: 25px;
@@ -131,11 +123,6 @@
             border-radius: 3px;
         }
 
-        /* =========================================
-           ANIMAZIONI E STATI (MAGIA TIPOGRAFICA)
-           ========================================= */
-
-        /* Animazione d'ingresso a cascata */
         @keyframes slideInLeft {
             0% { opacity: 0; transform: translateX(-100px) rotateY(15deg); }
             100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
@@ -145,13 +132,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Ritardi per l'ingresso uno alla volta */
+        /* Ritardi in base al numero di articoli */
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
         .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
         .article-card:nth-child(3) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s; }
         .article-card:nth-child(4) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s; }
+        .article-card:nth-child(5) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.0s; }
 
-        /* Stato: Quando una card è selezionata (va al centro) */
         .article-card.selected {
             position: fixed;
             top: 50% !important;
@@ -166,7 +153,6 @@
             opacity: 1;
         }
 
-        /* Stato: Le card non selezionate svaniscono */
         .articles-gallery.has-selection .article-card:not(.selected) {
             opacity: 0;
             transform: scale(0.8);
@@ -174,7 +160,6 @@
             filter: blur(5px);
         }
 
-        /* Pulsante indietro */
         .back-btn {
             position: absolute;
             top: 40px;
@@ -190,7 +175,6 @@
         }
         .back-btn:hover { transform: scale(1.1); }
 
-        /* Mobile Adjustments */
         @media (max-width: 750px) {
             .page-title { font-size: 1.8rem; top: 30px; }
             .articles-gallery { gap: 20px; align-items: flex-start; margin-top: 80px; }
@@ -204,37 +188,37 @@
     <h1 class="page-title">Articoli</h1>
     <a href="index.html" class="back-btn">Torna alla Home</a>
 
-    <!-- Cointainer degli articoli -->
     <div class="articles-gallery" id="gallery">
         
         <!-- ARTICOLO 1 -->
-        <!-- NOTA: Nel parametro onclick, inserisci il link alla pagina che abbiamo creato -->
-        <div class="article-card" onclick="handleCardClick(this, 'pagina-articolo.html')">
-            <!-- Usa l'immagine di copertina originale che mi avevi fornito per l'Iliade/Odissea -->
-            <div class="card-image" style="background-image: url('8C77115A-5A6C-4213-9BA8-5F8C6F8B90FF.png');"></div>
+        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-1.html')">
+            <!-- SOSTITUISCI 'foto-articolo-1.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
+            <div class="card-image" style="background-image: url('foto-articolo-1.jpg');"></div>
             <div class="card-content">
-                <h2>L'idea di un solo uomo</h2>
-                <p>L’Iliade è una lunga cronistoria di bottini depredati. L’Odissea, lo spirito vuoto di un eroe in cui il vento ha infuso l'anima del mare. Il nesso che le tiene unite è valido ancora oggi.</p>
+                <h2>TITOLO ARTICOLO 1</h2>
+                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
             </div>
             <div class="open-hint">Apri e Leggi</div>
         </div>
 
-        <!-- ARTICOLO 2 (Esempio Placeholder) -->
-        <div class="article-card" onclick="handleCardClick(this, '#')">
-            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1000&auto=format&fit=crop');"></div>
+        <!-- ARTICOLO 2 -->
+        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-2.html')">
+            <!-- SOSTITUISCI 'foto-articolo-2.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
+            <div class="card-image" style="background-image: url('foto-articolo-2.jpg');"></div>
             <div class="card-content">
-                <h2>Il Peso dell'Invisibile</h2>
-                <p>Un'analisi sulle dinamiche sociali moderne, dove ciò che non viene detto modella le relazioni umane molto più profondamente delle dichiarazioni aperte. L'anatomia del silenzio.</p>
+                <h2>TITOLO ARTICOLO 2</h2>
+                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
             </div>
             <div class="open-hint">Apri e Leggi</div>
         </div>
 
-        <!-- ARTICOLO 3 (Esempio Placeholder) -->
-        <div class="article-card" onclick="handleCardClick(this, '#')">
-            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1000&auto=format&fit=crop');"></div>
+        <!-- ARTICOLO 3 -->
+        <div class="article-card" onclick="handleCardClick(this, 'link-articolo-3.html')">
+            <!-- SOSTITUISCI 'foto-articolo-3.jpg' CON IL NOME DELLA FOTO CHE CARICHERAI -->
+            <div class="card-image" style="background-image: url('foto-articolo-3.jpg');"></div>
             <div class="card-content">
-                <h2>Oltre l'Orizzonte</h2>
-                <p>Come la concezione dello spazio ha alterato la nostra letteratura. Dalle esplorazioni marittime antiche fino all'isolamento tecnologico del ventunesimo secolo.</p>
+                <h2>TITOLO ARTICOLO 3</h2>
+                <p>Incolla qui la breve didascalia che riassume l'argomento dell'articolo. Verrà tagliata elegantemente se troppo lunga.</p>
             </div>
             <div class="open-hint">Apri e Leggi</div>
         </div>
@@ -245,10 +229,7 @@
         function handleCardClick(cardElement, targetUrl) {
             const gallery = document.getElementById('gallery');
             
-            // Se la card ha già la classe 'selected', significa che è al centro.
-            // Il secondo click la apre (reindirizza alla pagina di lettura).
             if (cardElement.classList.contains('selected')) {
-                // Aggiungiamo un leggero fade-out prima di caricare la pagina per fluidità
                 document.body.style.transition = "opacity 0.5s ease";
                 document.body.style.opacity = 0;
                 
@@ -258,22 +239,15 @@
                 return;
             }
 
-            // Primo click: Fissiamo le coordinate iniziali prima di centrarla, 
-            // così se volessimo espandere l'animazione sa da dove partire (FLIP concept semplificato)
             const rect = cardElement.getBoundingClientRect();
-            
-            // Comunichiamo alla galleria che c'è una selezione (le altre card svaniscono)
             gallery.classList.add('has-selection');
-            
-            // Assegniamo la classe 'selected' alla card cliccata per farla volare al centro
             cardElement.classList.add('selected');
             
-            // Cliccando ovunque nello sfondo, si annulla la selezione (chiude l'anteprima)
             document.body.onclick = function(e) {
                 if(!cardElement.contains(e.target)) {
                     cardElement.classList.remove('selected');
                     gallery.classList.remove('has-selection');
-                    document.body.onclick = null; // Rimuove l'evento
+                    document.body.onclick = null; 
                 }
             };
         }
