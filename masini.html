@@ -7,426 +7,267 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
+        /* =========================================
+           RESET E VARIABILI
+           ========================================= */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        :root {
+            --bg-color: #fdfbf7; /* Crema chiarissimo, riposante per gli occhi */
+            --text-color: #1a110b;
+            --accent-color: #6c4e31;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
         body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('5B1D9667-1FB9-41FD-B309-796DBCABF7B3.png');
-            background-size: cover;
-            background-position: center;
-            font-family: 'Playfair Display', serif;
-            overflow: hidden; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        
-        .book {
-            position: relative;
-            width: 900px; 
-            height: 600px; 
-            perspective: 2000px; 
-            transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-            transform: translateX(-25%);
+
+        /* =========================================
+           PROGRESS BAR DI LETTURA
+           ========================================= */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
         }
-        
-        .book.open { transform: translateX(0); }
-        
-        .paper {
-            position: absolute;
-            width: 50%; 
+        .progress-bar {
             height: 100%;
-            top: 0; right: 0; 
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d; 
-            transform-origin: left center; 
-            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
+            background: var(--accent-color);
+            width: 0%;
         }
-        
-        .front, .back {
+
+        /* =========================================
+           NAVIGAZIONE (Torna agli articoli)
+           ========================================= */
+        .top-nav {
             position: absolute;
+            top: 30px;
+            left: 5vw;
+            z-index: 100;
+        }
+        .back-btn {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover { opacity: 0.7; }
+
+        /* =========================================
+           HERO SECTION (Copertina e Titolo)
+           ========================================= */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* L'immagine occupa il 70% dello schermo all'apertura */
+            background-color: #222;
+        }
+        .hero-image {
             width: 100%;
             height: 100%;
-            top: 0; left: 0;
-            backface-visibility: hidden; 
-            -webkit-backface-visibility: hidden; 
-            background-color: #fdfbf7; 
-            padding: 40px 35px; 
-            overflow: hidden; 
-            box-shadow: inset 5px 0 20px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.4); 
-            border-radius: 2px 8px 8px 2px;
-        }
-
-        .front { pointer-events: auto; }
-        .back { pointer-events: none; }
-        .flipped .front { pointer-events: none; }
-        .flipped .back { pointer-events: auto; }
-        
-        .back { 
-            transform: rotateY(180deg); 
-            -webkit-transform: rotateY(180deg);
-            border-radius: 8px 2px 2px 8px; 
-            box-shadow: inset -5px 0 20px rgba(0,0,0,0.08), -8px 10px 25px rgba(0,0,0,0.4);
-        }
-        
-        .flipped { 
-            transform: rotateY(-180deg); 
-            -webkit-transform: rotateY(-180deg);
-        }
-        
-        .cover-front { 
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('copertina-masini.jpg'); /* Stessa foto della galleria */
+            /* SOSTITUISCI CON IL NOME DELLA TUA FOTO */
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('copertina-masini.jpg'); 
             background-size: cover;
             background-position: center;
-            color: white; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
+        }
+        .hero-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
             text-align: center;
-            border-left: 10px solid #2a1c10; 
+            color: #fff;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .hero-subtitle {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
         }
 
-        .cover-back { 
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('copertina-masini.jpg');
-            background-size: cover;
-            background-position: center;
-            border-right: 10px solid #2a1c10; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 40px;
+        /* =========================================
+           CORPO DELL'ARTICOLO
+           ========================================= */
+        .article-content {
+            width: 90%;
+            max-width: 680px; /* Larghezza ottimale per la lettura (circa 65-75 caratteri per riga) */
+            margin: 60px auto 100px auto;
+            font-size: 1.15rem;
         }
 
-        .home-link {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 100000;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            transition: transform 0.3s ease;
-            display: inline-block; 
-            transform: translateZ(30px); 
-            cursor: pointer;
-            margin-top: 50px;
-        }
-        
-        .home-link:hover {
-            transform: scale(1.05) translateZ(30px); 
-        }
-        
-        h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0 20px;}
-        
-        /* Font calibrato al millimetro su 6 fogli */
-        p { 
-            font-family: 'Lora', Georgia, serif;
-            font-size: 1.02rem; 
-            line-height: 1.6; 
-            margin-bottom: 14px; 
-            color: #222; 
-            text-align: justify; 
-            text-justify: inter-word;
+        .article-content p {
+            margin-bottom: 2rem;
+            text-align: justify;
         }
 
         .drop-cap {
             float: left;
-            font-size: 3.5rem;
+            font-size: 4rem;
             line-height: 0.8;
-            padding-top: 4px;
-            padding-right: 8px;
-            font-family: 'Playfair Display', serif;
-            color: #1a110b;
+            padding-top: 8px;
+            padding-right: 10px;
+            font-family: var(--font-heading);
+            color: var(--accent-color);
         }
 
+        /* Stile per i blocchi in MAIUSCOLO che mi hai fornito */
         .quote-block {
-            border-left: 3px solid #6c4e31;
-            padding-left: 15px;
-            margin: 16px 0;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+            margin: 3rem 0;
             font-style: italic;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
             color: #444;
-            font-size: 0.98rem;
+            line-height: 1.7;
         }
         
-        .click-right, .click-left { 
-            position: absolute; 
-            top: 0; left: 0;
-            width: 100%; 
-            height: 100%; 
-            cursor: pointer; 
-            z-index: 100; 
+        .quote-block strong {
+            font-weight: 700;
+            color: #222;
         }
-        
-        /* 6 Fogli totali (12 facciate) = Perfetto riempimento */
-        #p1 { z-index: 6; }
-        #p2 { z-index: 5; }
-        #p3 { z-index: 4; }
-        #p4 { z-index: 3; }
-        #p5 { z-index: 2; }
-        #p6 { z-index: 1; }
 
-        .mobile-nav { display: none; }
-
-        @media (max-width: 950px) {
-            .book { transform: translateX(-25%) scale(0.80); }
-            .book.open { transform: translateX(0) scale(0.80); }
+        /* =========================================
+           FOOTER E LOGO
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #e5e0d8;
+            background-color: #f7f4ec;
         }
-        
+
+        .home-link {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2a1c10;
+            text-decoration: none;
+            letter-spacing: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block; 
+        }
+        .home-link:hover {
+            transform: scale(1.05);
+            color: var(--accent-color);
+        }
+
+        /* =========================================
+           RESPONSIVE (SMARTPHONE)
+           ========================================= */
         @media (max-width: 750px) {
-            .book { 
-                width: 100vw; 
-                height: 100vh; 
-                transform: none !important; 
-                perspective: none;
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .article-content {
+                width: 88%;
+                font-size: 1.05rem;
+                margin: 40px auto 60px auto;
             }
-            .paper { 
-                width: 100vw; 
-                height: 100vh; 
-                transform: none !important; 
-                transition: none; 
-            }
-            
-            .front, .back { 
-                width: 100vw; 
-                height: 100dvh; 
-                padding: 35px 25px 150px 25px !important; 
-                border-radius: 0 !important; 
-                border: none !important; 
-                box-shadow: none !important; 
-                transform: none !important; 
-                position: absolute; 
-                top: 0; left: 0; 
-                opacity: 0; 
-                pointer-events: none;
-                transition: opacity 0.5s ease; 
-                overflow-y: auto !important; 
-                overflow-x: hidden;
-            }
-            
-            .front::-webkit-scrollbar, .back::-webkit-scrollbar { width: 4px; }
-            .front::-webkit-scrollbar-thumb, .back::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.2); border-radius: 4px; }
-            
-            .mobile-active {
-                opacity: 1 !important;
-                z-index: 100;
-                pointer-events: auto !important; 
-            }
-
-            .mobile-nav {
-                display: block;
-                position: fixed;
-                top: 0;
-                height: 100vh;
-                width: 20vw; 
-                z-index: 9999;
-                -webkit-tap-highlight-color: transparent; 
-            }
-            .mobile-nav.left { left: 0; }
-            .mobile-nav.right { right: 0; }
-            .click-right, .click-left { display: none !important; } 
-
-            h1 { font-size: 2.8rem; }
-            p { font-size: 1rem; line-height: 1.6; }
-            
-            .home-link { 
-                font-size: 3.2rem; 
-                transform: none !important; 
-                padding: 20px; 
-                pointer-events: auto !important;
-            }
+            .drop-cap { font-size: 3.5rem; }
+            .quote-block { font-size: 1.1rem; margin: 2rem 0; }
+            .home-link { font-size: 2.2rem; }
+            .top-nav { top: 20px; left: 20px; }
+            /* Il pulsante indietro diventa nero se si scorre, ma qui all'inizio sta sull'immagine scura */
         }
     </style>
 </head>
 <body>
 
-    <div class="mobile-nav left" onclick="goPrev()"></div>
-    <div class="mobile-nav right" onclick="goNext()"></div>
-
-    <div class="book" id="book-container">
-        
-        <!-- FOGLIO 1 -->
-        <div class="paper" id="p1">
-            <div class="front cover-front">
-                <h1>BELLA STRONZA DI MASINI</h1>
-                <p style="color: #ccc; text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 0;">l'amore libero</p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- Pagina 1 -->
-            <div class="back">
-                <p><span class="drop-cap">B</span>ELLA STRONZA DI MARCO MASINI DEVE ESSERE RIADATTATA AI TEMPI.. IL TESTO CONTIENE CONCETTI MISOGINI E LE SUE STROFE DESCRIVONO ESPLICITAMENTE ATTI DI VIOLENZA.</p>
-                <p>Vittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore più vera che l’artista è riuscito a strappare dalle fauci della sua rabbia è – a oggi – considerata di troppo, scomoda, fuori luogo, misogina: insomma, un boccone masticato a bocca aperta in mezzo a una sala di un ristorante stellato (evitabile).</p>
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-
-        <!-- FOGLIO 2 -->
-        <div class="paper" id="p2">
-            <!-- Pagina 2 -->
-            <div class="front">
-                <p>Che poi: chi siano i commensali del ristorante è tutto da vedere. I detrattori, non ci sorprende, sono individui seduti con la fibbia dei pantaloni slacciata, la pancetta che affannata ondeggia (o addome, scusate l’insolenza!) gli ultimi ingurgiti di superficialità: prelibatezza servita di frequente al giorno d’oggi.</p>
-                <p class="quote-block"><strong>L’HAI SENTITA LA CANZONE? MI VERREBBE DI STRAPPARTI / QUEI VESTITI DA PUTTANA / E TENERTI A GAMBE APERTE / FINCHÈ VIENE DOMATTINA.. DAVVERO OSCENA, COME SI FA A FARLA PASSARE PER UNA CANZONE ROMANTICA.. “A TE” DI JOVANOTTI, QUELLA SÌ CHE È UNA CANZONE D’AMORE.</strong></p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- Pagina 3 -->
-            <div class="back">
-                <p>Eccole, le colombe immacolate, i romantici paladini che, con garbo, agitano i loro sentimentalismi per cacciare il fetore putrido di testi tossici, velenosi e puzzolenti. A voi mi rivolgo, con giusto un paio di postille.</p>
-                <p class="quote-block"><strong>MA DI QUESTO NOSTRO AMORE / COSÌ TENERO E PULITO / NON MI RESTEREBBE ALTRO CHE UN LUNGHISSIMO MINUTO DI VIOLENZA / E ALLORA TI SALUTO, BELLA STRONZA, EH.</strong></p>
-                <p>Un sentito congedo di un ragazzo innamorato, poesia. Il testo è un flusso di coscienza alla Zeno Cosini.</p>
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-
-        <!-- FOGLIO 3 -->
-        <div class="paper" id="p3">
-            <!-- Pagina 4 -->
-            <div class="front">
-                <p>Un tripudio struggente che racconta di un’amore vissuto fino agli ultimi sgoccioli, chiuso con un amaro e profondo <em>e allora ti saluto</em>. In un’epoca in cui l’uomo elimina la donna, in un costante imperversare di gesti ignobili architettati da alcuni rozzi primitivi, questa chiusa dovrebbe essere diffusa, non soppressa.</p>
-                <p>Perché profuma di libertà, di rassegnazione. Non stringe, ma rilascia. Non abusa, ma rispetta. Insegna che a volte, la via più difficile da accettare è la sola da percorrere.</p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- Pagina 5 -->
-            <div class="back">
-                <p>Suggerisce, inoltre, che se anche la testa dà libero corso a pensieri violenti (<em>esci dai tuoi pantaloni, mi accontento come un cane degli avanzi</em>), in fondo va lasciata a sé stessa.</p>
-                <p class="quote-block"><strong>COM’È DI TUTTI GLI AMORI VERI, ANCHE SPIETATO E DOLOROSO, CHE FERISCE E RECIDE PER FAR CRESCERE E DAR FORMA (ITALO CALVINO, IL BARONE RAMPANTE)</strong></p>
-                <p>Come ogni forma letteraria, anche la canzone ha il diritto di essere ambigua, mal sintonizzata, ostica da mandar giù.</p>
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-
-        <!-- FOGLIO 4 -->
-        <div class="paper" id="p4">
-            <!-- Pagina 6 -->
-            <div class="front">
-                <p>Può dare insomma patria al Diavolo e non essere condivisibile. Sono semplici finzioni, narrate dalla voce del se. Se il mondo fosse come quello che stai leggendo, tu come la penseresti?</p>
-                <p>E invece oggi si è convinti che bisogna rinforzare il sistema immunitario dei lettori, consegnare a ognuno <em>livres de chevet</em> (libri da comodino, scusate il francese!) che rendano lieta la giornata, che ammorbidiscano l’esistenza, che diano morali giusti e buone.</p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- Pagina 7 -->
-            <div class="back">
-                <p>Lenti soporiferi somministrati per addormentare la vostra ragione, nient’altro che questo.</p>
-                <p class="quote-block"><strong>VISTA L’IRRICEVIBILITÀ DI QUELLA CANZONE, RILETTA CON LA SENSIBILITÀ ODIERNA (FONTE: LA REPUBBLICA)</strong></p>
-                <p>Non siamo più in grado di ricevere. Questa frase è una sconfitta, per ogni democrazia che si decanta di volere. Non lasciamo più entrare il discorso dell’avversario, vediamo Vannacci da Fedez e cestiniamo la puntata come se fosse carta straccia. Chissenefrega di quello che dicono, tanto Vannacci è un brufolo fascista nato storto.</p>
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-
-        <!-- FOGLIO 5 -->
-        <div class="paper" id="p5">
-            <!-- Pagina 8 -->
-            <div class="front">
-                <p>Amelia Rosselli, una grande poetessa del ‘900, amava dire “scrivo di notte e alla mattina, quando mi sveglio, <em>tengo le poesie che non ho capito</em>“. Che potente immagine.</p>
-                <p>Noi italiani abbiamo il privilegio di essere figli della più grande opera che ingegno umano abbia concepito: <em>La Divina Commedia</em>. Superato Lucifero, punto più gelido dell’Inferno, Dante è frastornato. Virgilio, poco prima, ordina a Dante di aggrapparsi alle spalle del mostro (d’accordo, è orribile, ma <em>bisogna superarlo</em>) e di calarsi lungo il suo pelo.</p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- Pagina 9 -->
-            <div class="back">
-                <p>Arrivati a metà corpo, quindi nel punto esatto del centro della Terra, Dante si accorge che Virgilio è capovolto: dove prima vedeva le sue gambe ora vede la sua testa (<em>così che io credevo che tornassimo di nuovo all’inferno</em>). Spoiler: l’inferno, fin dall’inizio, è stato un percorso in salita, per <em>uscir a riveder le stelle</em>.</p>
-                <p>Se davvero ciò che ci disgusta va eliminato, Dante avrebbe raccontato solo della luce abbagliante del Paradiso. Invece l’inferno va percorso, attraversato. Anzi, per Italo Calvino va riconosciuto.</p>
-                <div class="click-left" onclick="goPrev()"></div>
-            </div>
-        </div>
-
-        <!-- FOGLIO 6 -->
-        <div class="paper" id="p6">
-            <!-- Pagina 10 (Chiusura esatta e perfetta a destra) -->
-            <div class="front">
-                <p class="quote-block"><strong>… CERCARE E SAPER RICONOSCERE CHI E COSA, IN MEZZO ALL’INFERNO, NON È INFERNO, E FARLO DURARE, E DARGLI SPAZIO …</strong></p>
-                <p>Ogni parola non è un fuoco che arde, semmai un cumulo di cenere spenta. Scrivere è depositare su carta il risultato di una combustione avuta nei pensieri.</p>
-                <p>Una guerra è già avvenuta nella mente di chi scrive e nessuno di noi l’ha combattuta. La pagina è una città in rovina, e forse è soltanto passeggiando in silenzio, tra le macerie dei caratteri, che si sente il rumore delle lance, impregnato nel fumo disperso nell’aria.</p>
-                <div class="click-right" onclick="goNext()"></div>
-            </div>
-            
-            <!-- COPERTINA RETRO (Giri pagina e trovi subito questo, zero vuoti) -->
-            <div class="back cover-back">
-                <p class="quote-block" style="color: #fdfbf7; border-left-color: #fdfbf7; margin: 0 30px; text-align: left; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Itaca ti ha dato il bel viaggio - riflette Kavafis - senza di lei mai ti saresti messo sulla strada [...] e se la trovi povera, non per questo Itaca ti avrà deluso. Fatto ormai savio, con tutta la tua esperienza addosso già tu avrai capito ciò che Itaca vuole significare.</p>
-                <div class="click-left" onclick="goPrev()"></div>
-                <a href="index.html" onclick="window.location.href='index.html'; return false;" class="home-link">KAIROS</a>
-            </div>
-        </div>
-
+    <!-- Barra di avanzamento lettura -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
     </div>
 
+    <!-- Bottone Indietro -->
+    <nav class="top-nav">
+        <a href="articoli.html" class="back-btn">← Torna agli articoli</a>
+    </nav>
+
+    <!-- Intestazione Articolo -->
+    <header class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-text">
+            <h1 class="hero-title">Bella stronza di Masini</h1>
+            <p class="hero-subtitle">L'amore libero</p>
+        </div>
+    </header>
+
+    <!-- Corpo del Testo -->
+    <main class="article-content">
+        
+        <p class="quote-block"><strong>BELLA STRONZA DI MARCO MASINI DEVE ESSERE RIADATTATA AI TEMPI.. IL TESTO CONTIENE CONCETTI MISOGINI E LE SUE STROFE DESCRIVONO ESPLICITAMENTE ATTI DI VIOLENZA.</strong></p>
+
+        <p><span class="drop-cap">V</span>ittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore <em>più vera</em> che l’artista è riuscito a strappare dalle fauci della sua rabbia è – a oggi – considerata di troppo, scomoda, fuori luogo, misogina: insomma, un boccone masticato a bocca aperta in mezzo a una sala di un ristorante stellato (evitabile).</p>
+        
+        <p>Che poi: chi siano i commensali del ristorante è tutto da vedere. I detrattori, non ci sorprende, sono individui seduti con la fibbia dei pantaloni slacciata, la pancetta che affannata ondeggia (o <em>addome</em>, scusate l’insolenza!) gli ultimi <em>ingurgiti</em> di superficialità: prelibatezza servita di frequente al giorno d’oggi.</p>
+
+        <p class="quote-block"><strong>L’HAI SENTITA LA CANZONE? MI VERREBBE DI STRAPPARTI / QUEI VESTITI DA PUTTANA / E TENERTI A GAMBE APERTE / FINCHÈ VIENE DOMATTINA.. DAVVERO OSCENA, COME SI FA A FARLA PASSARE PER UNA CANZONE ROMANTICA.. “A TE” DI JOVANOTTI, QUELLA SÌ CHE È UNA CANZONE D’AMORE.</strong></p>
+
+        <p>Eccole, le colombe immacolate, i romantici paladini che, con garbo, agitano i loro sentimentalismi per cacciare il fetore putrido di testi tossici, velenosi e puzzolenti. A voi mi rivolgo, con giusto un paio di postille.</p>
+
+        <p class="quote-block"><strong>MA DI QUESTO NOSTRO AMORE / COSÌ TENERO E PULITO / NON MI RESTEREBBE ALTRO CHE UN LUNGHISSIMO MINUTO DI VIOLENZA / E ALLORA TI SALUTO, BELLA STRONZA, EH.</strong></p>
+
+        <p>Un sentito congedo di un ragazzo innamorato, poesia. Il testo è un flusso di coscienza alla Zeno Cosini, un tripudio struggente che racconta di un’amore vissuto fino agli ultimi sgoccioli, chiuso con un amaro e profondo <em>e allora ti saluto</em>. In un’epoca in cui l’uomo elimina la donna, in un costante imperversare di gesti ignobili architettati da alcuni rozzi primitivi, questa chiusa dovrebbe essere diffusa, non soppressa. Perché profuma di libertà, di rassegnazione. Non stringe, ma rilascia. Non abusa, ma rispetta. Insegna che a volte, la via più difficile da accettare è la sola da percorrere. Suggerisce, inoltre, che se anche la testa dà libero corso a pensieri violenti (<em>esci dai tuoi pantaloni, mi accontento come un cane degli avanzi</em>), in fondo va lasciata a sé stessa.</p>
+
+        <p class="quote-block"><strong>COM’È DI TUTTI GLI AMORI VERI, ANCHE SPIETATO E DOLOROSO, CHE FERISCE E RECIDE PER FAR CRESCERE E DAR FORMA (ITALO CALVINO, IL BARONE RAMPANTE)</strong></p>
+
+        <p>Come ogni forma letteraria, anche la canzone ha il diritto di essere ambigua, mal sintonizzata, ostica da mandar giù; può dare insomma patria al Diavolo e non essere condivisibile. Sono semplici finzioni, narrate dalla voce del se. Se il mondo fosse come quello che stai leggendo, tu come la penseresti? E invece oggi si è convinti che bisogna rinforzare il sistema immunitario dei lettori, consegnare a ognuno <em>livres de chevet</em> (libri da comodino, scusate il francese!) che rendano lieta la giornata, che ammorbidiscano l’esistenza, che diano morali giusti e buone. Lenti soporiferi somministrati per addormentare la vostra ragione, nient’altro che questo.</p>
+
+        <p class="quote-block"><strong>VISTA L’IRRICEVIBILITÀ DI QUELLA CANZONE, RILETTA CON LA SENSIBILITÀ ODIERNA (FONTE: LA REPUBBLICA)</strong></p>
+
+        <p>Non siamo più in grado di ricevere. Questa frase è una sconfitta, per ogni democrazia che si decanta di volere. Non lasciamo più entrare il discorso dell’avversario, vediamo Vannacci da Fedez e cestiniamo la puntata come se fosse carta straccia. Chissenefrega di quello che dicono, tanto Vannacci è un brufolo fascista nato storto. Amelia Rosselli, una grande poetessa del ‘900, amava dire “scrivo di notte e alla mattina, quando mi sveglio, <em>tengo le poesie che non ho capito</em>“. Che potente immagine.</p>
+
+        <p>Noi italiani abbiamo il privilegio di essere figli della più grande opera che ingegno umano abbia concepito: <em>La Divina Commedia</em>. Superato Lucifero, punto più gelido dell’Inferno, Dante è frastornato. Virgilio, poco prima, ordina a Dante di aggrapparsi alle spalle del mostro (d’accordo, è orribile, ma <em>bisogna superarlo</em>) e di calarsi lungo il suo pelo. Arrivati a metà corpo, quindi nel punto esatto del centro della Terra, Dante si accorge che Virgilio è capovolto: dove prima vedeva le sue gambe ora vede la sua testa (<em>così che io credevo che tornassimo di nuovo all’inferno</em>). Spoiler: l’inferno, fin dall’inizio, è stato un percorso in salita, per <em>uscir a riveder le stelle</em>.</p>
+
+        <p>Se davvero ciò che ci disgusta va eliminato, Dante avrebbe raccontato solo della luce abbagliante del Paradiso. Invece l’inferno va percorso, attraversato. Anzi, per Italo Calvino va riconosciuto.</p>
+
+        <p class="quote-block"><strong>… CERCARE E SAPER RICONOSCERE CHI E COSA, IN MEZZO ALL’INFERNO, NON È INFERNO, E FARLO DURARE, E DARGLI SPAZIO …</strong></p>
+
+        <p>Ogni parola non è un fuoco che arde, semmai un cumulo di cenere spenta. Scrivere è depositare su carta il risultato di una combustione avuta nei pensieri. Una guerra è già avvenuta nella mente di chi scrive e nessuno di noi l’ha combattuta. La pagina è una città in rovina, e forse è soltanto <em>passeggiando in silenzio</em>, tra le macerie dei caratteri, che si sente il rumore delle lance, impregnato nel fumo disperso nell’aria.</p>
+
+    </main>
+
+    <!-- Footer con ritorno all'homepage -->
+    <footer>
+        <a href="index.html" class="home-link">KAIROS</a>
+    </footer>
+
+    <!-- Script per la barra di progressione della lettura -->
     <script>
-        let desktopLocation = 1;
-        let maxDesktopLocation = 7; // Esattamente 6 Fogli strutturali. Zero errori.
-        const book = document.getElementById("book-container");
-        const p1 = document.getElementById("p1");
-        const p2 = document.getElementById("p2");
-        const p3 = document.getElementById("p3");
-        const p4 = document.getElementById("p4");
-        const p5 = document.getElementById("p5");
-        const p6 = document.getElementById("p6");
+        window.onscroll = function() { updateProgressBar() };
 
-        const mobilePages = [
-            p1.querySelector('.front'), p1.querySelector('.back'),
-            p2.querySelector('.front'), p2.querySelector('.back'),
-            p3.querySelector('.front'), p3.querySelector('.back'),
-            p4.querySelector('.front'), p4.querySelector('.back'),
-            p5.querySelector('.front'), p5.querySelector('.back'),
-            p6.querySelector('.front'), p6.querySelector('.cover-back')
-        ];
-        let currentMobilePage = 0;
-
-        if (window.innerWidth <= 750) {
-            mobilePages[0].classList.add('mobile-active');
-        }
-
-        function goNext() {
-            if (window.innerWidth <= 750) {
-                if (currentMobilePage < mobilePages.length - 1) {
-                    mobilePages[currentMobilePage].classList.remove('mobile-active');
-                    currentMobilePage++;
-                    mobilePages[currentMobilePage].classList.add('mobile-active');
-                    mobilePages[currentMobilePage].scrollTop = 0; 
-                }
-            } else {
-                if(desktopLocation < maxDesktopLocation) {
-                    if (desktopLocation === 1) book.classList.add("open");
-                    switch(desktopLocation) {
-                        case 1: p1.classList.add("flipped"); setTimeout(() => { p1.style.zIndex = 1; }, 400); break;
-                        case 2: p2.classList.add("flipped"); setTimeout(() => { p2.style.zIndex = 2; }, 400); break;
-                        case 3: p3.classList.add("flipped"); setTimeout(() => { p3.style.zIndex = 3; }, 400); break;
-                        case 4: p4.classList.add("flipped"); setTimeout(() => { p4.style.zIndex = 4; }, 400); break;
-                        case 5: p5.classList.add("flipped"); setTimeout(() => { p5.style.zIndex = 5; }, 400); break;
-                        case 6: p6.classList.add("flipped"); setTimeout(() => { p6.style.zIndex = 6; }, 400); break;
-                    }
-                    desktopLocation++;
-                }
-            }
-        }
-
-        function goPrev() {
-            if (window.innerWidth <= 750) {
-                if (currentMobilePage > 0) {
-                    mobilePages[currentMobilePage].classList.remove('mobile-active');
-                    currentMobilePage--;
-                    mobilePages[currentMobilePage].classList.add('mobile-active');
-                    mobilePages[currentMobilePage].scrollTop = 0;
-                }
-            } else {
-                if(desktopLocation > 1) {
-                    switch(desktopLocation) {
-                        case 2: p1.style.zIndex = 6; p1.classList.remove("flipped"); setTimeout(() => { p1.style.zIndex = 5; }, 400); book.classList.remove("open"); break;
-                        case 3: p2.style.zIndex = 6; p2.classList.remove("flipped"); setTimeout(() => { p2.style.zIndex = 4; }, 400); break;
-                        case 4: p3.style.zIndex = 6; p3.classList.remove("flipped"); setTimeout(() => { p3.style.zIndex = 3; }, 400); break;
-                        case 5: p4.style.zIndex = 6; p4.classList.remove("flipped"); setTimeout(() => { p4.style.zIndex = 2; }, 400); break;
-                        case 6: p5.style.zIndex = 6; p5.classList.remove("flipped"); setTimeout(() => { p5.style.zIndex = 1; }, 400); break;
-                        case 7: p6.style.zIndex = 6; p6.classList.remove("flipped"); setTimeout(() => { p6.style.zIndex = 0; }, 400); break;
-                    }
-                    desktopLocation--;
-                }
-            }
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
         }
     </script>
-
 </body>
 </html>
