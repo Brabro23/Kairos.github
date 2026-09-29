@@ -11,7 +11,6 @@
         
         body {
             height: 100vh;
-            /* Sfondo aggiornato con il tuo file */
             background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.9)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
             background-size: cover;
             background-position: center;
@@ -89,10 +88,10 @@
         }
 
         .card-content h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.2;
             color: #1a110b;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .card-content p {
@@ -165,11 +164,22 @@
 
     <div class="articles-gallery" id="gallery">
         
+        <!-- Articolo Masini -->
         <div class="article-card" onclick="handleCardClick(this, 'masini.html')">
-            <div class="card-image" style="background-image: url('FullSizeRender.jpeg');"></div>
+            <div class="card-image" style="background-image: url('copertina-masini.jpg');"></div>
             <div class="card-content">
                 <h2>L'amore libero</h2>
                 <p>Vittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore più vera che l’artista è riuscito a strappare dalle fauci della sua rabbia...</p>
+            </div>
+        </div>
+
+        <!-- Nuovo Articolo: Vecchioni / Melina -->
+        <div class="article-card" onclick="handleCardClick(this, 'melina.html')">
+            <!-- CARICA LA TUA FOTO NEL REPOSITORY CON IL NOME 'copertina-melina.jpg' -->
+            <div class="card-image" style="background-image: url('copertina-melina.jpg');"></div>
+            <div class="card-content">
+                <h2>Una melina divisoria e incongruente</h2>
+                <p>Lo scorso 15 marzo sul palco allestito in occasione della manifestazione in favore dell’Europa, è intervenuto Roberto Vecchioni. Di seguito, si intende tagliare a fettine il suo carnoso discorso...</p>
             </div>
         </div>
 
