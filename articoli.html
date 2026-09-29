@@ -116,7 +116,6 @@
 
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
         .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
-        .article-card:nth-child(3) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s; }
 
         .article-card.selected {
             position: fixed;
@@ -164,19 +163,16 @@
 
     <div class="articles-gallery" id="gallery">
         
-        <!-- Articolo Masini -->
         <div class="article-card" onclick="handleCardClick(this, 'masini.html')">
-            <div class="card-image" style="background-image: url('copertina-masini.jpg');"></div>
+            <div class="card-image" style="background-image: url('FullSizeRender.jpeg');"></div>
             <div class="card-content">
                 <h2>L'amore libero</h2>
                 <p>Vittima di uno sciacallaggio sprovveduto, lasciata orfana in pasto ai boia della cultura Woke, la canzone d’amore più vera che l’artista è riuscito a strappare dalle fauci della sua rabbia...</p>
             </div>
         </div>
 
-        <!-- Nuovo Articolo: Vecchioni / Melina -->
         <div class="article-card" onclick="handleCardClick(this, 'melina.html')">
-            <!-- CARICA LA TUA FOTO NEL REPOSITORY CON IL NOME 'copertina-melina.jpg' -->
-            <div class="card-image" style="background-image: url('copertina-melina.jpg');"></div>
+            <div class="card-image" style="background-image: url('IMG_7085.jpeg');"></div>
             <div class="card-content">
                 <h2>Una melina divisoria e incongruente</h2>
                 <p>Lo scorso 15 marzo sul palco allestito in occasione della manifestazione in favore dell’Europa, è intervenuto Roberto Vecchioni. Di seguito, si intende tagliare a fettine il suo carnoso discorso...</p>
@@ -188,16 +184,13 @@
     <script>
         function handleCardClick(cardElement, targetUrl) {
             const gallery = document.getElementById('gallery');
-            
             if (cardElement.classList.contains('selected')) return;
-
             gallery.classList.add('has-selection');
             cardElement.classList.add('selected');
             
             setTimeout(() => {
                 document.body.style.transition = "opacity 0.5s ease";
                 document.body.style.opacity = 0;
-                
                 setTimeout(() => {
                     window.location.href = targetUrl;
                 }, 500);
