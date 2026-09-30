@@ -11,7 +11,6 @@
         
         body {
             height: 100vh;
-            /* Filtro oscurante alleggerito per rendere lo sfondo luminoso e coerente con la pagina articoli */
             background-image: linear-gradient(rgba(15, 15, 15, 0.2), rgba(15, 15, 15, 0.35)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
             background-size: cover;
             background-position: center;
@@ -166,7 +165,6 @@
 
     <div class="articles-gallery" id="gallery">
         
-        <!-- RACCONTO 1 -->
         <div class="article-card" onclick="handleCardClick(this, 'abituatevi.html')">
             <div class="card-image" style="background-image: url('IMG_7086.webp');"></div>
             <div class="card-content">
@@ -175,7 +173,6 @@
             </div>
         </div>
 
-        <!-- RACCONTO 2 -->
         <div class="article-card" onclick="handleCardClick(this, 'una corsa al riarmo.html')">
             <div class="card-image" style="background-image: url('IMG_4057.webp');"></div>
             <div class="card-content">
@@ -184,24 +181,28 @@
             </div>
         </div>
 
+        <!-- NUOVO RACCONTO 3 -->
+        <div class="article-card" onclick="handleCardClick(this, 'tutto-cio.html')">
+            <!-- Usa l'immagine copertina-tutto-cio.jpg -->
+            <div class="card-image" style="background-image: url('copertina-tutto-cio.jpg');"></div>
+            <div class="card-content">
+                <h2>Tutto ciò che si vede, non sa più di niente</h2>
+                <p>Giro costantemente con il presentimento ingombrante di una minaccia. Vuoi per istinto animale a causa di una connessione congenita dell’essere umano al regno dei mammiferi...</p>
+            </div>
+        </div>
+
     </div>
 
     <script>
         function handleCardClick(cardElement, targetUrl) {
             const gallery = document.getElementById('gallery');
-            
-            // Evita doppi click accidentali
             if (cardElement.classList.contains('selected')) return;
-
-            // Avvia l'animazione della carta al centro e sfoca le altre
             gallery.classList.add('has-selection');
             cardElement.classList.add('selected');
             
-            // Dopo una frazione di secondo (il tempo che l'articolo plani al centro), reindirizza in automatico
             setTimeout(() => {
                 document.body.style.transition = "opacity 0.5s ease";
                 document.body.style.opacity = 0;
-                
                 setTimeout(() => {
                     window.location.href = targetUrl;
                 }, 500);
