@@ -11,8 +11,8 @@
         
         body {
             height: 100vh;
-            /* Usa lo stesso sfondo elegante della galleria articoli */
-            background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.9)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
+            /* Filtro oscurante alleggerito per rendere lo sfondo luminoso e coerente con la pagina articoli */
+            background-image: linear-gradient(rgba(15, 15, 15, 0.2), rgba(15, 15, 15, 0.35)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
             background-size: cover;
             background-position: center;
             font-family: 'Playfair Display', serif;
@@ -30,7 +30,7 @@
             font-size: 2.5rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.8);
             opacity: 0;
             animation: fadeInTop 1s forwards 0.5s;
         }
@@ -57,7 +57,7 @@
             background-color: #fdfbf7;
             border-radius: 4px;
             cursor: pointer;
-            box-shadow: -10px 15px 30px rgba(0,0,0,0.5), inset 2px 0 10px rgba(0,0,0,0.05);
+            box-shadow: -10px 15px 30px rgba(0,0,0,0.6), inset 2px 0 10px rgba(0,0,0,0.05);
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             
@@ -89,7 +89,7 @@
         }
 
         .card-content h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.2;
             color: #1a110b;
             margin-bottom: 12px;
@@ -117,6 +117,7 @@
 
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
         .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
+        .article-card:nth-child(3) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s; }
 
         .article-card.selected {
             position: fixed;
@@ -146,6 +147,7 @@
             opacity: 0;
             animation: fadeInTop 1s forwards 1s;
             transition: transform 0.3s;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
         .back-btn:hover { transform: scale(1.1); }
 
@@ -166,10 +168,19 @@
         
         <!-- RACCONTO 1 -->
         <div class="article-card" onclick="handleCardClick(this, 'abituatevi.html')">
-            <div class="card-image" style="background-image: url('IMG_7086.webp');"></div>
+            <div class="card-image" style="background-image: url('copertina-abituatevi.jpg');"></div>
             <div class="card-content">
                 <h2>Abituatevi per un istante</h2>
                 <p>“Abituatevi per un istante a pensare che i guai possano essere una condizione essenziale per esistere”. Un monito di vita che mi portavo tra i pensieri come l’ombra di ogni perché...</p>
+            </div>
+        </div>
+
+        <!-- RACCONTO 2 -->
+        <div class="article-card" onclick="handleCardClick(this, 'riarmo.html')">
+            <div class="card-image" style="background-image: url('copertina-riarmo.jpg');"></div>
+            <div class="card-content">
+                <h2>Una corsa al riarmo, senza fiato</h2>
+                <p>“Armiamoci”. Dozzine di applausi accolsero graditi quest’esclamazione, posta a sigillo della mia filippica. Mi riassettai convinto e trionfante nella mia soffice poltrona...</p>
             </div>
         </div>
 
@@ -178,14 +189,19 @@
     <script>
         function handleCardClick(cardElement, targetUrl) {
             const gallery = document.getElementById('gallery');
+            
+            // Evita doppi click accidentali
             if (cardElement.classList.contains('selected')) return;
 
+            // Avvia l'animazione della carta al centro e sfoca le altre
             gallery.classList.add('has-selection');
             cardElement.classList.add('selected');
             
+            // Dopo una frazione di secondo (il tempo che l'articolo plani al centro), reindirizza in automatico
             setTimeout(() => {
                 document.body.style.transition = "opacity 0.5s ease";
                 document.body.style.opacity = 0;
+                
                 setTimeout(() => {
                     window.location.href = targetUrl;
                 }, 500);
