@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una corsa al riarmo, senza fiato - Kairos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #1a110b;
+            --accent-color: #6c4e31;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 30px;
+            left: 5vw;
+            z-index: 100;
+        }
+        .back-btn {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover { opacity: 0.7; }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; 
+            background-color: #222;
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('copertina-riarmo.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .hero-subtitle {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .article-content {
+            width: 90%;
+            max-width: 680px; 
+            margin: 60px auto 100px auto;
+            font-size: 1.15rem;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .drop-cap {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-top: 8px;
+            padding-right: 10px;
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+        }
+
+        .quote-block {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+            margin: 3rem 0;
+            font-style: italic;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .quote-block strong {
+            font-weight: 700;
+            color: #222;
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 3px solid #2a1c10;
+            background-image: url('FullSizeRender.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .home-link {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fdfbf7; 
+            text-decoration: none;
+            letter-spacing: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block; 
+            text-shadow: 0 4px 20px rgba(0,0,0,1), 0 1px 5px rgba(0,0,0,0.8);
+        }
+        .home-link:hover {
+            transform: scale(1.05);
+            color: #ccc;
+        }
+
+        @media (max-width: 750px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .article-content {
+                width: 88%;
+                font-size: 1.05rem;
+                margin: 40px auto 60px auto;
+            }
+            .drop-cap { font-size: 3.5rem; }
+            .quote-block { font-size: 1.05rem; margin: 2rem 0; }
+            .home-link { font-size: 2.5rem; }
+            .top-nav { top: 20px; left: 20px; }
+            footer { padding: 80px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <nav class="top-nav">
+        <a href="racconti.html" class="back-btn">← Torna ai racconti</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-text">
+            <h1 class="hero-title">Una corsa al riarmo, senza fiato</h1>
+            <p class="hero-subtitle">Racconti</p>
+        </div>
+    </header>
+
+    <main class="article-content">
+        
+        <p><span class="drop-cap">“A</span>rmiamoci”. Dozzine di applausi accolsero graditi quest’esclamazione, posta a sigillo della mia filippica. Mi riassettai convinto e trionfante nella mia soffice poltrona. D’improvviso, sentii la lieve nevrosi dei giorni precedenti, passati a preparare il discorso, rarefarsi allegramente nei felici sorrisi dei colleghi. Un successo! Percosso dall’estasi, presi in mano il bicchiere che mi spettava e, convinto di bagnare le mie gloriose labbra, lo alzai dal tavolo. Era vuoto. Seccato, schioccai le dita verso l’assistente di sala, affinché provvedesse alla sua sciagurata mancanza d’attenzione. Una volta accorso, le sue scuse rimasero serrate e persero l’occasione di uscire allo scoperto. :- Giovane, l’onore di presenziare a quest’assemblea di pace non deve intralciare il tuo lavoro – dissi tuonante – La prossima distrazione non sarà perdonata, chiaro?</p>
+
+        <p>Strinsi la cravatta alla mia compostezza, e allontanai qualsiasi epidermica irritazione con un gesto di stizza. Nel mentre, si erano susseguiti altri interventi in aula. Ogni microfono veniva congedato con la stessa roboante espressione: “Armiamoci”. Ad assistervi, sembrava che ognuno fosse allacciato ai pensieri dell’altro da un’invisibile cerniera. Il verbo rimbalzava con naturalezza di bocca in bocca. Finalmente, dopo anni spesi a tirarci la fune, l’accordo unanime sulle armi lasciava presagire un futuro prospero per la nostra democrazia. Sguainato il piano di riarmo nei suoi punti salienti, ognuno avrebbe avuto la possibilità – dal posto – di votare a favore o contro. Si votò. Il verdetto che fu deciso dal Parlamento europeo destò un gran brusio. Dei 705 deputati che componevano l’assemblea, un bastian contrario bocciò il provvedimento. Sui pixel dello schermo, nel diagramma a torta, l’isolamento di quel voto faceva più rumore della calca di gioia che si stappò fin sul soffitto. Sedata la festa, si alzò il Presidente e disse: – L’approvazione verrà annunciata domani mattina. La seduta è sospesa. Le parole amare vennero accolte di buon grado da tutti. Quella sera però, tornai a casa irrisoluto, con la curiosità in gozzo che mi faceva guerra.</p>
+
+        <p>L’indomani mattina ci riunimmo in plenaria, per la risoluzione della procedura d’approvazione. Quella mattina nessuno interloquì e, senza perdersi in frivoli chiacchiericci, tutti presero il posto assegnato. :- Egregi colleghi, un attimo d’attenzione. Mio malgrado, prima di rubricare l’approvazione del pacchetto legislativo proposto ieri in assemblea, sono costretto a leggervi questa lettera manoscritta e macchiata di sangue, rinvenuta ieri notte.</p>
+
+        <p>Un clima d’apprensione piombò nella sala di giustizia. Di fronte alle nostre pose marmoree, il presidente cominciò a dar voce a quel pezzo di carta straccia.</p>
+
+        <p class="quote-block">
+            <strong>CARI COLLEGHI,</strong><br><br>
+            deposito su questo bianco tutto il nero che mi è rimasto. Non riconosco alcuna coordinata europea nel macabro marasma di poco fa. Penso alle colonne di uomini mutilati nel corso dei secoli, scarnificati dalla guerra e costretti a trascinare i corpi dei loro compagni decomposti, vermi tumefatti in anfratti artificiali ricavati dalla terra, cunicoli che la nostra società ripercorre al costo di un biglietto e che studia sui libri di storia. Non esiste giorno sopra le loro teste, nessuna cappa celeste filtra i pensieri dei soldati, hanno una coltre di fumo come soffitto e polvere di cenere meteorica sopra i loro elmetti. Il campo di battaglia non concede spazio ai dialoghi, ragion per cui gli imputati che verranno chiamati in causa sarete voi, ignobili. Ogni soldato balbetta frasi smozzicate che potrebbero essere le ultime di un’intera vita. Con quale gusto continuate a incentivare la fabbricazione di armamenti? Voi non sentite il tiro di un drone quando ti punta dall’alto. Voi non avete mai visto un esplosivo cadervi in testa, l’adrenalina degli uomini spacciati mentre corrono come cani in fuga da uno scoppio di granata infame. Non si fa la storia se non la si conosce. Non cercate di rovistare qualche stralcio di diritto per legittimare la vostra perfida e sconsiderata azione. Smettetela di digrignare i denti e muovete la lingua diplomatica, fatevi a pezzi con la grammatica che i vostri padri vi hanno permesso di imparare e non costringete alcun’altra pedina a muoversi nella scacchiera infernale. Fatelo per i vostri figli.<br><br>
+            Io non darò l’ultimo bacio a mio figlio stanotte, per il rispetto che devo a mio padre. Poco prima di partire per il fronte, lui non mi venne a salutare. Sapeva che in guerra ogni corpo cade anonimo e il nome viene disperso tra un cumulo di vite passate. E non dandomi l’ultimo saluto, confidava di vivere più a lungo nella mia speranza di rivederlo un giorno, la stessa che non mi abbandona da allora. E’ giunta l’ora di rincontrarti Papà, qui non voglio più starci e ho capito dove sei… quanto a te figliolo, il babbo è andato a trovare nonno.. presto tornerà, abbi fiducia e stringi la mamma.<br><br>
+            <strong>CORDIALMENTE<br>
+            DOTT. PACE</strong>
+        </p>
+
+        <p>Un lunghissimo monologo che mi seccò le labbra. Mi rivolsi di nuovo al bicchiere per scongiurare la carestia che si profilava in bocca. Era nuovamente vuoto. Pensai: “l’assistente di sala ora me la pagherà cara”.</p>
+
+    </main>
+
+    <footer>
+        <a href="index.html" class="home-link">KAIROS</a>
+    </footer>
+
+    <script>
+        window.onscroll = function() { updateProgressBar() };
+
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+</body>
+</html>
