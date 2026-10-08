@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scritti in versi - Kairos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            height: 100vh;
+            background-image: linear-gradient(rgba(15, 15, 15, 0.2), rgba(15, 15, 15, 0.35)), url('6A75E543-92FD-45B6-834F-B0853C7BCF3E.png');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Playfair Display', serif;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+        }
+
+        .page-title {
+            position: absolute;
+            top: 40px;
+            left: 5vw;
+            color: #fff;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.8);
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.5s;
+        }
+
+        .articles-gallery {
+            display: flex;
+            gap: 40px;
+            width: 100%;
+            height: 60vh;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .articles-gallery::-webkit-scrollbar { display: none; }
+        .articles-gallery { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .article-card {
+            flex: 0 0 320px;
+            height: 480px;
+            position: relative;
+            background-color: #fdfbf7;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: -10px 15px 30px rgba(0,0,0,0.6), inset 2px 0 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            opacity: 0;
+            transform: translateX(-100vw) rotateY(15deg);
+            transform-style: preserve-3d;
+            border-left: 8px solid #2a1c10;
+        }
+
+        .article-card:hover:not(.selected) {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: -15px 25px 40px rgba(0,0,0,0.7);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 55%;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid #2a1c10;
+        }
+
+        .card-content {
+            padding: 25px;
+            height: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .card-content h2 {
+            font-size: 1.3rem;
+            line-height: 1.2;
+            color: #1a110b;
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-100px) rotateY(15deg); }
+            100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
+        }
+
+        @keyframes fadeInTop {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
+
+        .article-card.selected {
+            position: fixed;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) scale(1.15) !important;
+            z-index: 1000;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 100px rgba(0,0,0,0.5);
+        }
+
+        .articles-gallery.has-selection .article-card:not(.selected) {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+            filter: blur(5px);
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 40px;
+            right: 5vw;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', sans-serif;
+            opacity: 0;
+            animation: fadeInTop 1s forwards 1s;
+            transition: transform 0.3s;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+        }
+        .back-btn:hover { transform: scale(1.1); }
+
+        @media (max-width: 750px) {
+            .page-title { font-size: 1.8rem; top: 30px; }
+            .articles-gallery { gap: 20px; align-items: flex-start; margin-top: 80px; }
+            .article-card { flex: 0 0 280px; height: 420px; }
+            .article-card.selected { transform: translate(-50%, -50%) scale(1.05) !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="page-title">Scritti in versi</h1>
+    <a href="index.html" class="back-btn">Torna alla Home</a>
+
+    <div class="articles-gallery" id="gallery">
+        
+        <div class="article-card" onclick="handleCardClick(this, 'firenze.html')">
+            <!-- Carica 'copertina-firenze.jpg' nel repository -->
+            <div class="card-image" style="background-image: url('IMG_7971.jpeg');"></div>
+            <div class="card-content">
+                <h2>Firenze, da quassù sei un sollievo</h2>
+                <p>Una foresta irta di muri intonacati<br>ricoperta da una landa di fogliame<br>rossastro...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function handleCardClick(cardElement, targetUrl) {
+            const gallery = document.getElementById('gallery');
+            if (cardElement.classList.contains('selected')) return;
+            gallery.classList.add('has-selection');
+            cardElement.classList.add('selected');
+            
+            setTimeout(() => {
+                document.body.style.transition = "opacity 0.5s ease";
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
