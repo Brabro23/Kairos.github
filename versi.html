@@ -115,6 +115,7 @@
         }
 
         .article-card:nth-child(1) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s; }
+        .article-card:nth-child(2) { animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s; }
 
         .article-card.selected {
             position: fixed;
@@ -164,11 +165,19 @@
     <div class="articles-gallery" id="gallery">
         
         <div class="article-card" onclick="handleCardClick(this, 'firenze.html')">
-            <!-- Carica 'copertina-firenze.jpg' nel repository -->
             <div class="card-image" style="background-image: url('IMG_7971.jpeg');"></div>
             <div class="card-content">
                 <h2>Piazzale Michelangelo</h2>
                 <p>Una foresta irta di muri intonacati<br>ricoperta da una landa di fogliame<br>rossastro...</p>
+            </div>
+        </div>
+
+        <!-- NUOVA POESIA -->
+        <div class="article-card" onclick="handleCardClick(this, 'tramonto.html')">
+            <div class="card-image" style="background-image: url('FullSizeRender.jpeg');"></div>
+            <div class="card-content">
+                <h2>Al tramonto</h2>
+                <p>La foglia di uno spasimo d’amore<br>si coricò nella cauta delicatezza<br>di un canottiere in Arno...</p>
             </div>
         </div>
 
