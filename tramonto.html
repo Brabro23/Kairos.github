@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al tramonto - Kairos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #1a110b;
+            --accent-color: #6c4e31;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 30px;
+            left: 5vw;
+            z-index: 100;
+        }
+        .back-btn {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover { opacity: 0.7; }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; 
+            background-color: #222;
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('FullSizeRender.jpeg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .hero-subtitle {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .article-content {
+            width: 90%;
+            max-width: 680px; 
+            margin: 60px auto 100px auto;
+            font-size: 1.15rem;
+            /* Layout per la poesia */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .poem-stanza {
+            margin-bottom: 2.5rem;
+            text-align: left;
+            font-style: italic;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 3px solid #2a1c10;
+            background-image: url('FullSizeRender.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .home-link {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fdfbf7; 
+            text-decoration: none;
+            letter-spacing: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block; 
+            text-shadow: 0 4px 20px rgba(0,0,0,1), 0 1px 5px rgba(0,0,0,0.8);
+        }
+        .home-link:hover {
+            transform: scale(1.05);
+            color: #ccc;
+        }
+
+        @media (max-width: 750px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .article-content {
+                width: 88%;
+                font-size: 1.05rem;
+                margin: 40px auto 60px auto;
+            }
+            .poem-stanza { font-size: 1.1rem; }
+            .home-link { font-size: 2.5rem; }
+            .top-nav { top: 20px; left: 20px; }
+            footer { padding: 80px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <nav class="top-nav">
+        <a href="versi.html" class="back-btn">← Torna agli scritti in versi</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-text">
+            <h1 class="hero-title">Al tramonto</h1>
+            <p class="hero-subtitle">Scritti in versi</p>
+        </div>
+    </header>
+
+    <main class="article-content">
+        
+        <p class="poem-stanza">
+            La foglia di uno spasimo d’amore<br>
+            si coricò nella cauta delicatezza<br>
+            di un canottiere in Arno,<br>
+            e lì posò i suoi ricordi felici,<br>
+            di trascorsi mai del tutto vissuti.
+        </p>
+
+        <p class="poem-stanza">
+            Protagonista nel suo fiume,<br>
+            la sua ombra sfilò tanto sottile<br>
+            da ricordare la premura tempestiva<br>
+            di una nuvola notturna, accorsa<br>
+            a riassettare il chiarore lunare.
+        </p>
+
+        <p class="poem-stanza">
+            Ciò al di sotto di un ponte,<br>
+            gremito di fuggevoli sguardi,<br>
+            epiloghi di sere d’estate,<br>
+            propositi di futuro ridacchiati<br>
+            qua e là, di poco conto.
+        </p>
+
+        <p class="poem-stanza">
+            In disparte la finzione<br>
+            di un amore poco destinato,<br>
+            rumori di gelosia, acuti di tristezza,<br>
+            suoni di apparente mitezza sfumati<br>
+            in scambi di tenere occhiate.
+        </p>
+
+        <p class="poem-stanza">
+            Ognuno di loro con l’arditezza<br>
+            di seguire folli canovacci,<br>
+            rintoccati da sospesi affanni,<br>
+            tipici per chi è avvezzo a<br>
+            naufragare nello spartito di altri.
+        </p>
+
+        <p class="poem-stanza">
+            Rubai l’immagine alla realtà,<br>
+            l’atmosfera risuonò in me<br>
+            e gracile fu allora ogni pensiero.<br>
+            Un sussulto disturbò i miei occhi:<br>
+            il pagaiare solitario di quell’uomo<br>
+            consigliava di ricamare<br>
+            più vite idealizzate possibili<br>
+            per realizzarne una vera.
+        </p>
+
+        <p class="poem-stanza">
+            Cadde l’imbrunire sovra quel candore.<br>
+            Un tacito accordo univa l’Arno al cielo,<br>
+            il canottiere un conforto esistenziale,<br>
+            soffuso nell’aria, un mormorio<br>
+            di risacca che allieta ogni dubbio.
+        </p>
+
+    </main>
+
+    <footer>
+        <a href="index.html" class="home-link">KAIROS</a>
+    </footer>
+
+    <script>
+        window.onscroll = function() { updateProgressBar() };
+
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+</body>
+</html>
